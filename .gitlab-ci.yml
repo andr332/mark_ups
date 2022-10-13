@@ -1,0 +1,61 @@
+image: docker:latest
+
+variables:
+  SERVICE_ACCOUNT_KEY: "{\"type\": \"service_account\",\"project_id\": \"markuphero\",\"private_key_id\": \"c4f32255f80963ad2c0805fa1c267b288a1c98fc\",\"private_key\": \"-----BEGIN PRIVATE KEY-----\\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCrz/YPDW9GvhKL\\nixMvRnIwbFV85j8BIDifTERyteuZMTfmPFS61GsuX9/XLrZ1t++ddLr22a5Sd/pM\\nMyb7r1HFT+qlpoi3g2ryMJtpzerHhZMwusfG7juBY+TR1BUMlouomanS0XsuL53T\\nED26Yuz1DSZX54HFyTgK+8M0601RY721pknKjMIhtyU/5Yr+nhQa1l/W+Xei2jrE\\nirc3KSAx8Fg//ARRc48KiFbVxCT9PR8Yc3FtJU7M/8rfF9FCW16sk9AN9ye764us\\nhI35drcdM0aUzC3MZ5pdnuHV7fxuiavgu15DOkMleQZ9XEu63+Ps0VhRHYeLB6K6\\nKOAehOYzAgMBAAECggEAOYWjHlADqN4bDGAQGLxPn7mtd2cIwgI9IswggH06tyu8\\nyNb7ER/sEHcl1H+9s7TUwtUhgWLI07B6eseHbi04xcQnTbVvQW18wUAX0DkSOSGV\\n8XMfTpFVF9FPexazw2altFlZ+4yJ3qEviEoAOKZFKhfwde66ynK/UiIPLWj4Fl6v\\nWgiPcfJ3wQEkM2dcKkndczoKmyRQTkwlLiY+mqaBo0rcwMehrVuO9T0VQL13yKgf\\nDrtkDCuepDKuXDm7GkHEpIjw0RD7UXLURLlQoDdf0KzFsxsqnUfjGVUgz4bs11if\\nCJ2Pak09t7pig8vClJxEounlVjG6zBVsMTps1Fu+CQKBgQDXfMJYlK0WyvVPE0C6\\nZAVxrg0uIcliYXEUXsWX0UeAnf8dw8Mb534UFmYcebhGLpI4YFyqnPmdJcfBQFqm\\n5z1JVd0mxOuo+4uZC/U/QzeDxj76gC8zu2wW/eUeCe2ARnT7a1iwShNa8yIXw3ih\\ncJvinVPlwlDJ3UWTrVPOrSeyOQKBgQDMHSh1jzNDh1RpYB6fIGi+Ljs3Nm8rUTb8\\nfxtLhneRuyaKxFKAM284T9hAQO9C+eh0tQPlQK7lW/7X5oz2sWBDD0dqGbrr5pPz\\n3oBAoQYeE0VPqHJHBmlr340Hx+vgRu+Hshz183Nc+dPPw709dsvGkCZ7UCmhhYy2\\nV1m8wfMrywKBgHsd6Nw7dfmD1Extr5nO891TmGw3GZyAF9+Plk17YOL3Yn9bDeqv\\nhLVtZsH2OXa/vQNA6zD/pw5GO68KWcDqdXWk/UndUNengMbcsi6G9PzxE6KEAnQI\\nLWWlgnZ7LZsQpl3Po0h1ykE4kM4K/K0gbbA4O2sWbponNk19xlhbTkbhAoGBALbn\\nfgTyYIans02GE4qWeSXKucd9INtZOIPExsnD4kuVwDDjQeadsJFugyL4zS5gURyb\\nxLTfZJok+NWxRCofwln1TBJYojaX9Ya3oIfJg3jZ3edG07ivlzJSLceGL+lWx3f6\\ndJc1I/Bx8osgJOj6FhqFu+YObG/QA8q1tbU+u1BHAoGAFSn2uFNOCfbh5MPcMYnY\\nzOMfJX+vv7Y/mbyidzJybKmaVw9+WdZdr4giiPPm6Izde10QuS/v2AQmIc26h44P\\n37iR0KQoSpPCGmqvquRY/Ui1lF7BaEVBOsvho8fV2Xn/ywtQcqDiL0RNRhCVsH2u\\nUJR8BCf92jGMgYO5zOB+LHs=\\n-----END PRIVATE KEY-----\\n\",\"client_email\": \"gitlab-pipeline@markuphero.iam.gserviceaccount.com\",\"client_id\": \"111049005774262543730\",\"auth_uri\": \"https://accounts.google.com/o/oauth2/auth\",\"token_uri\": \"https://oauth2.googleapis.com/token\",\"auth_provider_x509_cert_url\": \"https://www.googleapis.com/oauth2/v1/certs\",\"client_x509_cert_url\": \"https://www.googleapis.com/robot/v1/metadata/x509/gitlab-pipeline%40markuphero.iam.gserviceaccount.com\"}"
+
+stages:
+  - build-dev
+  - deploy-dev
+  - build-prod
+  - deploy-prod
+
+services:
+  - docker:dind
+
+build dev:
+  stage: build-dev
+  only:
+    - master
+  script:
+    - docker build -t gcr.io/markuphero/webapp:latest --build-arg deploy_env=dev .
+    - docker login -u _json_key --password "$SERVICE_ACCOUNT_KEY" gcr.io
+    - docker push gcr.io/markuphero/webapp:latest
+
+deploy dev:
+  image: google/cloud-sdk:latest
+  only:
+    - master
+  stage: deploy-dev
+  needs: [build dev]
+  script:
+    - echo -n "$SERVICE_ACCOUNT_KEY" > /tmp/credentials.json
+    - gcloud auth activate-service-account --key-file=/tmp/credentials.json
+    - gcloud config set project markuphero
+    - gcloud container clusters get-credentials central-cluster1 --region us-central1-c
+    - kubectl apply -f k8s/dev/deploy.yml
+    - kubectl rollout restart deployment/webapp --namespace=default
+
+build prod:
+  stage: build-prod
+  only:
+    - master
+  script:
+    - docker build -t gcr.io/markuphero/webapp:prod --build-arg deploy_env=prod .
+    - docker login -u _json_key --password "$SERVICE_ACCOUNT_KEY" gcr.io
+    - docker push gcr.io/markuphero/webapp:prod
+  when: manual
+  allow_failure: false
+
+deploy prod:
+  image: google/cloud-sdk:latest
+  stage: deploy-prod
+  needs: [build prod]
+  only:
+    - master
+  script:
+    - echo -n "$SERVICE_ACCOUNT_KEY" > /tmp/credentials.json
+    - gcloud auth activate-service-account --key-file=/tmp/credentials.json
+    - gcloud config set project markuphero
+    - gcloud container clusters get-credentials central-cluster1 --region us-central1-c
+    - kubectl apply -f k8s/prod/deploy.yml
+    - kubectl rollout restart deployment/webapp --namespace=production

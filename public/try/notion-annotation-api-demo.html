@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html class="notion-html" lang="en">
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+  <meta name="robots" content="noindex, follow">
+  <link href="cid:css-d912d1bb-a335-4ea3-a506-f84dac6723f3@mhtml.blink" rel="stylesheet" type="text/css">
+  <link href="cid:css-ca5426aa-9c06-470e-bfd3-e4badddf903d@mhtml.blink" rel="stylesheet" type="text/css">
+  <link href="cid:css-990342f5-c82e-4aac-853a-1e64adae2412@mhtml.blink" rel="stylesheet" type="text/css">
+  <meta content="width=device-width,height=device-height,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover" name="viewport">
+  <title>Notion Demo - Markup Hero Annotation API</title>
+  <link href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAJr0lEQVRYR4VXW2wjZxX+xp7xPXZsj+N7NnG2m2Sz28vS0oWKttvttt2WFRIVQlB4KEXAQxHihboglfQF0wdekEDAA+ob4qEPCFXqhT6Ulm7bTXfJXpLdxI7j2E7i+90zHs+M0fkdL5vdUEayxrb+me/7z/nO95/DYe8qlUrPKYryQ57nBxzHgT50GQyG0ZL/e9d1/cA1g8EA9KFLURTO4ff/2W0yvT4A9lAAFAqFVzVNe8VsNjPwW0nQd3rB6D5Cuf33Qegj8NFdlmVYnM7XRKczTuuH2wRQLpfjuq4niADt2mg03mTNFnIc+0/TNLaevtOO6TOK1miXo/V0HwGP1hIBs9m86Ha7X91HoFqtxjVNS1gsFgZAD9psNvZ9BCp1uxBMJgiCgHa7ze4jwsOI0XPDZ+mZUdToHaqqsg+LgMWy6HK5DiYw5nCgWCxhM5PBxMQE7HY7xl1OyL0erl29hqMLR9HrKbh46RLmZo9gcnISyVQKsiTBarXC6XSye7vdQbFYvEkmGAyw93U6nf9NgKXAZEKxVMLOTgGDgQ6Px4OJCR9jXiqVGKAkyajX6/B6PXA4HNje3mZApVIZktSF2+1h67rdDjRNZ8+Oj7vgcrkgSdLnEzAy1XOw2W0wGg3Q9aF6DQbSAA+dQnubBnieZ2tarRZyuRxE0QefT9yXir6iUAWwSFIKPlcDhUIBPbmHqekpWMxmKH0FhMoLAra2suy3x+2GKIqoVKvIZXMIBgIIBP3o91UGvLu7y3Yr8AICwQD6/T7TBUXDZrMdTEBV1QTlL5VK4caNNcwfnUdsehqrq6vodrtQNQ1SVwLPGzE/P8/CvLm5iQtLS5g6NIX5+Tkkk0nUajU0Gk0GGggEsHD3ceh7VdWXJNhMpjsJUBlSFZAGKFRdqQtBMDFR0YuI+crKCiKRCPx+PyjsgsCzXZLgqCypamq1KhSlD5PJNNy10QiHrkNYX0et04E8NYXpY8d+MW61/uoOH6AIUGkRAaoGs8XC6rzX67GSU9U+0wGBEoDDYWd6adTrjACVsKqpjFCr3YJtzAmu0YD9/HlYKxXUGw1crFXhfPqZ1x48c+ZOI9JUNcEZDMhuZVEoFXFs4Sh4XmApmJqaYgAUYoqG6BUhmIiUinx+G06XE27XOMKRMCvhtbU1BCIR2LpdxLI5iETWakVjZQXvraxsh59//psnT5368KYTFovFOBHgBZ7tIJ/PIxwKgX6TL5DRkPhMgon9xxt5NJtNaLrGUkXVQxoJBQOo1CX8e3kV0ZAbnslDWPl0GSc6NcyFRKDVRur8eXzU71945KWXntxHoK8oCbPFDA4cczhmubwRnU6XKdjtdpNHMjL0m9ZRyOmiNF29eg0DowsRdweV9NtQQ99ATXUjmbwGY3kLjws6Yn0F5UYd/7xyBbbTp8/dQmA3rql6oqcoLHx0UZ71wQACz2MmFsN6MsUsmM6K6GQE465xBiqKXmbDn1xMwmOX8ZDzT3ANPsbl3nP4qPEdTPhEaO0kWuk1PKhz8PRkFBWlFn722VM3Cezu7sYpAqRuqgACGdauzsRWq9WZ+7XabUbu6Pw8Czv5gMNuh2pwolNeh3XzRUw7lmH1z0Dq8vhg634k8S34rDoqpSSquSLma83mfWfP/mD63Lm/7ifQVxIGzoBqtcrKrFypYG52lpXXbrEA0eMdlicvMC9Q+n0YOA6yZkOvvg575sfwcv8CP34EA6MPnMUMXeng/WUfUr1zaLebuHBpCQ8cu+f1n8Zffn5fGVIESITlShmp1AYDJTOJxaYwE5thWiDFs/yrGvs+wAD9gQNyfR3W1I8wwS/BLM4Cgg/grZRDtHe2kL6xjau1e/FJdhrpXAUvfP97P//auXOJfQTy+Xxc6fUStDOyU87AwWqxQh/oTPkMWNcw0Km70ZndSqoVUm0dzq0X4TNegFk8AvA+wGQFBBMa+Tw2k3UM9D6qTQl/W/sybP6T+O63v764sLCw/zgeESDgYqHIDqNoJMKMRifgvTOedEE77yoW5Dc+RbASx7TzCgQPgYuAYAMEAc3tbWym6tC0AWRFwnupWbStj+Lx04/ixIl7Fr1e320Estl4X+0nqJaXly+DLJnOgp2dXeZ0nNGASCjMBLmWLqNbS+JQ6xUcD29AcN8FGEXAROAmBp7ZaIBaxK7cxrvr8+iMPYkzjz2EcGgCXq+46Pf79xPIZrNxRekl6NQrFItM4X7/BKq1GjuANF2H6PXC4fIht3EJ49s/w4xrGSYvgXtvAd9BJt2ErgE9pYt/pObQtD6Bp858BbFYFJ12F26PZzEYDN5OIBOXulKCGgzWkgHYTG8yL5idm2XN42Ymh/VUFrOD32HO/ncYXDGAn/hv2Hd2sJVuQ9c59JQ2Ay8aHsEXv3Ac9584zt5FHZHHKx5AIJOJK30lQTacyWRYiVE1BPx+hEJByGQelTbU9i7ORv+CqOsyYD8KWLwAb0SLwDc70PbA3/gsgGT7Ppx84G7cf+IexGZirHLoIKMU3BGBDBHoyQlqtyrVCq5cGToc9X3tTncowoERVuka5sQcxswSjPoqYKihWW4jl6F+gXbewjs3ZrDLPYxTD5/E4dgka9sM1FGrw4bEK1IKwvtTkMmk451ON+FyutBTeiiXyohGqQqoo9Uw5nShsJMFV3wHIa8JnMkPVN6AvPsmSu0QFAWQ5QbeXT+MmvkMvvr0acwdmWYtHfUHmjbslIYEvAcQSKfjkiwlqO1aXb2OcZcLY2MO5v0u1zjk/gByeQVHxrdgt9vQkTlUihuQ69fh4CU0y9fx9loMVfMZPPPkKdx1+BArQeYZpKk9/6AIi17vYjB8WwTS6XRc7SuJXC6P9WSSEaA27PDhGdgdY3j/g48xN1HH4/faUWqqqFSbkHo6eqqA6s5nuHi9hI79NJ564jEGrmsDZmKjiwjQ771e4mACrWYjQU1nIOBnDScJkcqRDqYPP/oEb735Bp76UhjzUy7kC03kij3s1HQ0e0Z4Jqbw8EMPIjY9eefExCKw554UAZ9vMXxHBFKpeKPZSLDezm5jZ/1o9rPZrFhauojf/PaPsNtMWJj2ghNsEKweBAJBHJqMIBIOspRRnm8d10YlTSMT6UGWJfhE32I4Gt0vwvVUarHVqP/SZrUOZ0IatfbiR6QoHUtLn2Erm4M/EMJkNIqAX2TOSN0RGdXIskez4nD2pVltOK6NCPgD/l9Ho4deZofR3og82CgWX6htZX4iCDSeG9nuDXsMqCkx8jxjr6k6G9doUKEXDnSNNS1s+uZumXaHE+p+AppOaeWCocDvI5HJP9CS/wCIhqvxQ8SBdwAAAABJRU5ErkJggg==" rel="shortcut icon" type="image/x-icon">
+  <link href="https://www.notion.so/images/logo-ios.png" rel="apple-touch-icon">
+  <link href="https://www.notion.so/print.b31f28aa.css" media="print" rel="stylesheet">
+  <link href="https://www.notion.so/vendors~main-aa07f589b8b4b537cd5a.css" rel="stylesheet">
+  <link href="https://www.notion.so/app-5be0283fc2b8a6b971ed.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://static.markuphero.com/v0.2.0/annotation-api.js"></script>
+</head>
+<body class="notion-body">
+<script type="text/javascript">
+
+  window.MARKUP_HERO_PUBLIC_API_TOKEN = 'ImzFZu56yHjIiP8KVI2Jpabr41zpAfqw';
+
+  $(function(){
+    $("#btnResetMarkup").hide();
+    $("#btnOpenMarkup").hide();
+  });
+
+  function createMarkup() {
+
+    const onCompletedCallbackFunction = (result) => {
+      const {secret, imageDataUrl, imageBlob, markupId} = result;
+      // console.log(imageDataUrl);
+      $("#markup-image").attr("src",imageDataUrl);
+      $("#markup-image").attr("data-secret",secret);
+      $("#markup-image").attr("data-markupid",markupId);
+      $('#btnOpenMarkup').show();
+      $('#btnCreateMarkup').hide();
+      $('#btnResetMarkup').show();
+    };
+
+    var markupImage = $("#markup-image").attr("src");
+
+    MarkupHeroApi.createMarkup({
+      imageUrl: markupImage,
+      exportFormat: 'IMAGE_DATA_URL',
+      onCompleted: onCompletedCallbackFunction
+    }).then((res) => {
+      let markupId = res.markupId; // This is the markup id that you will use to later open the same markup
+      let secret = res.secret; // Use this markup secret to be able to re-edit the same markup at a later time
+    });
+
+    MarkupHeroApi.configureStyle({
+      activeButtonColor: 'rgb(46, 170, 220)',
+      darkButtonColor: '#111111',
+      backgroundColor: '#ffffff'
+    });
+  }
+
+  function openMarkup() {
+    var dataSecret = $('#markup-image').attr('data-secret'); //getter
+    var dataMarkupId = $('#markup-image').attr('data-markupid'); //getter
+
+    const onCompletedCallbackFunction = (result) => {
+      const {secret, imageDataUrl, imageBlob, markupId} = result;
+      // console.log(imageDataUrl);
+      $("#markup-image").attr("src",imageDataUrl);
+      $("#markup-image").attr("data-secret",secret);
+      $("#markup-image").attr("data-markupid",markupId);
+      $('#btnOpenMarkup').show();
+      $('#btnCreateMarkup').hide();
+      $('#btnResetMarkup').show();
+    };
+
+    MarkupHeroApi.openMarkup({
+      markupId: dataMarkupId,
+      secret: dataSecret,
+      exportFormat: 'IMAGE_DATA_URL',
+      onCompleted: onCompletedCallbackFunction
+    }).then((res) => {
+      let markupId = res.markupId; // This is the markup id that you will use to later open the same markup
+      let secret = res.secret; // Use this markup secret to be able to re-edit the same markup at a later time
+    });
+
+    MarkupHeroApi.configureStyle({
+      activeButtonColor: 'rgb(46, 170, 220)',
+      darkButtonColor: '#111111',
+      backgroundColor: '#ffffff'
+    });
+  }
+
+</script>
+<div id="notion-app">
+  <div class="notion-app-inner notion-light-theme" style="color: rgb(55, 53, 47); fill: currentcolor; line-height: 1.5; font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, &quot;Apple Color Emoji&quot;, Arial, sans-serif, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; -webkit-font-smoothing: auto;">
+    <div class="notion-cursor-listener" style="width: 100vw; height: 100%; position: relative; display: flex; flex: 1 1 0%; background: white; cursor: text;">
+      <div class="notion-sidebar-container" style="flex-grow: 0; flex-shrink: 0; pointer-events: none; position: relative; z-index: 99; background: rgb(247, 246, 243); transition: box-shadow 300ms ease-in 0s; width: 240px;">
+        <div style="color: rgba(25, 23, 17, 0.6); font-weight: 500; height: 100%;">
+          <div style="position: absolute; top: 0px; left: 0px; bottom: 0px; display: flex; flex-direction: column; width: 0px; overflow: visible; z-index: 9; pointer-events: none;">
+            <div class="notion-sidebar" style="display: flex; flex-direction: column; height: 100%; position: relative; pointer-events: auto; max-height: 100%; width: 240px; opacity: 1;">
+              <div style="display: none; position: absolute; inset: 0px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; z-index: -1; background: white; box-shadow: rgba(15, 15, 15, 0.05) 0px 0px 0px 1px, rgba(15, 15, 15, 0.1) 0px 3px 6px, rgba(15, 15, 15, 0.2) 0px 9px 24px;"></div>
+              <div style="position: absolute; inset: 0px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; z-index: -1; display: none; transition: box-shadow 300ms ease-in 0s;"></div>
+              <div style="display: block; flex-shrink: 0; flex-grow: 0;">
+                <div class="notion-sidebar-switcher" role="button" style="user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; display: flex; align-items: center; min-width: 0px; height: 45px; width: 100%; margin-bottom: 0px;" tabindex="0">
+                  <div style="display: flex; align-items: center; min-height: 27px; font-size: 14px; padding: 2px 14px; width: 100%; overflow: hidden;">
+                    <div style="flex-shrink: 0; flex-grow: 0; border-radius: 3px; color: rgba(55, 53, 47, 0.6); width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; margin-right: 8px;">
+                      <div aria-disabled="true" class="notion-record-icon notranslate" role="button" style="user-select: none; transition: background 20ms ease-in 0s; display: flex; align-items: center; justify-content: center; height: 20px; width: 20px; border-radius: 3px; flex-shrink: 0; margin-top: 1px; color: rgb(55, 53, 47);" tabindex="-1">
+                        <div>
+                          <div style="width: 100%; height: 100%;"><img src="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fpublic.notion-static.com%2F8e0195b4-36c7-41cd-b98b-45b57a24a39f%2FMarkupHeroLogoForProfilesSMALL.png?table=space&amp;id=7d3c5768-4026-47e7-a0f3-4ce402aa5497&amp;width=40&amp;userId=09d9b29b-e61b-40a2-96f6-1add8c6a4ccc&amp;cache=v2" style="display: block; object-fit: cover; border-radius: 3px; width: 17.76px; height: 17.76px; transition: opacity 100ms ease-out 0s;"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div style="flex: 1 1 auto; white-space: nowrap; min-width: 0px; overflow: hidden; text-overflow: ellipsis;">
+                      <div class="notranslate" style="display: flex; align-items: center; justify-content: start;">
+                        <div style="display: flex; flex-direction: column; margin-right: 6px; margin-top: 0px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                          <div style="color: rgb(55, 53, 47); font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                            Markup Hero
+                          </div>
+                          <div style="color: rgba(55, 53, 47, 0.6); font-size: 11px; line-height: 12px; font-weight: 400; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"></div>
+                        </div>
+                        <div style="flex-grow: 0; flex-shrink: 0; width: 12px; height: 12px; fill: rgba(55, 53, 47, 0.4);">
+                          <svg class="expand" style="width: 100%; height: 100%; display: block; fill: inherit; flex-shrink: 0; backface-visibility: hidden;" viewbox="-1 -1 9 11">
+                            <path d="M 3.5 0L 3.98809 -0.569442L 3.5 -0.987808L 3.01191 -0.569442L 3.5 0ZM 3.5 9L 3.01191 9.56944L 3.5 9.98781L 3.98809 9.56944L 3.5 9ZM 0.488094 3.56944L 3.98809 0.569442L 3.01191 -0.569442L -0.488094 2.43056L 0.488094 3.56944ZM 3.01191 0.569442L 6.51191 3.56944L 7.48809 2.43056L 3.98809 -0.569442L 3.01191 0.569442ZM -0.488094 6.56944L 3.01191 9.56944L 3.98809 8.43056L 0.488094 5.43056L -0.488094 6.56944ZM 3.98809 9.56944L 7.48809 6.56944L 6.51191 5.43056L 3.01191 8.43056L 3.98809 9.56944Z" id="path0_stroke"></path></svg>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div style="flex-grow: 0; flex-shrink: 0; padding-bottom: 8px; box-shadow: transparent 0px 0px 0px; transition: box-shadow 300ms ease 0s;">
+                <div class="" role="button" style="user-select: none; transition: background 20ms ease-in 0s; cursor: pointer;" tabindex="0">
+                  <div style="display: flex; align-items: center; min-height: 27px; font-size: 14px; padding: 2px 14px; width: 100%;">
+                    <div style="flex-shrink: 0; flex-grow: 0; border-radius: 3px; color: rgba(55, 53, 47, 0.6); width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; margin-right: 8px;">
+                      <svg class="sidebarSearch" style="width: 14px; height: 100%; display: block; fill: rgba(55, 53, 47, 0.4); flex-shrink: 0; backface-visibility: hidden;" viewbox="0 0 14 14">
+                        <path d="M5.92239093,0.540000021 C2.94055203,0.540000021 0.5,2.98052217 0.5,5.96238099 C0.5,8.9442199 2.94055203,11.384762 5.92239093,11.384762 C7.02329179,11.384762 8.05258749,11.0564678 8.91032559,10.4866744 L12.1460745,13.6802311 C12.5695899,14.1037465 13.2589477,14.1037465 13.6823635,13.6802311 C14.1058788,13.2567158 14.1058788,12.5730353 13.6823635,12.1495199 L10.4410368,8.95033558 C11.0107904,8.09259747 11.3447619,7.06329182 11.3447619,5.96238099 C11.3447619,2.98052217 8.90420992,0.540000021 5.92239093,0.540000021 Z M5.92239093,2.70895241 C7.7320027,2.70895241 9.17580956,4.15272939 9.17580956,5.96238099 C9.17580956,7.77201268 7.7320027,9.21581954 5.92239093,9.21581954 C4.11275925,9.21581954 2.66895239,7.77201268 2.66895239,5.96238099 C2.66895239,4.15272939 4.11275925,2.70895241 5.92239093,2.70895241 Z"></path></svg>
+                    </div>
+                    <div style="flex: 1 1 auto; white-space: nowrap; min-width: 0px; overflow: hidden; text-overflow: ellipsis;">
+                      Quick Find
+                    </div>
+                  </div>
+                </div>
+                <div class="" role="button" style="user-select: none; transition: background 20ms ease-in 0s; cursor: pointer;" tabindex="0">
+                  <div style="display: flex; align-items: center; min-height: 27px; font-size: 14px; padding: 2px 14px; width: 100%; background: none;">
+                    <div style="flex-shrink: 0; flex-grow: 0; border-radius: 3px; color: rgba(55, 53, 47, 0.6); width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; margin-right: 8px;">
+                      <div style="color: inherit;">
+                        <svg class="typesCreatedAt" style="width: 14px; height: 100%; display: block; fill: rgba(55, 53, 47, 0.4); flex-shrink: 0; backface-visibility: hidden;" viewbox="0 0 14 14">
+                          <path d="M6.98643729,14.0000972 C5.19579566,14.0000972 3.40419152,13.3106896 2.04245843,11.9323606 C-0.681017475,9.21200555 -0.680780251,4.76029539 2.04293482,2.04012507 C4.76664406,-0.68004331 9.22427509,-0.68004331 11.9480135,2.04013479 C13.272481,3.36277455 14,5.1330091 14,6.99552762 C14,8.87640182 13.2721894,10.6285043 11.9480135,11.9509302 C10.5679344,13.3105924 8.77756503,14.0000972 6.98643729,14.0000972 Z M10.2705296,7.00913883 L10.2705296,8.46099754 L10.2705296,8.65543362 L10.076181,8.65543362 L8.6543739,8.65543362 L5.72059514,8.65543362 L5.52619796,8.65543362 L5.52619796,8.46099754 L5.52619796,5.52541044 L5.52619796,3.37946773 L5.52619796,3.18502193 L5.72059514,3.18502193 L7.17253164,3.18502193 L7.36692883,3.18502193 L7.36692883,3.37946773 L7.36692883,6.81467358 L10.076181,6.81467358 L10.2705296,6.81467358 L10.2705296,7.00913883 Z M12.1601539,6.99552762 C12.1601539,5.61697497 11.6190112,4.32597154 10.6393933,3.34769528 C8.63253764,1.34336744 5.35197452,1.34061603 3.34153136,3.33944106 C3.33868273,3.34219247 3.33607716,3.34494388 3.33322852,3.34769528 C1.32397148,5.35459953 1.32372842,8.63641682 3.33322852,10.6433794 C5.34295224,12.6504489 8.62968901,12.6504489 10.6393933,10.6433794 C11.6190112,9.66506426 12.1601539,8.37408027 12.1601539,6.99552762 Z"></path></svg>
+                      </div>
+                    </div>
+                    <div style="flex: 1 1 auto; white-space: nowrap; min-width: 0px; overflow: hidden; text-overflow: clip;">
+                      All Updates
+                    </div>
+                    <div style="display: flex; align-items: center; justify-content: center; flex-shrink: 0; flex-grow: 0; height: 100%;"></div>
+                  </div>
+                </div>
+                <div class="" role="button" style="user-select: none; transition: background 20ms ease-in 0s; cursor: pointer;" tabindex="0">
+                  <div style="display: flex; align-items: center; min-height: 27px; font-size: 14px; padding: 2px 14px; width: 100%;">
+                    <div style="flex-shrink: 0; flex-grow: 0; border-radius: 3px; color: rgba(55, 53, 47, 0.6); width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; margin-right: 8px;">
+                      <svg class="sidebarSettings" style="width: 14px; height: 100%; display: block; fill: rgba(55, 53, 47, 0.4); flex-shrink: 0; backface-visibility: hidden;" viewbox="0 0 14 14">
+                        <path d="M14,7.77 L14,6.17 L12.06,5.53 L11.61,4.44 L12.49,2.6 L11.36,1.47 L9.55,2.38 L8.46,1.93 L7.77,0.01 L6.17,0.01 L5.54,1.95 L4.43,2.4 L2.59,1.52 L1.46,2.65 L2.37,4.46 L1.92,5.55 L0,6.23 L0,7.82 L1.94,8.46 L2.39,9.55 L1.51,11.39 L2.64,12.52 L4.45,11.61 L5.54,12.06 L6.23,13.98 L7.82,13.98 L8.45,12.04 L9.56,11.59 L11.4,12.47 L12.53,11.34 L11.61,9.53 L12.08,8.44 L14,7.75 L14,7.77 Z M7,10 C5.34,10 4,8.66 4,7 C4,5.34 5.34,4 7,4 C8.66,4 10,5.34 10,7 C10,8.66 8.66,10 7,10 Z"></path></svg>
+                    </div>
+                    <div style="flex: 1 1 auto; white-space: nowrap; min-width: 0px; overflow: hidden; text-overflow: ellipsis;">
+                      <div>
+                        Settings &amp; Members
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="notion-scroller vertical" style="padding-top: 14px; padding-bottom: 20px; z-index: 1; overflow: hidden auto; margin-right: 0px; margin-bottom: 0px;">
+                <div style="margin-bottom: 20px;">
+                  <div class="notion-outliner-workspace-header" style="display: flex; align-items: center; min-height: 24px; font-size: 14px; padding: 0px 14px 0px 15px; width: 100%;">
+                    <div style="flex: 1 1 auto; white-space: nowrap; min-width: 0px; overflow: visible; text-overflow: ellipsis;">
+                      <div style="display: flex; align-items: center;">
+                        <div class="" role="button" style="user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; display: flex; align-items: center; border-radius: 3px; padding: 2px 4px; margin-left: -4px;" tabindex="0">
+                          <span style="letter-spacing: 0.03em; text-transform: uppercase; font-size: 11.5px; line-height: 1; margin-bottom: 1px; color: rgba(55, 53, 47, 0.4); font-weight: 600; transition: color 100ms ease-out 0s;">Workspace</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="notion-outliner-workspace" style="display: block;">
+                    <div style="">
+                      <div class="notion-selectable notion-collection_view_page-block" data-block-id="af92fe60-0f73-4a8a-be4d-9168dd192ee2">
+                        <a href="#" rel="noopener noreferrer" style="display: block; color: inherit; text-decoration: none; width: 100%;">
+                          <div class="" role="button" style="user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; width: 100%;" tabindex="0">
+                            <div style="display: flex; align-items: center; min-height: 27px; font-size: 14px; padding: 2px 14px; width: 100%;">
+                              <div style="flex-shrink: 0; flex-grow: 0; border-radius: 3px; color: rgba(55, 53, 47, 0.6); width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; margin-right: 0px;">
+                                <div class="" role="button" style="user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; display: flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 3px;" tabindex="0">
+                                  <svg class="triangle" style="width: 0.6875em; height: 0.6875em; display: block; fill: rgba(55, 53, 47, 0.4); flex-shrink: 0; backface-visibility: hidden; transition: transform 200ms ease-out 0s; transform: rotateZ(90deg); opacity: 1;" viewbox="0 0 100 100">
+                                    <polygon points="5.9,88.2 50,11.8 94.1,88.2"></polygon></svg>
+                                </div>
+                              </div>
+                              <div style="display: flex; align-items: center; justify-content: center; flex-shrink: 0; flex-grow: 0; width: 22px; height: 18px; margin-right: 4px;">
+                                <div aria-disabled="false" class="notion-record-icon notranslate" role="button" style="user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; display: flex; align-items: center; justify-content: center; height: 20px; width: 20px; border-radius: 3px; flex-shrink: 0;" tabindex="0">
+                                  <div style="display: flex; align-items: center; justify-content: center; height: 20px; width: 20px;">
+                                    <div style="height: 18px; width: 18px; font-size: 18px; line-height: 1.1; margin-left: 0px; color: black;">
+                                      <span aria-label="🚘" role="image" style="font-family: &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, NotoColorEmoji, &quot;Noto Color Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Android Emoji&quot;, EmojiSymbols; line-height: 1em;">🚘</span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div style="flex: 1 1 auto; white-space: nowrap; min-width: 0px; overflow: hidden; text-overflow: ellipsis; display: flex; align-items: center;">
+                                <div class="notranslate" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                                  Product Roadmap
+                                </div>
+                              </div>
+                            </div>
+                          </div></a>
+                      </div>
+                      <div class="notion-selectable notion-page-block" data-block-id="310bc08e-0151-4e26-9b69-4b83874fe42c">
+                        <a href="#" rel="noopener noreferrer" style="display: block; color: inherit; text-decoration: none; width: 100%;">
+                          <div class="" role="button" style="user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; width: 100%;" tabindex="0">
+                            <div style="display: flex; align-items: center; min-height: 27px; font-size: 14px; padding: 2px 14px; width: 100%;">
+                              <div style="flex-shrink: 0; flex-grow: 0; border-radius: 3px; color: rgba(55, 53, 47, 0.6); width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; margin-right: 0px;">
+                                <div class="" role="button" style="user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; display: flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 3px;" tabindex="0">
+                                  <svg class="triangle" style="width: 0.6875em; height: 0.6875em; display: block; fill: rgba(55, 53, 47, 0.4); flex-shrink: 0; backface-visibility: hidden; transition: transform 200ms ease-out 0s; transform: rotateZ(90deg); opacity: 1;" viewbox="0 0 100 100">
+                                    <polygon points="5.9,88.2 50,11.8 94.1,88.2"></polygon></svg>
+                                </div>
+                              </div>
+                              <div style="display: flex; align-items: center; justify-content: center; flex-shrink: 0; flex-grow: 0; width: 22px; height: 18px; margin-right: 4px;">
+                                <div aria-disabled="false" class="notion-record-icon notranslate" role="button" style="user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; display: flex; align-items: center; justify-content: center; height: 20px; width: 20px; border-radius: 3px; flex-shrink: 0;" tabindex="0">
+                                  <div style="display: flex; align-items: center; justify-content: center; height: 20px; width: 20px;">
+                                    <div style="height: 18px; width: 18px; font-size: 18px; line-height: 1.1; margin-left: 0px; color: black;">
+                                      <span aria-label="🚀" role="image" style="font-family: &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, NotoColorEmoji, &quot;Noto Color Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Android Emoji&quot;, EmojiSymbols; line-height: 1em;">🚀</span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div style="flex: 1 1 auto; white-space: nowrap; min-width: 0px; overflow: hidden; text-overflow: ellipsis; display: flex; align-items: center;">
+                                <div class="notranslate" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                                  Marketing
+                                </div>
+                              </div>
+                            </div>
+                          </div></a>
+                      </div>
+                      <div class="notion-selectable notion-page-block" data-block-id="da954c4d-28b4-4282-849b-cd00ffcfd2f0">
+                        <a href="#" rel="noopener noreferrer" style="display: block; color: inherit; text-decoration: none; width: 100%;">
+                          <div class="" role="button" style="user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; width: 100%;" tabindex="0">
+                            <div style="display: flex; align-items: center; min-height: 27px; font-size: 14px; padding: 2px 14px; width: 100%;">
+                              <div style="flex-shrink: 0; flex-grow: 0; border-radius: 3px; color: rgba(55, 53, 47, 0.6); width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; margin-right: 0px;">
+                                <div class="" role="button" style="user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; display: flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 3px;" tabindex="0">
+                                  <svg class="triangle" style="width: 0.6875em; height: 0.6875em; display: block; fill: rgba(55, 53, 47, 0.4); flex-shrink: 0; backface-visibility: hidden; transition: transform 200ms ease-out 0s; transform: rotateZ(90deg); opacity: 1;" viewbox="0 0 100 100">
+                                    <polygon points="5.9,88.2 50,11.8 94.1,88.2"></polygon></svg>
+                                </div>
+                              </div>
+                              <div style="display: flex; align-items: center; justify-content: center; flex-shrink: 0; flex-grow: 0; width: 22px; height: 18px; margin-right: 4px;">
+                                <div aria-disabled="false" class="notion-record-icon notranslate" role="button" style="user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; display: flex; align-items: center; justify-content: center; height: 20px; width: 20px; border-radius: 3px; flex-shrink: 0;" tabindex="0">
+                                  <div style="display: flex; align-items: center; justify-content: center; height: 20px; width: 20px;">
+                                    <div style="height: 18px; width: 18px; font-size: 18px; line-height: 1.1; margin-left: 0px; color: black;">
+                                      <span aria-label="🚕" role="image" style="font-family: &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, NotoColorEmoji, &quot;Noto Color Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Android Emoji&quot;, EmojiSymbols; line-height: 1em;">🚕</span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div style="flex: 1 1 auto; white-space: nowrap; min-width: 0px; overflow: hidden; text-overflow: ellipsis; display: flex; align-items: center;">
+                                <div class="notranslate" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                                  Product
+                                </div>
+                              </div>
+                            </div>
+                          </div></a>
+                      </div>
+                      <div class="notion-selectable notion-collection_view_page-block" data-block-id="c34d27df-09de-4844-b28d-76a56ff0b6b6">
+                        <a href="#" rel="noopener noreferrer" style="display: block; color: inherit; text-decoration: none; width: 100%;">
+                          <div class="" role="button" style="user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; width: 100%;" tabindex="0">
+                            <div style="display: flex; align-items: center; min-height: 27px; font-size: 14px; padding: 2px 14px; width: 100%;">
+                              <div style="flex-shrink: 0; flex-grow: 0; border-radius: 3px; color: rgba(55, 53, 47, 0.6); width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; margin-right: 0px;">
+                                <div class="" role="button" style="user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; display: flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 3px;" tabindex="0">
+                                  <svg class="triangle" style="width: 0.6875em; height: 0.6875em; display: block; fill: rgba(55, 53, 47, 0.4); flex-shrink: 0; backface-visibility: hidden; transition: transform 200ms ease-out 0s; transform: rotateZ(90deg); opacity: 1;" viewbox="0 0 100 100">
+                                    <polygon points="5.9,88.2 50,11.8 94.1,88.2"></polygon></svg>
+                                </div>
+                              </div>
+                              <div style="display: flex; align-items: center; justify-content: center; flex-shrink: 0; flex-grow: 0; width: 22px; height: 18px; margin-right: 4px;">
+                                <div aria-disabled="false" class="notion-record-icon notranslate" role="button" style="user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; display: flex; align-items: center; justify-content: center; height: 20px; width: 20px; border-radius: 3px; flex-shrink: 0;" tabindex="0">
+                                  <div style="display: flex; align-items: center; justify-content: center; height: 20px; width: 20px;">
+                                    <div style="height: 18px; width: 18px; font-size: 18px; line-height: 1.1; margin-left: 0px; color: black;">
+                                      <span aria-label="💼" role="image" style="font-family: &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, NotoColorEmoji, &quot;Noto Color Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Android Emoji&quot;, EmojiSymbols; line-height: 1em;">💼</span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div style="flex: 1 1 auto; white-space: nowrap; min-width: 0px; overflow: hidden; text-overflow: ellipsis; display: flex; align-items: center;">
+                                <div class="notranslate" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                                  Corporate
+                                </div>
+                              </div>
+                            </div>
+                          </div></a>
+                      </div>
+                      <div class="notion-selectable notion-page-block" data-block-id="ac11df62-209c-44f3-bdad-ddd3e4d1fba8">
+                        <a href="#" rel="noopener noreferrer" style="display: block; color: inherit; text-decoration: none; width: 100%;">
+                          <div class="" role="button" style="user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; width: 100%;" tabindex="0">
+                            <div style="display: flex; align-items: center; min-height: 27px; font-size: 14px; padding: 2px 14px; width: 100%;">
+                              <div style="flex-shrink: 0; flex-grow: 0; border-radius: 3px; color: rgba(55, 53, 47, 0.6); width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; margin-right: 0px;">
+                                <div class="" role="button" style="user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; display: flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 3px;" tabindex="0">
+                                  <svg class="triangle" style="width: 0.6875em; height: 0.6875em; display: block; fill: rgba(55, 53, 47, 0.4); flex-shrink: 0; backface-visibility: hidden; transition: transform 200ms ease-out 0s; transform: rotateZ(90deg); opacity: 1;" viewbox="0 0 100 100">
+                                    <polygon points="5.9,88.2 50,11.8 94.1,88.2"></polygon></svg>
+                                </div>
+                              </div>
+                              <div style="display: flex; align-items: center; justify-content: center; flex-shrink: 0; flex-grow: 0; width: 22px; height: 18px; margin-right: 4px;">
+                                <div aria-disabled="false" class="notion-record-icon notranslate" role="button" style="user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; display: flex; align-items: center; justify-content: center; height: 20px; width: 20px; border-radius: 3px; flex-shrink: 0;" tabindex="0">
+                                  <div style="display: flex; align-items: center; justify-content: center; height: 20px; width: 20px;">
+                                    <div style="height: 18px; width: 18px; font-size: 18px; line-height: 1.1; margin-left: 0px; color: black;">
+                                      <span aria-label="🤝" role="image" style="font-family: &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, NotoColorEmoji, &quot;Noto Color Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Android Emoji&quot;, EmojiSymbols; line-height: 1em;">🤝</span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div style="flex: 1 1 auto; white-space: nowrap; min-width: 0px; overflow: hidden; text-overflow: ellipsis; display: flex; align-items: center;">
+                                <div class="notranslate" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                                  Business Development
+                                </div>
+                              </div>
+                            </div>
+                          </div></a>
+                      </div>
+                      <div class="notion-selectable notion-page-block" data-block-id="d5774233-7fb8-402d-a9f0-cd67844f1183">
+                        <a href="#" rel="noopener noreferrer" style="display: block; color: inherit; text-decoration: none; width: 100%;">
+                          <div class="" role="button" style="user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; width: 100%;" tabindex="0">
+                            <div style="display: flex; align-items: center; min-height: 27px; font-size: 14px; padding: 2px 14px; width: 100%;">
+                              <div style="flex-shrink: 0; flex-grow: 0; border-radius: 3px; color: rgba(55, 53, 47, 0.6); width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; margin-right: 0px;">
+                                <div class="" role="button" style="user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; display: flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 3px;" tabindex="0">
+                                  <svg class="triangle" style="width: 0.6875em; height: 0.6875em; display: block; fill: rgba(55, 53, 47, 0.4); flex-shrink: 0; backface-visibility: hidden; transition: transform 200ms ease-out 0s; transform: rotateZ(90deg); opacity: 1;" viewbox="0 0 100 100">
+                                    <polygon points="5.9,88.2 50,11.8 94.1,88.2"></polygon></svg>
+                                </div>
+                              </div>
+                              <div style="display: flex; align-items: center; justify-content: center; flex-shrink: 0; flex-grow: 0; width: 22px; height: 18px; margin-right: 4px;">
+                                <div aria-disabled="false" class="notion-record-icon notranslate" role="button" style="user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; display: flex; align-items: center; justify-content: center; height: 20px; width: 20px; border-radius: 3px; flex-shrink: 0;" tabindex="0">
+                                  <div style="display: flex; align-items: center; justify-content: center; height: 20px; width: 20px;">
+                                    <div style="height: 18px; width: 18px; font-size: 18px; line-height: 1.1; margin-left: 0px; color: black;">
+                                      <span aria-label="🌽" role="image" style="font-family: &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, NotoColorEmoji, &quot;Noto Color Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Android Emoji&quot;, EmojiSymbols; line-height: 1em;">🌽</span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div style="flex: 1 1 auto; white-space: nowrap; min-width: 0px; overflow: hidden; text-overflow: ellipsis; display: flex; align-items: center;">
+                                <div class="notranslate" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                                  Operations
+                                </div>
+                              </div>
+                            </div>
+                          </div></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div style="margin-bottom: 20px;">
+                  <div class="notion-outliner-private-header" style="display: flex; align-items: center; min-height: 24px; font-size: 14px; padding: 0px 14px 0px 15px; width: 100%;">
+                    <div style="flex: 1 1 auto; white-space: nowrap; min-width: 0px; overflow: visible; text-overflow: ellipsis;">
+                      <div style="display: flex; align-items: center;">
+                        <div class="" role="button" style="user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; display: flex; align-items: center; border-radius: 3px; padding: 2px 4px; margin-left: -4px;" tabindex="0">
+                          <span style="letter-spacing: 0.03em; text-transform: uppercase; font-size: 11.5px; line-height: 1; margin-bottom: 1px; color: rgba(55, 53, 47, 0.4); font-weight: 600; transition: color 100ms ease-out 0s;">Private</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="notion-outliner-private" style="display: block;">
+                    <div style="">
+                      <div class="notion-selectable notion-collection_view_page-block" data-block-id="de513a23-4254-4f65-ae61-4aaaa6abe09f">
+                        <a href="#" rel="noopener noreferrer" style="display: block; color: inherit; text-decoration: none; width: 100%;">
+                          <div class="" role="button" style="user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; width: 100%;" tabindex="0">
+                            <div style="display: flex; align-items: center; min-height: 27px; font-size: 14px; padding: 2px 14px; width: 100%;">
+                              <div style="flex-shrink: 0; flex-grow: 0; border-radius: 3px; color: rgba(55, 53, 47, 0.6); width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; margin-right: 0px;">
+                                <div class="" role="button" style="user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; display: flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 3px;" tabindex="0">
+                                  <svg class="triangle" style="width: 0.6875em; height: 0.6875em; display: block; fill: rgba(55, 53, 47, 0.4); flex-shrink: 0; backface-visibility: hidden; transition: transform 200ms ease-out 0s; transform: rotateZ(90deg); opacity: 1;" viewbox="0 0 100 100">
+                                    <polygon points="5.9,88.2 50,11.8 94.1,88.2"></polygon></svg>
+                                </div>
+                              </div>
+                              <div style="display: flex; align-items: center; justify-content: center; flex-shrink: 0; flex-grow: 0; width: 22px; height: 18px; margin-right: 4px;">
+                                <div aria-disabled="false" class="notion-record-icon notranslate" role="button" style="user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; display: flex; align-items: center; justify-content: center; height: 20px; width: 20px; border-radius: 3px; flex-shrink: 0;" tabindex="0">
+                                  <div style="display: flex; align-items: center; justify-content: center; height: 20px; width: 20px;">
+                                    <div style="height: 18px; width: 18px; font-size: 18px; line-height: 1.1; margin-left: 0px; color: black;">
+                                      <span aria-label="🔬" role="image" style="font-family: &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, NotoColorEmoji, &quot;Noto Color Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Android Emoji&quot;, EmojiSymbols; line-height: 1em;">🔬</span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div style="flex: 1 1 auto; white-space: nowrap; min-width: 0px; overflow: hidden; text-overflow: ellipsis; display: flex; align-items: center;">
+                                <div class="notranslate" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                                  User Research
+                                </div>
+                              </div>
+                            </div>
+                          </div></a>
+                      </div>
+                      <div class="notion-selectable notion-collection_view_page-block" data-block-id="1aa787e0-afa6-4326-a350-129893d78988">
+                        <a href="#" rel="noopener noreferrer" style="display: block; color: inherit; text-decoration: none; width: 100%;">
+                          <div class="" role="button" style="user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; width: 100%;" tabindex="0">
+                            <div style="display: flex; align-items: center; min-height: 27px; font-size: 14px; padding: 2px 14px; width: 100%;">
+                              <div style="flex-shrink: 0; flex-grow: 0; border-radius: 3px; color: rgba(55, 53, 47, 0.6); width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; margin-right: 0px;">
+                                <div class="" role="button" style="user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; display: flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 3px;" tabindex="0">
+                                  <svg class="triangle" style="width: 0.6875em; height: 0.6875em; display: block; fill: rgba(55, 53, 47, 0.4); flex-shrink: 0; backface-visibility: hidden; transition: transform 200ms ease-out 0s; transform: rotateZ(90deg); opacity: 1;" viewbox="0 0 100 100">
+                                    <polygon points="5.9,88.2 50,11.8 94.1,88.2"></polygon></svg>
+                                </div>
+                              </div>
+                              <div style="display: flex; align-items: center; justify-content: center; flex-shrink: 0; flex-grow: 0; width: 22px; height: 18px; margin-right: 4px;">
+                                <div aria-disabled="false" class="notion-record-icon notranslate" role="button" style="user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; display: flex; align-items: center; justify-content: center; height: 20px; width: 20px; border-radius: 3px; flex-shrink: 0;" tabindex="0">
+                                  <div style="display: flex; align-items: center; justify-content: center; height: 20px; width: 20px;">
+                                    <div style="height: 18px; width: 18px; font-size: 18px; line-height: 1.1; margin-left: 0px; color: black;">
+                                      <span aria-label="🎒" role="image" style="font-family: &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, NotoColorEmoji, &quot;Noto Color Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Android Emoji&quot;, EmojiSymbols; line-height: 1em;">🎒</span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div style="flex: 1 1 auto; white-space: nowrap; min-width: 0px; overflow: hidden; text-overflow: ellipsis; display: flex; align-items: center;">
+                                <div class="notranslate" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                                  Task List
+                                </div>
+                              </div>
+                            </div>
+                          </div></a>
+                      </div>
+                      <div class="notion-selectable notion-collection_view_page-block" data-block-id="07c73232-eb8b-4a50-adf8-53a5eee058fa">
+                        <a href="#" rel="noopener noreferrer" style="display: block; color: inherit; text-decoration: none; width: 100%;">
+                          <div class="" role="button" style="user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; width: 100%;" tabindex="0">
+                            <div style="display: flex; align-items: center; min-height: 27px; font-size: 14px; padding: 2px 14px; width: 100%;">
+                              <div style="flex-shrink: 0; flex-grow: 0; border-radius: 3px; color: rgba(55, 53, 47, 0.6); width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; margin-right: 0px;">
+                                <div class="" role="button" style="user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; display: flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 3px;" tabindex="0">
+                                  <svg class="triangle" style="width: 0.6875em; height: 0.6875em; display: block; fill: rgba(55, 53, 47, 0.4); flex-shrink: 0; backface-visibility: hidden; transition: transform 200ms ease-out 0s; transform: rotateZ(90deg); opacity: 1;" viewbox="0 0 100 100">
+                                    <polygon points="5.9,88.2 50,11.8 94.1,88.2"></polygon></svg>
+                                </div>
+                              </div>
+                              <div style="display: flex; align-items: center; justify-content: center; flex-shrink: 0; flex-grow: 0; width: 22px; height: 18px; margin-right: 4px;">
+                                <div aria-disabled="false" class="notion-record-icon notranslate" role="button" style="user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; display: flex; align-items: center; justify-content: center; height: 20px; width: 20px; border-radius: 3px; flex-shrink: 0;" tabindex="0">
+                                  <div style="display: flex; align-items: center; justify-content: center; height: 20px; width: 20px;">
+                                    <div style="height: 18px; width: 18px; font-size: 18px; line-height: 1.1; margin-left: 0px; color: black;">
+                                      <span aria-label="✏️" role="image" style="font-family: &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, NotoColorEmoji, &quot;Noto Color Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Android Emoji&quot;, EmojiSymbols; line-height: 1em;">✏️</span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div style="flex: 1 1 auto; white-space: nowrap; min-width: 0px; overflow: hidden; text-overflow: ellipsis; display: flex; align-items: center;">
+                                <div class="notranslate" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                                  Meeting Notes
+                                </div>
+                              </div>
+                            </div>
+                          </div></a>
+                      </div>
+                      <div class="notion-selectable notion-collection_view_page-block" data-block-id="7906ccd8-a3a4-4761-83a5-62317dc4ae3a">
+                        <a href="#" rel="noopener noreferrer" style="display: block; color: inherit; text-decoration: none; width: 100%;">
+                          <div class="" role="button" style="user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; width: 100%;" tabindex="0">
+                            <div style="display: flex; align-items: center; min-height: 27px; font-size: 14px; padding: 2px 14px; width: 100%;">
+                              <div style="flex-shrink: 0; flex-grow: 0; border-radius: 3px; color: rgba(55, 53, 47, 0.6); width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; margin-right: 0px;">
+                                <div class="" role="button" style="user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; display: flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 3px;" tabindex="0">
+                                  <svg class="triangle" style="width: 0.6875em; height: 0.6875em; display: block; fill: rgba(55, 53, 47, 0.4); flex-shrink: 0; backface-visibility: hidden; transition: transform 200ms ease-out 0s; transform: rotateZ(90deg); opacity: 1;" viewbox="0 0 100 100">
+                                    <polygon points="5.9,88.2 50,11.8 94.1,88.2"></polygon></svg>
+                                </div>
+                              </div>
+                              <div style="display: flex; align-items: center; justify-content: center; flex-shrink: 0; flex-grow: 0; width: 22px; height: 18px; margin-right: 4px;">
+                                <div aria-disabled="false" class="notion-record-icon notranslate" role="button" style="user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; display: flex; align-items: center; justify-content: center; height: 20px; width: 20px; border-radius: 3px; flex-shrink: 0;" tabindex="0">
+                                  <div style="display: flex; align-items: center; justify-content: center; height: 20px; width: 20px;">
+                                    <div style="height: 18px; width: 18px; font-size: 18px; line-height: 1.1; margin-left: 0px; color: black;">
+                                      <span aria-label="🖌" role="image" style="font-family: &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, NotoColorEmoji, &quot;Noto Color Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Android Emoji&quot;, EmojiSymbols; line-height: 1em;">🖌</span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div style="flex: 1 1 auto; white-space: nowrap; min-width: 0px; overflow: hidden; text-overflow: ellipsis; display: flex; align-items: center;">
+                                <div class="notranslate" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                                  Design System
+                                </div>
+                              </div>
+                            </div>
+                          </div></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div style="margin-top: 20px;"></div>
+                <div style="flex-grow: 0; flex-shrink: 0;">
+                  <div class="" role="button" style="user-select: none; transition: background 20ms ease-in 0s; cursor: pointer;" tabindex="0">
+                    <div style="display: flex; align-items: center; min-height: 27px; font-size: 14px; padding: 2px 14px; width: 100%;">
+                      <div style="flex-shrink: 0; flex-grow: 0; border-radius: 3px; color: rgba(55, 53, 47, 0.6); width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; margin-right: 8px;">
+                        <svg class="sidebarTemplates" style="width: 100%; height: 15px; display: block; fill: rgba(55, 53, 47, 0.4); flex-shrink: 0; backface-visibility: hidden;" viewbox="0 0 14 14">
+                          <path clip-rule="evenodd" d="M7.237 1l7.84 1.237-1.201 7.61L11.5 6.15 9.424 9.38 6 8.84 7.237 1zM5.545 5.31a4 4 0 1 0 2.29 4.832l-2.979-.47.689-4.363zM7 15l4.5-7 4.5 7H7z" fill-rule="evenodd"></path></svg>
+                      </div>
+                      <div style="flex: 1 1 auto; white-space: nowrap; min-width: 0px; overflow: hidden; text-overflow: ellipsis;">
+                        Templates
+                      </div>
+                    </div>
+                  </div>
+                  <div class="" role="button" style="user-select: none; transition: background 20ms ease-in 0s; cursor: pointer;" tabindex="0">
+                    <div style="display: flex; align-items: center; min-height: 27px; font-size: 14px; padding: 2px 14px; width: 100%;">
+                      <div style="flex-shrink: 0; flex-grow: 0; border-radius: 3px; color: rgba(55, 53, 47, 0.6); width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; margin-right: 8px;">
+                        <svg class="sidebarImport" style="width: 100%; height: 15px; display: block; fill: rgba(55, 53, 47, 0.4); flex-shrink: 0; backface-visibility: hidden;" viewbox="0 0 14 14">
+                          <path d="M11.2857,6.05714 L10.08571,4.85714 L7.85714,7.14786 L7.85714,1 L6.14286,1 L6.14286,7.14786 L3.91429,4.85714 L2.71429,6.05714 L7,10.42857 L11.2857,6.05714 Z M1,11.2857 L1,13 L13,13 L13,11.2857 L1,11.2857 Z"></path></svg>
+                      </div>
+                      <div style="flex: 1 1 auto; white-space: nowrap; min-width: 0px; overflow: hidden; text-overflow: ellipsis;">
+                        Import
+                      </div>
+                    </div>
+                  </div>
+                  <div class="notion-selectable notion-collection_view_page-block" data-block-id="af92fe60-0f73-4a8a-be4d-9168dd192ee2">
+                    <div class="" role="button" style="user-select: none; transition: background 20ms ease-in 0s; cursor: pointer;" tabindex="0">
+                      <div style="display: flex; align-items: center; min-height: 27px; font-size: 14px; padding: 2px 14px; width: 100%;">
+                        <div style="flex-shrink: 0; flex-grow: 0; border-radius: 3px; color: rgba(55, 53, 47, 0.6); width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; margin-right: 8px;">
+                          <svg class="sidebarTrash" style="width: 14px; height: 100%; display: block; fill: rgba(55, 53, 47, 0.4); flex-shrink: 0; backface-visibility: hidden;" viewbox="0 0 14 14">
+                            <path d="M13.5000308,3.23952 C13.5000308,4.55848168 11.9230308,12.0493 11.9230308,12.0782 C11.9230308,12.6571 9.73825083,14 7.04165083,14 C4.34504083,14 2.16025083,12.6571 2.16025083,12.0782 C2.16025083,12.0541 0.5,4.55799105 0.5,3.23952 C0.5,1.91780104 3.02713083,0 7.03525083,0 C11.0433308,0 13.5000308,1.9178004 13.5000308,3.23952 Z M7,2 C3.625,2 2.5,3.25 2.5,4 C2.5,4.75 3.625,6 7,6 C10.375,6 11.5,4.75 11.5,4 C11.5,3.25 10.375,2 7,2 Z"></path></svg>
+                        </div>
+                        <div style="flex: 1 1 auto; white-space: nowrap; min-width: 0px; overflow: hidden; text-overflow: ellipsis;">
+                          Trash
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div style="position: absolute; top: 0px; left: 0px;">
+                <div></div>
+              </div>
+              <div style="display: block; flex: 0 0 auto; margin-top: auto;">
+                <div class="" role="button" style="user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; box-shadow: rgba(55, 53, 47, 0.09) 0px -1px 0px;" tabindex="0">
+                  <div style="display: flex; align-items: center; min-height: 27px; font-size: 14px; padding: 2px 14px; width: 100%; color: rgba(55, 53, 47, 0.6); height: 45px;">
+                    <div style="flex-shrink: 0; flex-grow: 0; border-radius: 3px; color: rgba(55, 53, 47, 0.6); width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; margin-right: 8px;">
+                      <div style="display: flex; align-items: center; justify-content: center;">
+                        <svg class="plus" style="width: 16px; height: 16px; display: block; fill: rgba(55, 53, 47, 0.4); flex-shrink: 0; backface-visibility: hidden;" viewbox="0 0 16 16">
+                          <path d="M7.977 14.963c.407 0 .747-.324.747-.723V8.72h5.362c.399 0 .74-.34.74-.747a.746.746 0 00-.74-.738H8.724V1.706c0-.398-.34-.722-.747-.722a.732.732 0 00-.739.722v5.529h-5.37a.746.746 0 00-.74.738c0 .407.341.747.74.747h5.37v5.52c0 .399.332.723.739.723z"></path></svg>
+                      </div>
+                    </div>
+                    <div style="flex: 1 1 auto; white-space: nowrap; min-width: 0px; overflow: hidden; text-overflow: ellipsis;">
+                      New page
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div style="position: absolute; right: 0px; width: 0px; flex-grow: 0; z-index: 1; top: 0px; bottom: 0px;">
+                <div style="cursor: col-resize; height: 100%; width: 12px; margin-left: -6px;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="notion-frame" style="flex-grow: 1; flex-shrink: 1; display: flex; flex-direction: column; background: white; z-index: 1; height: 100vh; max-height: 100%; width: 1161px;">
+        <div style="width: 100%; max-width: 100vw; z-index: 9;">
+          <div class="notion-topbar" style="width: 100%; max-width: 100vw; height: 45px; opacity: 1; transition: opacity 700ms ease 0s, color 700ms ease 0s; position: relative;">
+            <div style="display: flex; justify-content: space-between; align-items: center; position: absolute; overflow: hidden; height: 45px; left: 0px; right: 0px; bottom: 0px; padding-left: 12px; padding-right: 10px;">
+              <div class="notranslate" style="display: flex; align-items: center; line-height: 1.2; font-size: 14px; height: 100%; flex-grow: 0; margin-right: 8px; min-width: 0px;">
+                <div class="notion-selectable notion-page-block" data-block-id="da954c4d-28b4-4282-849b-cd00ffcfd2f0" style="display: flex; align-items: center; min-width: 0px;">
+                  <a href="#" rel="noopener noreferrer" style="display: flex; text-decoration: none; user-select: none; cursor: pointer; color: inherit; min-width: 0px;">
+                    <div class="" role="button" style="user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; display: inline-flex; align-items: center; flex-shrink: 1; white-space: nowrap; height: 24px; border-radius: 3px; font-size: inherit; line-height: 1.2; min-width: 0px; padding-left: 6px; padding-right: 6px; color: rgb(55, 53, 47);" tabindex="0">
+                      <div style="display: flex; align-items: center; min-width: 0px;">
+                        <div aria-disabled="true" class="notion-record-icon notranslate" role="button" style="user-select: none; transition: background 20ms ease-in 0s; display: flex; align-items: center; justify-content: center; height: 20px; width: 20px; border-radius: 3px; flex-shrink: 0; margin-right: 6px;" tabindex="-1">
+                          <div style="display: flex; align-items: center; justify-content: center; height: 20px; width: 20px;">
+                            <div style="height: 18px; width: 18px; font-size: 18px; line-height: 1.1; margin-left: 0px; color: black;">
+                              <span aria-label="🚕" role="image" style="font-family: &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, NotoColorEmoji, &quot;Noto Color Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Android Emoji&quot;, EmojiSymbols; line-height: 1em;">🚕</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="notranslate" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 160px;">
+                          Product
+                        </div>
+                      </div>
+                    </div></a>
+                </div><span style="margin-left: 2px; margin-right: 2px; color: rgba(55, 53, 47, 0.4);">/</span>
+                <div class="notion-selectable notion-collection_view_page-block" data-block-id="3034f543-ff41-4a15-8371-da0d8dd7b66a" style="display: flex; align-items: center; min-width: 0px;">
+                  <a href="#" rel="noopener noreferrer" style="display: flex; text-decoration: none; user-select: none; cursor: pointer; color: inherit; min-width: 0px;">
+                    <div class="" role="button" style="user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; display: inline-flex; align-items: center; flex-shrink: 1; white-space: nowrap; height: 24px; border-radius: 3px; font-size: inherit; line-height: 1.2; min-width: 0px; padding-left: 6px; padding-right: 6px; color: rgb(55, 53, 47);" tabindex="0">
+                      <div style="display: flex; align-items: center; min-width: 0px;">
+                        <div class="notranslate" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 160px;">
+                          API
+                        </div>
+                      </div>
+                    </div></a>
+                </div><span style="margin-left: 2px; margin-right: 2px; color: rgba(55, 53, 47, 0.4);">/</span>
+                <div aria-disabled="false" class="" role="button" style="user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; display: inline-flex; align-items: center; flex-shrink: 1; white-space: nowrap; height: 24px; border-radius: 3px; font-size: 14px; line-height: 1.2; min-width: 0px; padding-left: 6px; padding-right: 6px; color: rgb(55, 53, 47);" tabindex="0">
+                  <div aria-disabled="true" class="notion-record-icon notranslate" role="button" style="user-select: none; transition: background 20ms ease-in 0s; display: flex; align-items: center; justify-content: center; height: 20px; width: 20px; border-radius: 3px; flex-shrink: 0; margin-right: 6px;" tabindex="-1">
+                    <div style="display: flex; align-items: center; justify-content: center; height: 20px; width: 20px;">
+                      <div style="height: 18px; width: 18px; font-size: 18px; line-height: 1.1; margin-left: 0px; color: black;">
+                        <span aria-label="📝" role="image" style="font-family: &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, NotoColorEmoji, &quot;Noto Color Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Android Emoji&quot;, EmojiSymbols; line-height: 1em;">📝</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="notranslate" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 240px;">
+                    Create Markup Hero Annotation API Demo Using Notion
+                  </div>
+                </div>
+              </div>
+              <div style="flex-grow: 1; flex-shrink: 1;"></div>
+              <div style="flex-grow: 0; flex-shrink: 0; display: flex; align-items: stretch;">
+                <div class="notion-topbar-share-menu" role="button" style="user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; display: inline-flex; align-items: center; flex-shrink: 0; white-space: nowrap; height: 28px; border-radius: 3px; font-size: 14px; line-height: 1.2; min-width: 0px; padding-left: 8px; padding-right: 8px; color: rgb(55, 53, 47);" tabindex="0">
+                  Share
+                </div>
+                <div class="" role="button" style="user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; display: inline-flex; align-items: center; flex-shrink: 0; white-space: nowrap; height: 28px; border-radius: 3px; font-size: 14px; line-height: 1.2; min-width: 0px; padding-left: 8px; padding-right: 8px; color: rgb(55, 53, 47);" tabindex="0">
+                  <span>Updates</span>
+                </div>
+                <div class="" role="button" style="user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; display: inline-flex; align-items: center; flex-shrink: 0; white-space: nowrap; height: 28px; border-radius: 3px; font-size: 14px; line-height: 1.2; min-width: 0px; padding-left: 8px; padding-right: 8px; color: rgb(55, 53, 47);" tabindex="0">
+                  <span>Favorite</span>
+                </div>
+                <div class="notion-topbar-more-button" role="button" style="user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; display: flex; align-items: center; justify-content: center; width: 32px; height: 28px; border-radius: 3px;" tabindex="0">
+                  <svg class="dots" style="width: 18px; height: 18px; display: block; fill: inherit; flex-shrink: 0; backface-visibility: hidden;" viewbox="0 0 13 3">
+                    <g>
+                      <path d="M3,1.5A1.5,1.5,0,1,1,1.5,0,1.5,1.5,0,0,1,3,1.5Z"></path>
+                      <path d="M8,1.5A1.5,1.5,0,1,1,6.5,0,1.5,1.5,0,0,1,8,1.5Z"></path>
+                      <path d="M13,1.5A1.5,1.5,0,1,1,11.5,0,1.5,1.5,0,0,1,13,1.5Z"></path>
+                    </g></svg>
+                </div>
+              </div>
+            </div>
+            <div style="position: absolute; top: 0px; left: 0px;">
+              <div></div>
+            </div>
+          </div>
+          <div style="width: 100%; user-select: none;"></div>
+        </div>
+        <div class="notion-scroller vertical horizontal" style="display: flex; flex-direction: column; z-index: 1; flex-grow: 1; position: relative; align-items: center; overflow: auto; margin-right: 0px; margin-bottom: 0px;">
+          <div style="width: 100%; display: flex; flex-direction: column; align-items: center; flex-shrink: 0; flex-grow: 0;">
+            <div style="padding-left: calc(96px + env(safe-area-inset-left)); padding-right: calc(96px + env(safe-area-inset-right)); max-width: 100%; width: 900px;">
+              <div aria-disabled="false" class="notion-record-icon notranslate" role="button" style="user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; display: flex; align-items: center; justify-content: center; height: 78px; width: 78px; border-radius: 3px; flex-shrink: 0; position: relative; z-index: 1; margin-left: 3px; margin-bottom: 0px; align-self: flex-start; margin-top: 96px;" tabindex="0">
+                <div style="display: flex; align-items: center; justify-content: center; height: 78px; width: 78px;">
+                  <div style="height: 78px; width: 78px; font-size: 78px; line-height: 1.1; margin-left: 0px; color: black;">
+                    <span aria-label="📝" role="image" style="font-family: &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, NotoColorEmoji, &quot;Noto Color Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Android Emoji&quot;, EmojiSymbols; line-height: 1em;">📝</span>
+                  </div>
+                </div>
+              </div>
+              <div class="notion-selectable notion-page-block" data-block-id="6b52c98d-343f-490e-965c-8c7253b67e0d" style="color: rgb(55, 53, 47); font-weight: 700; line-height: 1.2; font-size: 40px; font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, &quot;Apple Color Emoji&quot;, Arial, sans-serif, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; cursor: text; display: flex; align-items: center;">
+                <div class="notranslate" contenteditable="true" data-root="true" spellcheck="true" style="max-width: 100%; width: 100%; white-space: wrap; word-break: break-word; caret-color: rgb(55, 53, 47); padding: 3px 2px;">
+                  Create Markup Hero Annotation API Demo Using Notion
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="width: 100%; display: flex; flex-direction: column; align-items: center; flex-shrink: 0; flex-grow: 0;">
+            <div style="padding-left: calc(96px + env(safe-area-inset-left)); padding-right: calc(96px + env(safe-area-inset-right)); max-width: 100%; width: 900px;">
+              <div style="width: 100%; font-size: 14px;">
+                <div style="width: 100%; max-width: 100%; padding-top: 8px; padding-bottom: 8px; margin: 0px auto;">
+                  <div style="margin: 0px;">
+                    <div style="display: flex; padding-bottom: 4px;">
+                      <div style="display: flex; align-items: center; height: 34px; width: 160px; flex: 0 0 auto; color: rgba(55, 53, 47, 0.6);">
+                        <div style="width: 22px; margin-left: -22px; opacity: 0;">
+                          <div class="" role="button" style="user-select: none; transition: background 20ms ease-in 0s; cursor: grab; display: flex; align-items: center; justify-content: center; width: 18px; height: 24px; border-radius: 3px; fill: rgba(55, 53, 47, 0.3);" tabindex="0">
+                            <svg class="dragHandle" style="width: 14px; height: 14px; display: block; fill: inherit; flex-shrink: 0; backface-visibility: hidden;" viewbox="0 0 10 10">
+                              <path d="M3,2 C2.44771525,2 2,1.55228475 2,1 C2,0.44771525 2.44771525,0 3,0 C3.55228475,0 4,0.44771525 4,1 C4,1.55228475 3.55228475,2 3,2 Z M3,6 C2.44771525,6 2,5.55228475 2,5 C2,4.44771525 2.44771525,4 3,4 C3.55228475,4 4,4.44771525 4,5 C4,5.55228475 3.55228475,6 3,6 Z M3,10 C2.44771525,10 2,9.55228475 2,9 C2,8.44771525 2.44771525,8 3,8 C3.55228475,8 4,8.44771525 4,9 C4,9.55228475 3.55228475,10 3,10 Z M7,2 C6.44771525,2 6,1.55228475 6,1 C6,0.44771525 6.44771525,0 7,0 C7.55228475,0 8,0.44771525 8,1 C8,1.55228475 7.55228475,2 7,2 Z M7,6 C6.44771525,6 6,5.55228475 6,5 C6,4.44771525 6.44771525,4 7,4 C7.55228475,4 8,4.44771525 8,5 C8,5.55228475 7.55228475,6 7,6 Z M7,10 C6.44771525,10 6,9.55228475 6,9 C6,8.44771525 6.44771525,8 7,8 C7.55228475,8 8,8.44771525 8,9 C8,9.55228475 7.55228475,10 7,10 Z"></path></svg>
+                          </div>
+                        </div>
+                        <div aria-disabled="false" class="" role="button" style="user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; display: flex; align-items: center; height: 100%; width: 100%; border-radius: 3px; padding: 0px 6px;" tabindex="0">
+                          <div style="display: flex; align-items: center; line-height: 120%; font-size: 14px; min-width: 0px;">
+                            <div style="margin-right: 8px;">
+                              <svg class="typesCreatedAt" style="width: 16px; height: 16px; display: block; fill: rgba(55, 53, 47, 0.4); flex-shrink: 0; backface-visibility: hidden;" viewbox="0 0 14 14">
+                                <path d="M6.98643729,14.0000972 C5.19579566,14.0000972 3.40419152,13.3106896 2.04245843,11.9323606 C-0.681017475,9.21200555 -0.680780251,4.76029539 2.04293482,2.04012507 C4.76664406,-0.68004331 9.22427509,-0.68004331 11.9480135,2.04013479 C13.272481,3.36277455 14,5.1330091 14,6.99552762 C14,8.87640182 13.2721894,10.6285043 11.9480135,11.9509302 C10.5679344,13.3105924 8.77756503,14.0000972 6.98643729,14.0000972 Z M10.2705296,7.00913883 L10.2705296,8.46099754 L10.2705296,8.65543362 L10.076181,8.65543362 L8.6543739,8.65543362 L5.72059514,8.65543362 L5.52619796,8.65543362 L5.52619796,8.46099754 L5.52619796,5.52541044 L5.52619796,3.37946773 L5.52619796,3.18502193 L5.72059514,3.18502193 L7.17253164,3.18502193 L7.36692883,3.18502193 L7.36692883,3.37946773 L7.36692883,6.81467358 L10.076181,6.81467358 L10.2705296,6.81467358 L10.2705296,7.00913883 Z M12.1601539,6.99552762 C12.1601539,5.61697497 11.6190112,4.32597154 10.6393933,3.34769528 C8.63253764,1.34336744 5.35197452,1.34061603 3.34153136,3.33944106 C3.33868273,3.34219247 3.33607716,3.34494388 3.33322852,3.34769528 C1.32397148,5.35459953 1.32372842,8.63641682 3.33322852,10.6433794 C5.34295224,12.6504489 8.62968901,12.6504489 10.6393933,10.6433794 C11.6190112,9.66506426 12.1601539,8.37408027 12.1601539,6.99552762 Z"></path></svg>
+                            </div>
+                            <div style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                              Created
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div style="display: flex; align-items: center; margin-left: 4px; height: 100%; flex: 1 1 auto; min-width: 0px;">
+                        <div style="display: flex; align-items: center; border-radius: 3px; width: 100%; min-height: 34px; padding: 6px 8px 7px; font-size: 14px; overflow: hidden;">
+                          <div style="line-height: 1.5; word-break: break-word; pointer-events: none;">
+                            Mar 29, 2021 1:38 PM
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div style="display: flex; padding-bottom: 4px;">
+                      <div style="display: flex; align-items: center; height: 34px; width: 160px; flex: 0 0 auto; color: rgba(55, 53, 47, 0.6);">
+                        <div style="width: 22px; margin-left: -22px; opacity: 0;">
+                          <div class="" role="button" style="user-select: none; transition: background 20ms ease-in 0s; cursor: grab; display: flex; align-items: center; justify-content: center; width: 18px; height: 24px; border-radius: 3px; fill: rgba(55, 53, 47, 0.3);" tabindex="0">
+                            <svg class="dragHandle" style="width: 14px; height: 14px; display: block; fill: inherit; flex-shrink: 0; backface-visibility: hidden;" viewbox="0 0 10 10">
+                              <path d="M3,2 C2.44771525,2 2,1.55228475 2,1 C2,0.44771525 2.44771525,0 3,0 C3.55228475,0 4,0.44771525 4,1 C4,1.55228475 3.55228475,2 3,2 Z M3,6 C2.44771525,6 2,5.55228475 2,5 C2,4.44771525 2.44771525,4 3,4 C3.55228475,4 4,4.44771525 4,5 C4,5.55228475 3.55228475,6 3,6 Z M3,10 C2.44771525,10 2,9.55228475 2,9 C2,8.44771525 2.44771525,8 3,8 C3.55228475,8 4,8.44771525 4,9 C4,9.55228475 3.55228475,10 3,10 Z M7,2 C6.44771525,2 6,1.55228475 6,1 C6,0.44771525 6.44771525,0 7,0 C7.55228475,0 8,0.44771525 8,1 C8,1.55228475 7.55228475,2 7,2 Z M7,6 C6.44771525,6 6,5.55228475 6,5 C6,4.44771525 6.44771525,4 7,4 C7.55228475,4 8,4.44771525 8,5 C8,5.55228475 7.55228475,6 7,6 Z M7,10 C6.44771525,10 6,9.55228475 6,9 C6,8.44771525 6.44771525,8 7,8 C7.55228475,8 8,8.44771525 8,9 C8,9.55228475 7.55228475,10 7,10 Z"></path></svg>
+                          </div>
+                        </div>
+                        <div aria-disabled="false" class="" role="button" style="user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; display: flex; align-items: center; height: 100%; width: 100%; border-radius: 3px; padding: 0px 6px;" tabindex="0">
+                          <div style="display: flex; align-items: center; line-height: 120%; font-size: 14px; min-width: 0px;">
+                            <div style="margin-right: 8px;">
+                              <svg class="typesCreatedAt" style="width: 16px; height: 16px; display: block; fill: rgba(55, 53, 47, 0.4); flex-shrink: 0; backface-visibility: hidden;" viewbox="0 0 14 14">
+                                <path d="M6.98643729,14.0000972 C5.19579566,14.0000972 3.40419152,13.3106896 2.04245843,11.9323606 C-0.681017475,9.21200555 -0.680780251,4.76029539 2.04293482,2.04012507 C4.76664406,-0.68004331 9.22427509,-0.68004331 11.9480135,2.04013479 C13.272481,3.36277455 14,5.1330091 14,6.99552762 C14,8.87640182 13.2721894,10.6285043 11.9480135,11.9509302 C10.5679344,13.3105924 8.77756503,14.0000972 6.98643729,14.0000972 Z M10.2705296,7.00913883 L10.2705296,8.46099754 L10.2705296,8.65543362 L10.076181,8.65543362 L8.6543739,8.65543362 L5.72059514,8.65543362 L5.52619796,8.65543362 L5.52619796,8.46099754 L5.52619796,5.52541044 L5.52619796,3.37946773 L5.52619796,3.18502193 L5.72059514,3.18502193 L7.17253164,3.18502193 L7.36692883,3.18502193 L7.36692883,3.37946773 L7.36692883,6.81467358 L10.076181,6.81467358 L10.2705296,6.81467358 L10.2705296,7.00913883 Z M12.1601539,6.99552762 C12.1601539,5.61697497 11.6190112,4.32597154 10.6393933,3.34769528 C8.63253764,1.34336744 5.35197452,1.34061603 3.34153136,3.33944106 C3.33868273,3.34219247 3.33607716,3.34494388 3.33322852,3.34769528 C1.32397148,5.35459953 1.32372842,8.63641682 3.33322852,10.6433794 C5.34295224,12.6504489 8.62968901,12.6504489 10.6393933,10.6433794 C11.6190112,9.66506426 12.1601539,8.37408027 12.1601539,6.99552762 Z"></path></svg>
+                            </div>
+                            <div style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                              Updated
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div style="display: flex; align-items: center; margin-left: 4px; height: 100%; flex: 1 1 auto; min-width: 0px;">
+                        <div style="display: flex; align-items: center; border-radius: 3px; width: 100%; min-height: 34px; padding: 6px 8px 7px; font-size: 14px; overflow: hidden;">
+                          <div style="line-height: 1.5; word-break: break-word; pointer-events: none;">
+                            Mar 29, 2021 1:41 PM
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="" role="button" style="user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; display: flex; align-items: center; color: rgba(55, 53, 47, 0.4); border-radius: 3px; padding-left: 6px; padding-right: 6px; height: 34px; width: 160px;" tabindex="0">
+                    <svg class="plus" style="width: 16px; height: 16px; display: block; fill: rgba(55, 53, 47, 0.3); flex-shrink: 0; backface-visibility: hidden; margin-right: 9px; margin-top: 1px;" viewbox="0 0 16 16">
+                      <path d="M7.977 14.963c.407 0 .747-.324.747-.723V8.72h5.362c.399 0 .74-.34.74-.747a.746.746 0 00-.74-.738H8.724V1.706c0-.398-.34-.722-.747-.722a.732.732 0 00-.739.722v5.529h-5.37a.746.746 0 00-.74.738c0 .407.341.747.74.747h5.37v5.52c0 .399.332.723.739.723z"></path></svg>
+                    <div style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0px;">
+                      Add a property
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div style="width: 100%; height: 1px; background: rgba(55, 53, 47, 0.09); margin-bottom: 8px;"></div>
+              <div class="notion-page-view-discussion" style="width: 100%; margin: 0px auto;">
+                <div style="display: flex; align-items: flex-start; padding: 6px 4px 12px;">
+                  <div style="display: flex; align-items: flex-start; flex-grow: 1;">
+                    <div style="margin-right: 8px; flex-shrink: 0; flex-grow: 0; margin-top: 4px; margin-bottom: 2px;">
+                      <div style="background: white; border-radius: 100%; box-shadow: rgba(15, 15, 15, 0.1) 0px 2px 4px;">
+                        <div style="border-radius: 100%; width: 20px; height: 20px; max-width: 100%; max-height: 100%; display: flex; align-items: center; justify-content: center; user-select: none; opacity: 1;">
+                          <div style="width: 100%; height: 100%;"><img src="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fpublic.notion-static.com%2F067fb2e7-a5f8-4323-8e86-afca0f1096e6%2Fprofile-linkedin.jpeg?width=40&amp;userId=09d9b29b-e61b-40a2-96f6-1add8c6a4ccc&amp;cache=v2" style="display: block; object-fit: cover; border-radius: 100%; width: 100%; height: 100%;"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="notranslate" contenteditable="true" data-root="true" spellcheck="true" style="max-width: 100%; width: 100%; word-break: break-word; caret-color: rgb(55, 53, 47); font-size: 14px; margin-top: 3px; margin-bottom: 2px; max-height: 70vh; overflow: hidden auto; min-height: 1em; color: rgb(55, 53, 47); -webkit-text-fill-color: rgba(55, 53, 47, 0.4);"></div>
+                    <div class="" role="button" style="user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; opacity: 1; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; border-radius: 3px; height: 24px; width: 24px; padding: 0px; margin-top: 3px; margin-left: 8px; pointer-events: none;" tabindex="0">
+                      <svg class="mention" style="width: 14px; height: 14px; display: block; fill: rgba(55, 53, 47, 0.4); flex-shrink: 0; backface-visibility: hidden;" viewbox="0 0 14 14">
+                        <path d="M6.78726 4.98561C7.77767 4.98561 8.39878 5.78297 8.39878 7.05875C8.39878 8.33453 7.76928 9.13189 6.77887 9.13189C5.82204 9.13189 5.23451 8.35132 5.23451 7.05875C5.23451 5.75779 5.81364 4.98561 6.78726 4.98561ZM7.07264 0C2.90117 0 0.0390625 2.85372 0.0390625 7.00839C0.0390625 11.247 2.85921 14 7.21532 14C8.16376 14 9.07863 13.8741 9.77527 13.6643V12.4053C9.28846 12.5983 8.28966 12.7326 7.29925 12.7326C3.72371 12.7326 1.44913 10.5252 1.44913 7.05036C1.44913 3.64269 3.7405 1.2506 6.9971 1.2506C10.2453 1.2506 12.4192 3.26499 12.4192 6.30336C12.4192 8.13309 11.8316 9.30815 10.9 9.30815C10.3544 9.30815 10.0439 8.96403 10.0439 8.36811V3.74341H8.50789V4.75899H8.35681C8.02947 4.01199 7.29086 3.56715 6.40117 3.56715C4.70573 3.56715 3.53906 4.97722 3.53906 7.01679C3.53906 9.14029 4.70573 10.5671 6.45153 10.5671C7.42515 10.5671 8.13858 10.1139 8.4911 9.25779H8.64218C8.79326 10.0719 9.55705 10.6091 10.581 10.6091C12.5786 10.6091 13.8292 8.91367 13.8292 6.21942C13.8292 2.53477 11.0762 0 7.07264 0Z"></path></svg>
+                    </div>
+                    <div class="" role="button" style="user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; opacity: 1; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; white-space: nowrap; height: 28px; border-radius: 3px; box-shadow: rgba(15, 15, 15, 0.1) 0px 0px 0px 1px inset, rgba(15, 15, 15, 0.1) 0px 1px 2px; background: rgb(46, 170, 220); color: white; fill: white; line-height: 1.2; padding-left: 12px; padding-right: 12px; font-size: 14px; font-weight: 500; margin-left: 8px; pointer-events: none;" tabindex="0">
+                      Send
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div style="width: 100%; height: 1px; background: rgba(55, 53, 47, 0.09); margin-bottom: 8px;"></div>
+              <div class="notion-page-details-controls" style="display: flex; align-items: baseline; justify-content: flex-start; flex-wrap: wrap; color: rgba(55, 53, 47, 0.4); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, &quot;Apple Color Emoji&quot;, Arial, sans-serif, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; padding-bottom: 20px;"></div>
+            </div>
+          </div>
+          <div class="notion-page-content" style="flex-shrink: 0; flex-grow: 1; width: 900px; max-width: 100%; display: flex; align-items: center; flex-direction: column; font-size: 16px; line-height: 1.5; color: rgb(55, 53, 47); padding-left: calc(96px + env(safe-area-inset-left)); padding-right: calc(96px + env(safe-area-inset-right)); padding-bottom: 30vh;">
+            <div class="notion-text-block" style="width: 100%; max-width: 969px; margin-top: 2px; margin-bottom: 1px;">
+              <div style="color: inherit; fill: inherit;">
+                <div style="display: flex;">
+                  <div class="notranslate" contenteditable="false" data-root="true" spellcheck="true" style="max-width: 100%; width: 100%; word-break: break-word; caret-color: rgb(55, 53, 47); padding: 3px 2px;">
+                    Here is a UI mockup you can add annotations to and edit at any point. This is not notion.so but rather a demo using Markup Hero's <a href="/integrations/annotation-api.html" target="_blank" style="color: rgb(46, 170, 220); cursor: pointer;">Annotation API</a>. Click the `Annotate Image` button to give it a try below:
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="notion-selectable notion-image-block" data-block-id="bd0019ea-e3c3-4263-8082-de4294b2805c" style="width: 100%; max-width: 1161px; align-self: center; margin-top: 0.5em; margin-bottom: 0.5em;">
+              <div>
+                <div style="display: flex;">
+                  <div class="notion-cursor-default" style="position: relative; overflow: hidden; flex-grow: 1;">
+                    <div style="position: relative; cursor: pointer;">
+                      <div style="width: 100%; height: 100%;"><img id="markup-image" src="https://storage.googleapis.com/markuphero-mail/api_test_image3.jpg" style="display: block; object-fit: cover; border-radius: 1px; width: 100%; pointer-events: auto;"></div>
+                    </div>
+                    <div class="notion-block-resizer" style="display: block; height: 100%;">
+                      <div style="position: absolute; pointer-events: none; display: flex; align-items: center; justify-content: center; left: 0px; top: 0px; z-index: 1; height: 100%; width: 15px; cursor: col-resize;">
+                        <div style="opacity: 0; transition: opacity 300ms ease-in 0s; border-radius: 20px; background: rgba(15, 15, 15, 0.6); border: 1px solid rgba(255, 255, 255, 0.9); width: 6px; height: 48px; max-height: 50%;"></div>
+                      </div>
+                    </div>
+                    <div class="notion-block-resizer" style="display: block; height: 100%;">
+                      <div style="position: absolute; pointer-events: none; display: flex; align-items: center; justify-content: center; right: 0px; top: 0px; z-index: 1; height: 100%; width: 15px; cursor: col-resize;">
+                        <div style="opacity: 0; transition: opacity 300ms ease-in 0s; border-radius: 20px; background: rgba(15, 15, 15, 0.6); border: 1px solid rgba(255, 255, 255, 0.9); width: 6px; height: 48px; max-height: 50%;"></div>
+                      </div>
+                    </div>
+                    <div style="position: absolute; top: 4px; right: 4px; border-radius: 3px; color: white; fill: white; font-size: 11.5px; background: rgba(0, 0, 0, 0.6); display: flex; white-space: nowrap; max-width: calc(100% - 16px); overflow: hidden; opacity: 1; transition: opacity 300ms ease-in 0s; font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, &quot;Apple Color Emoji&quot;, Arial, sans-serif, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; z-index: 2;">
+                      <a class="" href="#" id="btnCreateMarkup" onclick="createMarkup()" role="button" style="color: #fff; text-decoration: none; transition: background 20ms ease-in 0s; cursor: pointer; display: flex; align-items: center; padding: 4px 6px; border-right: 1px solid rgba(255, 255, 255, 0.2);" tabindex="0">
+                        Annotate Image
+                      </a>
+                      <a class="" href="#" id="btnOpenMarkup" onclick="openMarkup()" role="button" style="color: #fff; text-decoration: none; transition: background 20ms ease-in 0s; cursor: pointer; display: flex; align-items: center; padding: 4px 6px; border-right: 1px solid rgba(255, 255, 255, 0.2);" tabindex="0">
+                        Edit Annotations
+                      </a>
+                      <a class="" href="/try/notion-annotation-api-demo.html" id="btnResetMarkup" role="button" style="color: #fff; text-decoration: none; transition: background 20ms ease-in 0s; cursor: pointer; display: flex; align-items: center; padding: 4px 6px; border-right: 1px solid rgba(255, 255, 255, 0.2);" tabindex="0">
+                        Original
+                      </a>
+                      <div class="" role="button" style="user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; width: 24px; height: 24px; border-radius: 3px; fill: rgba(55, 53, 47, 0.4);" tabindex="0">
+                        <svg class="dots" style="width: 14px; height: 14px; display: block; fill: white; flex-shrink: 0; backface-visibility: hidden;" viewbox="0 0 13 3">
+                          <g>
+                            <path d="M3,1.5A1.5,1.5,0,1,1,1.5,0,1.5,1.5,0,0,1,3,1.5Z"></path>
+                            <path d="M8,1.5A1.5,1.5,0,1,1,6.5,0,1.5,1.5,0,0,1,8,1.5Z"></path>
+                            <path d="M13,1.5A1.5,1.5,0,1,1,11.5,0,1.5,1.5,0,0,1,13,1.5Z"></path>
+                          </g></svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="notion-selectable notion-text-block" data-block-id="b5e8d2bb-f565-4a0f-9e89-040569ae56d0" style="width: 100%; max-width: 969px; margin-top: 1px; margin-bottom: 0px;">
+              <div style="color: inherit; fill: inherit;">
+                <div style="display: flex;">
+                  <div class="notranslate" contenteditable="true" data-root="true" spellcheck="true" style="max-width: 100%; width: 100%; word-break: break-word; caret-color: rgb(55, 53, 47); padding: 3px 2px; min-height: 1em; color: rgb(55, 53, 47); -webkit-text-fill-color: rgba(55, 53, 47, 0.4);"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="notion-presence-container" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 1;">
+            <div></div>
+          </div>
+        </div>
+        <div style="position: absolute; top: 0px; left: 0px;">
+          <div></div>
+        </div>
+      </div>
+    </div>
+    <div class="notion-overlay-container notion-default-overlay-container" style="position: fixed; inset: 0px; z-index: 999; pointer-events: none; overflow: hidden;">
+      <div style="position: relative; z-index: 0;"></div>
+    </div>
+    <div class="notion-overlay-container" style="position: fixed; inset: 0px; z-index: 1001; pointer-events: none; overflow: hidden;">
+      <div style="position: relative; z-index: 0;"></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

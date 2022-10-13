@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Project Management App Demo - Markup Hero Annotation API</title>
+  <meta name="description" content="A demo of how to easily annotate images in product management tools & project tracking software using Markup Hero's annotation library and developer API.">
+  <link rel="stylesheet" href="../try/landing-styles.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-158162582-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-158162582-1');
+  </script>
+  <script>(function(d,h,w){var gist=w.gist=w.gist||[];gist.methods=['trackPageView','identify','track','setAppId'];gist.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);gist.push(e);return gist;}};for(var i=0;i<gist.methods.length;i++){var c=gist.methods[i];gist[c]=gist.factory(c)}s=d.createElement('script'),s.src="https://widget.getgist.com",s.async=!0,e=d.getElementsByTagName(h)[0],e.appendChild(s),s.addEventListener('load',function(e){},!1),gist.setAppId("monunstx"),gist.trackPageView()})(document,'head',window);</script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://static.markuphero.com/v0.2.0/annotation-api.js"></script>
+</head>
+<body class="pmd-body">
+<script type="text/javascript">
+
+  window.MARKUP_HERO_PUBLIC_API_TOKEN = 'ImzFZu56yHjIiP8KVI2Jpabr41zpAfqw';
+
+  $(function(){
+    $("#btnResetMarkup").hide();
+    $("#btnOpenMarkup").hide();
+  });
+
+  function createMarkup() {
+
+    const onCompletedCallbackFunction = (result) => {
+      const {secret, imageDataUrl, imageBlob, markupId} = result;
+      // console.log(imageDataUrl);
+      $("#markup-image").attr("src",imageDataUrl);
+      $("#markup-image").attr("data-secret",secret);
+      $("#markup-image").attr("data-markupid",markupId);
+      $('#btnOpenMarkup').show();
+      $('#btnCreateMarkup').hide();
+      $('#btnResetMarkup').show();
+    };
+
+    var markupImage = $("#markup-image").attr("src");
+
+    MarkupHeroApi.createMarkup({
+      imageUrl: markupImage,
+      exportFormat: 'IMAGE_DATA_URL',
+      onCompleted: onCompletedCallbackFunction
+    }).then((res) => {
+      let markupId = res.markupId; // This is the markup id that you will use to later open the same markup
+      let secret = res.secret; // Use this markup secret to be able to re-edit the same markup at a later time
+    });
+  }
+
+  function openMarkup() {
+    var dataSecret = $('#markup-image').attr('data-secret'); //getter
+    var dataMarkupId = $('#markup-image').attr('data-markupid'); //getter
+
+    const onCompletedCallbackFunction = (result) => {
+      const {secret, imageDataUrl, imageBlob, markupId} = result;
+      // console.log(imageDataUrl);
+      $("#markup-image").attr("src",imageDataUrl);
+      $("#markup-image").attr("data-secret",secret);
+      $("#markup-image").attr("data-markupid",markupId);
+      $('#btnOpenMarkup').show();
+      $('#btnCreateMarkup').hide();
+      $('#btnResetMarkup').show();
+    };
+
+    MarkupHeroApi.openMarkup({
+      markupId: dataMarkupId,
+      secret: dataSecret,
+      exportFormat: 'IMAGE_DATA_URL',
+      onCompleted: onCompletedCallbackFunction
+    }).then((res) => {
+      let markupId = res.markupId; // This is the markup id that you will use to later open the same markup
+      let secret = res.secret; // Use this markup secret to be able to re-edit the same markup at a later time
+    });
+  }
+
+</script>
+<div class="pmd-ticket">
+  <a href="/integrations/annotation-api.html" title="Close Demo" class="pmd-close"><span class="pmd-close--icon"></span></a>
+  <div class="pmd-ticket--main">
+    <label>Ticket</label>
+    <h1>Annotate this image with your feedback</h1>
+    <label>Attachments</label>
+    <div class="pmd-image">
+      <img id="markup-image" src="https://storage.googleapis.com/markuphero-mail/pmd-sample-image.jpg" alt="Image for feedback">
+      <img class="pmd-callout-arrow" src="media/callout-arrow.svg" alt="Callout arrow">
+    </div>
+    <div class="pmd-btns">
+      <button id="btnCreateMarkup" onclick="createMarkup()">Annotate Image</button>
+      <button id="btnOpenMarkup" onclick="openMarkup()">Edit</button>
+      <a href="/try/project-management-app-annotation-api-demo.html" id="btnResetMarkup">Reset</a>
+    </div>
+  </div>
+  <div class="pmd-ticket--sidebar">
+    <label>Due Date</label>
+    <h2>Today</h2>
+    <label>Assigned To</label>
+    <h2>You</h2>
+    <h2>Product Team</h2>
+    <label>Description</label>
+    <p>This is a sample project management app that has an integration with <strong><a href="/integrations/annotation-api.html" target="_blank">Markup Hero's Annotation API</a></strong>.</p>
+    <p>Click the <strong><i>Annotate Image</i></strong> button to give it a try. Then edit or reset your annotations at anytime.</p>
+  </div>
+</div>
+</body>
+</html>

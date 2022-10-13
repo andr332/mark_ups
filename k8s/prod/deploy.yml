@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp
+  namespace: production
+spec:
+  selector:
+    matchLabels:
+      app: webapp
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: webapp
+    spec:
+      containers:
+        - name: webapp
+          image: gcr.io/markuphero/webapp:prod
+          imagePullPolicy: Always
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 3
+          resources:
+            requests:
+              cpu: "0.1"
+              memory: "128Mi"
+            limits:
+              memory: "256Mi"
+              cpu: "0.5"
+          ports:
+            - containerPort: 8080
+          env:
+            - name: "VUE_APP_BASE_API_URL"
+              value: "https://markuphero.com/api"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: webapp
+  namespace: production
+  annotations:
+    cloud.google.com/load-balancer-type: "Internal"
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 8080
+  selector:
+    app: webapp
+

@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html class="" data-bubblesppbfhhgcdehhbjigifndnfmcihegokbbprevent-events-conflict-installed="true" lang="en">
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+  <meta content="width=device-width,initial-scale=1,shrink-to-fit=no" name="viewport">
+  <title>Support App Demo - Markup Hero Annotation API</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.css" rel="stylesheet">
+  <link href="https://app.getgist.com/static/css/132.b5f24294.chunk.css" rel="stylesheet">
+  <link href="https://app.getgist.com/static/css/main.efbba7bc.chunk.css" rel="stylesheet">
+  <link href="https://app.getgist.com/static/css/48.6faa7b6a.chunk.css" rel="stylesheet" type="text/css">
+  <link href="https://app.getbeamer.com/styles/beamer-embed.css" id="beamerStyles" rel="stylesheet" type="text/css">
+  <link class="userback-css" href="https://static.userback.io/widget/v1.css" rel="stylesheet">
+  <meta name="robots" content="noindex, follow">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://static.markuphero.com/v0.2.0/annotation-api.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+
+  window.MARKUP_HERO_PUBLIC_API_TOKEN = 'ImzFZu56yHjIiP8KVI2Jpabr41zpAfqw';
+
+  $(function(){
+    $("#btnResetMarkup").hide();
+    $("#btnOpenMarkup").hide();
+    $('#markup-image-response').hide();
+  });
+
+  function createMarkup() {
+
+    const onCompletedCallbackFunction = (result) => {
+      const {secret, imageDataUrl, imageBlob, markupId} = result;
+      // console.log(imageDataUrl);
+      $("#markup-image").attr("src",imageDataUrl);
+      $("#markup-image-response").attr("src",imageDataUrl);
+      $("#markup-image").attr("data-secret",secret);
+      $("#markup-image").attr("data-markupid",markupId);
+      $('#markup-image-response').show();
+      $('#btnOpenMarkup').show();
+      $('#btnCreateMarkup').hide();
+      $('#btnResetMarkup').show();
+    };
+
+    var markupImage = $("#markup-image").attr("src");
+
+    MarkupHeroApi.createMarkup({
+      imageUrl: markupImage,
+      exportFormat: 'IMAGE_DATA_URL',
+      onCompleted: onCompletedCallbackFunction
+    }).then((res) => {
+      let markupId = res.markupId; // This is the markup id that you will use to later open the same markup
+      let secret = res.secret; // Use this markup secret to be able to re-edit the same markup at a later time
+    });
+
+    MarkupHeroApi.configureStyle({
+      activeButtonColor: '#1890ff',
+      darkButtonColor: '#242f3a',
+      backgroundColor: '#f8fafb'
+    });
+  }
+
+  function openMarkup() {
+    var dataSecret = $('#markup-image').attr('data-secret'); //getter
+    var dataMarkupId = $('#markup-image').attr('data-markupid'); //getter
+
+    const onCompletedCallbackFunction = (result) => {
+      const {secret, imageDataUrl, imageBlob, markupId} = result;
+      // console.log(imageDataUrl);
+      $("#markup-image").attr("src",imageDataUrl);
+      $("#markup-image-response").attr("src",imageDataUrl);
+      $("#markup-image").attr("data-secret",secret);
+      $("#markup-image").attr("data-markupid",markupId);
+      $('#btnOpenMarkup').show();
+      $('#btnCreateMarkup').hide();
+      $('#btnResetMarkup').show();
+    };
+
+    MarkupHeroApi.openMarkup({
+      markupId: dataMarkupId,
+      secret: dataSecret,
+      exportFormat: 'IMAGE_DATA_URL',
+      onCompleted: onCompletedCallbackFunction
+    }).then((res) => {
+      let markupId = res.markupId; // This is the markup id that you will use to later open the same markup
+      let secret = res.secret; // Use this markup secret to be able to re-edit the same markup at a later time
+    });
+
+    MarkupHeroApi.configureStyle({
+      activeButtonColor: '#1890ff',
+      darkButtonColor: '#242f3a',
+      backgroundColor: '#f8fafb'
+    });
+  }
+
+</script>
+<div id="root">
+  <div>
+    <section class="layout ant-layout">
+      <header class="top-navbar ant-layout-header">
+        <div class="ant-row">
+          <div class="ant-col ant-col-18 left">
+            <img alt="Markup Hero Demo" src="https://markuphero.com/try/media/markupherologo.svg">
+            <ul class="ant-menu ant-menu-light ant-menu-root ant-menu-horizontal" role="menu">
+              <li class="ant-menu-item item ant-menu-item-selected" role="menuitem">
+                <a class="active" href="#">Inbox <span>(1)</span></a>
+              </li>
+              <li class="ant-menu-item item" role="menuitem">
+                <a href="#">Customer Support</a>
+              </li>
+              <li class="ant-menu-item item" role="menuitem">
+                <a href="#">Marketing</a>
+              </li>
+              <li class="ant-menu-item item" role="menuitem">
+                <a href="#">Reports</a>
+              </li>
+            </ul>
+          </div>
+          <div class="ant-col ant-col-6 right">
+            <div class="right-content ant-dropdown-trigger">
+              <span class="active-status-dot active-status online"></span><img alt="user" src="https://d258lu9myqkejp.cloudfront.net/users_profiles/26011/medium/profile.jpg?1614976899"><span>Nicolas Russo-Larsson</span>
+            </div>
+          </div>
+        </div>
+      </header>
+      <section class="content-container ant-layout" style="display: flex;">
+        <section class="ant-layout ant-layout-has-sider">
+          <section class="cf-flex-layout ant-layout">
+            <div class="chat-room">
+              <div class="filters">
+                <div class="bottom">
+                  <div class="status-filters">
+                    <div class="ant-select ant-select-enabled">
+                      <div aria-autocomplete="list" aria-controls="32850b15-6201-41cf-d764-0c7502b34f73" aria-expanded="false" aria-haspopup="true" class="ant-select-selection ant-select-selection--single" role="combobox" tabindex="0">
+                        <div class="ant-select-selection__rendered">
+                          <div class="ant-select-selection-selected-value" style="display: block; opacity: 1;" title="">
+                            Open (1)
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="ant-select ant-select-enabled">
+                      <div aria-autocomplete="list" aria-controls="96fc0c7e-bb83-4bb6-fe4d-7ed05e1fe5be" aria-expanded="false" aria-haspopup="true" class="ant-select-selection ant-select-selection--single" role="combobox" tabindex="0">
+                        <div class="ant-select-selection__rendered">
+                          <div class="ant-select-selection-selected-value" style="display: block; opacity: 1;" title="Newest First">
+                            Newest First
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="content" id="chatRoomHolder">
+                <div>
+                  <a class="conversation active unread" href="#">
+                    <div class="head">
+                      <div class="profile-container">
+                        <div class="profile-avatar text md" style="visibility: visible;">
+                          AC
+                        </div>
+                      </div>
+                      <div class="user-name">
+                        <h4 style="text-transform: capitalize;">Anonymous Customer</h4>
+                      </div>
+                    </div>
+                    <div class="user-image body">
+                      <div class="profile-avatar ssm"><img alt="US" src="https://d258lu9myqkejp.cloudfront.net/users_profiles/26011/medium/profile.jpg?1614976899" style="visibility: visible;"></div>
+                      <p>Happy to help! Click the "Extensions" 🧩 puzzle icon, then Markup Hero. I highlighted it on your screenshot below:</p>
+                    </div></a>
+                </div>
+              </div>
+            </div>
+            <div class="chat-history">
+              <div class="header">
+                <div>
+                  <div>
+                    <p>Assignee</p>
+                    <div class="ant-select ant-select-enabled">
+                      <div aria-autocomplete="list" aria-controls="3a4087f0-23cb-4ed1-f737-792792f54e52" aria-expanded="false" aria-haspopup="true" class="ant-select-selection ant-select-selection--single" role="combobox" tabindex="0">
+                        <div class="ant-select-selection__rendered">
+                          <div class="ant-select-selection-selected-value" style="display: block; opacity: 1;" title="">
+                            <span class="active-status-dot active-status online"></span><img alt="user" src="https://d258lu9myqkejp.cloudfront.net/users_profiles/26011/medium/profile.jpg?1614976899"><span>Myself</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="conversation-priority"><img alt="star" src="https://app.getgist.com/static/media/unfilled-star.4ed9468b.svg"></div>
+              </div>
+              <div class="body-background-container"></div>
+              <div class="body" id="messageBody">
+                <div>
+                  <div class="divider ant-divider ant-divider-horizontal ant-divider-with-text-center" role="separator">
+                    <span class="ant-divider-inner-text"><time datetime="1617485554235">April 3rd 2021</time></span>
+                  </div>
+                  <div class="person-message" style="margin-bottom: 16px;">
+                    <div class="profile-avatar text lg" style="visibility: visible;">
+                      AC
+                    </div>
+                    <div class="content">
+                      <div class="bubble-container">
+                        <div class="bubble" style="white-space: normal;">
+                          <span style="white-space: normal;">Hi there, I'm having trouble finding your Chrome extension. Here is a screenshot of my browser</span>
+                          <img id="markup-image" src="https://storage.googleapis.com/markuphero-mail/markuphero-sample.png">
+                          <a href="#" id="btnCreateMarkup" onclick="createMarkup()" role="button">
+                            Annotate Image
+                          </a>
+                          <a href="/try/support-app-annotation-api-demo.html" id="btnResetMarkup" role="button">
+                            Reset To Original
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="agent-message" style="margin-bottom: 16px;">
+                    <div class="profile-with-tooltip" style="visibility: visible;">
+                      <div class="profile-avatar lg"><img alt="US" src="https://d258lu9myqkejp.cloudfront.net/users_profiles/26011/medium/profile.jpg?1614976899" style="visibility: visible;"></div>
+                    </div>
+                    <div class="content">
+                      <div class="bubble-container">
+                        <div class="bubble" style="white-space: normal;">
+                          <span style="white-space: normal;">Happy to help! Click the "Extensions" 🧩 puzzle icon, then Markup Hero. I highlighted it on your screenshot below:</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="footer">
+                <div class="ant-tabs ant-tabs-top ant-tabs-line ant-tabs-no-animation">
+                  <div class="ant-tabs-bar ant-tabs-top-bar" role="tablist" tabindex="0">
+                    <div class="ant-tabs-nav-container">
+												<span class="ant-tabs-tab-prev ant-tabs-tab-btn-disabled"><span class="ant-tabs-tab-prev-icon"><i aria-label="icon: left" class="anticon anticon-left ant-tabs-tab-prev-icon-target"><svg aria-hidden="true" class="" data-icon="left" height="1em" viewbox="64 64 896 896" width="1em">
+												<path d="M724 218.3V141c0-6.7-7.7-10.4-12.9-6.3L260.3 486.8a31.86 31.86 0 0 0 0 50.3l450.8 352.1c5.3 4.1 12.9.4 12.9-6.3v-77.3c0-4.9-2.3-9.6-6.1-12.6l-360-281 360-281.1c3.8-3 6.1-7.7 6.1-12.6z"></path></svg></i></span></span><span class="ant-tabs-tab-next ant-tabs-tab-btn-disabled"><span class="ant-tabs-tab-next-icon"><i aria-label="icon: right" class="anticon anticon-right ant-tabs-tab-next-icon-target"><svg aria-hidden="true" class="" data-icon="right" height="1em" viewbox="64 64 896 896" width="1em">
+												<path d="M765.7 486.8L314.9 134.7A7.97 7.97 0 0 0 302 141v77.3c0 4.9 2.3 9.6 6.1 12.6l360 281.1-360 281.1c-3.9 3-6.1 7.7-6.1 12.6V883c0 6.7 7.7 10.4 12.9 6.3l450.8-352.1a31.96 31.96 0 0 0 0-50.4z"></path></svg></i></span></span>
+                      <div class="ant-tabs-nav-wrap">
+                        <div class="ant-tabs-nav-scroll">
+                          <div class="ant-tabs-nav ant-tabs-nav-animated">
+                            <div>
+                              <div aria-disabled="false" aria-selected="true" class="ant-tabs-tab-active ant-tabs-tab" role="tab" style="margin-right: 0px;">
+                                Reply
+                              </div>
+                              <div aria-disabled="false" aria-selected="false" class=" ant-tabs-tab" role="tab" style="margin-right: 0px;">
+                                Note
+                              </div>
+                            </div>
+                            <div class="ant-tabs-ink-bar ant-tabs-ink-bar-no-animated" style="display: block; transform: translate3d(0px, 0px, 0px); width: 69px;"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div role="presentation" style="width: 0px; height: 0px; overflow: hidden; position: absolute;" tabindex="0"></div>
+                  <div class="ant-tabs-content ant-tabs-content-no-animated ant-tabs-top-content">
+                    <div aria-hidden="false" class="ant-tabs-tabpane ant-tabs-tabpane-active" role="tabpanel">
+                      <div role="presentation" style="width: 0px; height: 0px; overflow: hidden; position: absolute;" tabindex="0"></div>
+                      <div class="froalaEditor" id="froalaEditor">
+                        <div class="fr-box fr-inline" role="application">
+                          <div class="fr-wrapper show-placeholder" dir="auto" style="max-height: 45vh; overflow: auto;">
+                            <div aria-disabled="false" class="fr-element fr-view" contenteditable="true" data-tribute="true" dir="auto" spellcheck="true" style="min-height: 50px;">
+                              <img id="markup-image-response" src="https://storage.googleapis.com/markuphero-mail/markuphero-sample.png">
+                              <a href="#" id="btnOpenMarkup" onclick="openMarkup()" role="button">
+                                Edit Annotations
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="editor-footer">
+                        <div class="attachments-preview"></div>
+                        <div class="send-buttons">
+                          <button class="ant-btn ant-btn-primary" type="button"><span>Send</span></button>
+                        </div>
+                      </div>
+                      <div role="presentation" style="width: 0px; height: 0px; overflow: hidden; position: absolute;" tabindex="0"></div>
+                    </div>
+                    <div aria-hidden="true" class="ant-tabs-tabpane ant-tabs-tabpane-inactive" role="tabpanel"></div>
+                  </div>
+                  <div role="presentation" style="width: 0px; height: 0px; overflow: hidden; position: absolute;" tabindex="0"></div>
+                </div>
+              </div>
+            </div>
+            <div class="user-properties-container">
+              <div class="close-icon">
+                <i aria-label="icon: close" class="anticon anticon-close"><svg aria-hidden="true" class="" data-icon="close" height="1em" viewbox="64 64 896 896" width="1em">
+                  <path d="M563.8 512l262.5-312.9c4.4-5.2.7-13.1-6.1-13.1h-79.8c-4.7 0-9.2 2.1-12.3 5.7L511.6 449.8 295.1 191.7c-3-3.6-7.5-5.7-12.3-5.7H203c-6.8 0-10.5 7.9-6.1 13.1L459.4 512 196.9 824.9A7.95 7.95 0 0 0 203 838h79.8c4.7 0 9.2-2.1 12.3-5.7l216.5-258.1 216.5 258.1c3 3.6 7.5 5.7 12.3 5.7h79.8c6.8 0 10.5-7.9 6.1-13.1L563.8 512z"></path></svg></i>
+              </div>
+              <div class="info-section">
+                <div class="profile-info">
+                  <div class="user-info">
+                    <a href="#" rel="noopener noreferrer">
+                      <div class="profile-avatar text md" style="visibility: visible;">
+                        AC
+                      </div>
+                      <div class="user-name">
+                        <h3 style="text-transform: capitalize;">Anonymous Customer</h3>
+                      </div></a>
+                  </div>
+                </div>
+                <div class="user-location">
+                  <span aria-label="US" role="img" style="position: relative; display: inline-block; width: 1.33333em; height: 1em; background-image: url(&quot;https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.3.0/flags/4x3/us.svg&quot;); background-position: 50% center; background-repeat: no-repeat; background-size: contain; font-size: 1em; line-height: 1em; vertical-align: middle;" title="US"></span>Los Angeles, United States
+                </div>
+                <div class="user-time">
+                  <time>April 4th 2021, 7:44:50 pm</time>
+                </div>
+              </div>
+              <div class="additional-info">
+                <div class="list-collapse">
+                  <div class="ant-collapse ant-collapse-borderless ant-collapse-icon-position-left">
+                    <div class="ant-collapse-item qualification-attributes">
+                      <div aria-expanded="false" class="ant-collapse-header" role="button" tabindex="0">
+                        <i aria-label="icon: right" class="anticon anticon-right ant-collapse-arrow"><svg aria-hidden="true" class="" data-icon="right" height="1em" style="" viewbox="64 64 896 896" width="1em">
+                          <path d="M765.7 486.8L314.9 134.7A7.97 7.97 0 0 0 302 141v77.3c0 4.9 2.3 9.6 6.1 12.6l360 281.1-360 281.1c-3.9 3-6.1 7.7-6.1 12.6V883c0 6.7 7.7 10.4 12.9 6.3l450.8-352.1a31.96 31.96 0 0 0 0-50.4z"></path></svg></i>
+                        <div>
+                          <span>Qualification</span><span>1/1 complete</span>
+                          <div></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="ant-collapse-item last-viewed">
+                      <div aria-expanded="false" class="ant-collapse-header" role="button" tabindex="0">
+                        <i aria-label="icon: right" class="anticon anticon-right ant-collapse-arrow"><svg aria-hidden="true" class="" data-icon="right" height="1em" style="" viewbox="64 64 896 896" width="1em">
+                          <path d="M765.7 486.8L314.9 134.7A7.97 7.97 0 0 0 302 141v77.3c0 4.9 2.3 9.6 6.1 12.6l360 281.1-360 281.1c-3.9 3-6.1 7.7-6.1 12.6V883c0 6.7 7.7 10.4 12.9 6.3l450.8-352.1a31.96 31.96 0 0 0 0-50.4z"></path></svg></i>Recent page views
+                      </div>
+                    </div>
+                    <div class="ant-collapse-item no-padding-lr">
+                      <div aria-expanded="false" class="ant-collapse-header" role="button" tabindex="0">
+                        <i aria-label="icon: right" class="anticon anticon-right ant-collapse-arrow"><svg aria-hidden="true" class="" data-icon="right" height="1em" style="" viewbox="64 64 896 896" width="1em">
+                          <path d="M765.7 486.8L314.9 134.7A7.97 7.97 0 0 0 302 141v77.3c0 4.9 2.3 9.6 6.1 12.6l360 281.1-360 281.1c-3.9 3-6.1 7.7-6.1 12.6V883c0 6.7 7.7 10.4 12.9 6.3l450.8-352.1a31.96 31.96 0 0 0 0-50.4z"></path></svg></i>Past Conversations
+                      </div>
+                    </div>
+                    <div class="ant-collapse-item details">
+                      <div aria-expanded="false" class="ant-collapse-header" role="button" tabindex="0">
+                        <i aria-label="icon: right" class="anticon anticon-right ant-collapse-arrow"><svg aria-hidden="true" class="" data-icon="right" height="1em" style="" viewbox="64 64 896 896" width="1em">
+                          <path d="M765.7 486.8L314.9 134.7A7.97 7.97 0 0 0 302 141v77.3c0 4.9 2.3 9.6 6.1 12.6l360 281.1-360 281.1c-3.9 3-6.1 7.7-6.1 12.6V883c0 6.7 7.7 10.4 12.9 6.3l450.8-352.1a31.96 31.96 0 0 0 0-50.4z"></path></svg></i>Details
+                      </div>
+                    </div>
+                    <div class="ant-collapse-item tags-list">
+                      <div aria-expanded="false" class="ant-collapse-header" role="button" tabindex="0">
+                        <i aria-label="icon: right" class="anticon anticon-right ant-collapse-arrow"><svg aria-hidden="true" class="" data-icon="right" height="1em" style="" viewbox="64 64 896 896" width="1em">
+                          <path d="M765.7 486.8L314.9 134.7A7.97 7.97 0 0 0 302 141v77.3c0 4.9 2.3 9.6 6.1 12.6l360 281.1-360 281.1c-3.9 3-6.1 7.7-6.1 12.6V883c0 6.7 7.7 10.4 12.9 6.3l450.8-352.1a31.96 31.96 0 0 0 0-50.4z"></path></svg></i>Tags
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </section>
+      </section>
+    </section>
+  </div>
+</div>
+<div style="position: fixed; bottom: 10px; right: 10px; background-color: #242f3a; z-index: 10000; width: 150px; padding: 10px; border-radius: 4px;"><p style="color: #fff; margin: 0; font-size: 10px; line-height: 14px;">Note this is only a demo using Markup Hero's <a href="/integrations/annotation-api.html" target="_blank" style="color: #1890ff;">Annotation API</a></p></div>
+</body>
+</html>

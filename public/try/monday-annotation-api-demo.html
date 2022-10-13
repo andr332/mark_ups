@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html class="new-layout notranslate" lang="en" translate="no">
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+  <meta content="ie=edge,chrome=1" http-equiv="x-ua-compatible">
+  <link href="https://cdn7.monday.com/favicon-monday-v4.png" rel="icon" type="image/png">
+  <link href="https://cdn7.monday.com/manifest.json" rel="manifest">
+  <link href="https://cdn7.monday.com/get_translations.js?locale=en&amp;hash=6325c8fafd9d31754d44363af4a6758d" rel="preload">
+  <link href="https://cdn7.monday.com/layout_static_data.js?hash=1dbf87669fb9b5634b0c8f08a79bb6c6" rel="preload">
+  <link href="https://markup-hero.monday.com/boards/leftpane_init_data?preload=true" rel="preload">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,100italic,300,300italic,400,500,500italic" rel="stylesheet" type="text/css">
+  <link href="https://cdn7.monday.com/build/pulse-wall-container-ebb3bba1bcaddf9bb256.js" rel="prefetch">
+  <link href="https://cdn7.monday.com/build/onboarding-container-f97286a95bee9f2532a1.css" rel="stylesheet" type="text/css">
+  <link href="https://broadcast.am/assets/broadcast.css" rel="stylesheet" type="text/css">
+  <link href="blob:https://markup-hero.monday.com/e3c044d7-7a44-470a-b882-22e044f26ef5" rel="stylesheet" type="text/css">
+  <link href="blob:https://markup-hero.monday.com/7453b37e-497a-4167-8c02-0f675f3ece1e" rel="stylesheet" type="text/css">
+  <link href="blob:https://markup-hero.monday.com/9510e322-f2f7-4c9e-9a3b-e272cbfca582" rel="stylesheet" type="text/css">
+  <link href="blob:https://markup-hero.monday.com/d180949d-d758-4724-8c53-c4736d7364c5" rel="stylesheet" type="text/css">
+  <link href="blob:https://markup-hero.monday.com/311bdec7-2780-410b-8041-4e22f5441270" rel="stylesheet" type="text/css">
+  <link href="blob:https://markup-hero.monday.com/dd969e39-f2b6-4b62-812c-99135ea96021" rel="stylesheet" type="text/css">
+  <link href="blob:https://markup-hero.monday.com/5570fc2b-6a58-49e1-ae59-3f393b56ec78" rel="stylesheet" type="text/css">
+  <link href="blob:https://markup-hero.monday.com/9b7e607f-435b-407c-9cac-6158d7147bc6" rel="stylesheet" type="text/css">
+  <link href="blob:https://markup-hero.monday.com/90e19985-d9cc-4478-9c0d-eea956839841" rel="stylesheet" type="text/css">
+  <link href="blob:https://markup-hero.monday.com/2ce7311a-b774-4948-ac85-d1ae0965d63e" rel="stylesheet" type="text/css">
+  <link href="blob:https://markup-hero.monday.com/9db4bc5a-fceb-41f3-9c71-01a4d037c4ae" rel="stylesheet" type="text/css">
+  <link href="blob:https://markup-hero.monday.com/16bd7e09-59ab-46e0-9ca7-cd90b3d53821" rel="stylesheet" type="text/css">
+  <link href="blob:https://markup-hero.monday.com/47532f2b-8bc5-434d-91d5-deb3048d850d" rel="stylesheet" type="text/css">
+  <link href="blob:https://markup-hero.monday.com/5f51c8d6-cf98-4a50-941e-8ece4add4a93" rel="stylesheet" type="text/css">
+  <link href="blob:https://markup-hero.monday.com/3c062293-605a-4c50-a9ec-281a048ea788" rel="stylesheet" type="text/css">
+  <link href="blob:https://markup-hero.monday.com/92b47aa8-eff2-4fdb-a85d-627e7c5cdfd2" rel="stylesheet" type="text/css">
+  <link href="blob:https://markup-hero.monday.com/eb221759-a1f5-4586-a3c3-11145fcc8511" rel="stylesheet" type="text/css">
+  <link href="https://cdn7.monday.com/build/canvas-file-preview-aa6fbd029b8c63b9d4b7.css" rel="stylesheet" type="text/css">
+  <meta name="robots" content="noindex, follow">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://static.markuphero.com/v0.2.0/annotation-api.js"></script>
+</head>
+<body class="light-app-theme ReactModal__Body--open" id="main">
+<script type="text/javascript">
+
+  window.MARKUP_HERO_PUBLIC_API_TOKEN = 'ImzFZu56yHjIiP8KVI2Jpabr41zpAfqw';
+
+  $(function(){
+    $("#btnResetMarkup").hide();
+    $("#btnOpenMarkup").hide();
+  });
+
+  function createMarkup() {
+
+    const onCompletedCallbackFunction = (result) => {
+      const {secret, imageDataUrl, imageBlob, markupId} = result;
+      // console.log(imageDataUrl);
+      $("#markup-image").attr("src",imageDataUrl);
+      $("#markup-image").attr("data-secret",secret);
+      $("#markup-image").attr("data-markupid",markupId);
+      $('#btnOpenMarkup').show();
+      $('#btnCreateMarkup').hide();
+      $('#btnResetMarkup').show();
+    };
+
+    var markupImage = $("#markup-image").attr("src");
+
+    MarkupHeroApi.createMarkup({
+      imageUrl: markupImage,
+      exportFormat: 'IMAGE_DATA_URL',
+      onCompleted: onCompletedCallbackFunction
+    }).then((res) => {
+      let markupId = res.markupId; // This is the markup id that you will use to later open the same markup
+      let secret = res.secret; // Use this markup secret to be able to re-edit the same markup at a later time
+    });
+
+    MarkupHeroApi.configureStyle({
+      activeButtonColor: '#0085ff',
+      darkButtonColor: '#292f4c',
+      backgroundColor: '#ffffff'
+    });
+  }
+
+  function openMarkup() {
+    var dataSecret = $('#markup-image').attr('data-secret'); //getter
+    var dataMarkupId = $('#markup-image').attr('data-markupid'); //getter
+
+    const onCompletedCallbackFunction = (result) => {
+      const {secret, imageDataUrl, imageBlob, markupId} = result;
+      // console.log(imageDataUrl);
+      $("#markup-image").attr("src",imageDataUrl);
+      $("#markup-image").attr("data-secret",secret);
+      $("#markup-image").attr("data-markupid",markupId);
+      $('#btnOpenMarkup').show();
+      $('#btnCreateMarkup').hide();
+      $('#btnResetMarkup').show();
+    };
+
+    MarkupHeroApi.openMarkup({
+      markupId: dataMarkupId,
+      secret: dataSecret,
+      exportFormat: 'IMAGE_DATA_URL',
+      onCompleted: onCompletedCallbackFunction
+    }).then((res) => {
+      let markupId = res.markupId; // This is the markup id that you will use to later open the same markup
+      let secret = res.secret; // Use this markup secret to be able to re-edit the same markup at a later time
+    });
+
+    MarkupHeroApi.configureStyle({
+      activeButtonColor: '#0085ff',
+      darkButtonColor: '#292f4c',
+      backgroundColor: '#ffffff'
+    });
+  }
+
+</script>
+<link href="https://cdn7.monday.com/assets/pulse/ext-e137e27e4121f1abda9a9fa33ea4b22d26ce2b0f030d928036c790e564e4b8c6.css" media="all" rel="stylesheet">
+<link href="https://cdn7.monday.com/assets/pulse/screen-56f728eb3750cc4254c940009d3a068988577448dbeca2b6b4fbb20c7b59f9ef.css" media="all" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" media="screen" rel="stylesheet" type="text/css">
+<link href="https://cdn7.monday.com/build/vendors-aa48cf755f2768e3ce7a.css" media="all" rel="stylesheet">
+<link href="https://cdn7.monday.com/build/components-c95f70ecdad3a6cf5f56.css" media="all" rel="stylesheet">
+<link href="https://cdn7.monday.com/build/main-0208691760395b5d1753.css" media="all" rel="stylesheet">
+<div class="ReactModalPortal files-preview-portal">
+  <div class="ReactModal__Overlay ReactModal__Overlay--after-open" style="position: fixed; inset: 0px;">
+    <div class="ReactModal__Content ReactModal__Content--after-open" role="dialog" style="position: absolute; inset: 50% auto auto 50%; border: 1px solid rgb(204, 204, 204); background: var(--primary-background-color); overflow: hidden; border-radius: 16px; outline: none; padding: 0px; height: 90vh; width: 90vw; max-width: 90vw; transform: translate(-50%, -50%); transition: all 0.3s ease 0s; will-change: width; box-shadow: rgb(0, 0, 0) 0px 6px 20px 0px; color: var(--primary-text-color);" tabindex="-1">
+      <div class="modal-component default-overlay-style system-modal files-preview-wrapper">
+        <div class="modal-component-content">
+          <div class="files-preview-logic-component">
+            <div class="files-preview-component">
+              <div class="files-preview-header-component">
+                <div class="file-info-container">
+                  <div class="file-item-info-component">
+                    <div class="file-type-icon-component"><img class="file-type-icon" draggable="false" src="https://cdn7.monday.com/images/file-types/image.svg"></div>
+                    <div class="file-item-info-wrapper">
+                      <div class="file-item-file-name" title="api_test_image3.jpg">
+                        api_test_image3.jpg
+                      </div>
+                      <div class="file-breadcrumbs-component">
+                        <a class="board-name router" href="#" title="Monday.com Feature Suggestion">Monday.com Demo</a><i class="fa fa-angle-right quick-search-breadcrumbs"></i><a class="pulse-name router" href="https://markuphero.com/integrations/annotation-api.html" target="_blank" title="Markup Hero's Annotation API →">Markup Hero's Annotation API →</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="actions-buttons-container">
+                  <div class="files-preview-conversation-component">
+                    <button aria-busy="false" aria-haspopup="false" class="monday-style-button monday-style-button--size-small monday-style-button--kind-tertiary monday-style-button--color-primary" id="" name="" style="--element-width:162.016px; --element-height:32px;" type="button"><svg aria-hidden="false" class="icon_component conversation-icon icon_component--no-focus-style" height="24" role="" tabindex="-1" viewbox="0 0 20 20" width="24">
+                      <path clip-rule="evenodd" d="M10.4339 1.95001C11.5975 1.94802 12.7457 2.2162 13.7881 2.73345C14.8309 3.25087 15.7392 4.0034 16.4416 4.93172C17.1439 5.86004 17.6211 6.93879 17.8354 8.08295C18.0498 9.22712 17.9955 10.4054 17.6769 11.525C17.3582 12.6447 16.7839 13.675 15.9992 14.5348C15.2144 15.3946 14.2408 16.0604 13.1549 16.4798C12.0689 16.8991 10.9005 17.0606 9.74154 16.9514C8.72148 16.8553 7.73334 16.5518 6.83716 16.0612L4.29488 17.2723C3.23215 17.7786 2.12265 16.6693 2.6287 15.6064L3.83941 13.0637C3.26482 12.0144 2.94827 10.8411 2.91892 9.64118C2.88616 8.30174 3.21245 6.97794 3.86393 5.80714C4.51541 4.63635 5.46834 3.66124 6.62383 2.98299C7.77896 2.30495 9.09445 1.9483 10.4339 1.95001ZM10.4339 1.95001C10.4343 1.95001 10.4347 1.95001 10.4351 1.95001L10.434 2.70001L10.4326 1.95001C10.433 1.95001 10.4334 1.95001 10.4339 1.95001ZM13.1214 4.07712C12.2867 3.66294 11.3672 3.44826 10.4354 3.45001L10.4329 3.45001C9.3608 3.44846 8.30778 3.73387 7.38315 4.2766C6.45852 4.81934 5.69598 5.59963 5.17467 6.5365C4.65335 7.47337 4.39226 8.53268 4.41847 9.6045C4.44469 10.6763 4.75726 11.7216 5.32376 12.6319C5.45882 12.8489 5.47405 13.1198 5.36416 13.3506L4.28595 15.6151L6.54996 14.5366C6.78072 14.4266 7.05158 14.4418 7.26863 14.5768C8.05985 15.0689 8.95456 15.3706 9.88225 15.458C10.8099 15.5454 11.7452 15.4162 12.6145 15.0805C13.4837 14.7448 14.2631 14.2119 14.8912 13.5236C15.5194 12.8354 15.9791 12.0106 16.2341 11.1144C16.4892 10.2182 16.5327 9.27504 16.3611 8.35918C16.1895 7.44332 15.8075 6.57983 15.2453 5.83674C14.6831 5.09366 13.9561 4.49129 13.1214 4.07712Z" fill="currentColor" fill-rule="evenodd"></path></svg>
+                      <div class="conversation-text">
+                        Start conversation
+                      </div></button>
+                  </div><button aria-busy="false" aria-haspopup="false" class="files-preview-close-button monday-style-button monday-style-button--size-small monday-style-button--kind-tertiary monday-style-button--color-primary" id="" name="" style="--element-width:32px; --element-height:32px;" type="button"><svg aria-hidden="false" class="icon_component icon_component--no-focus-style" height="16" role="" tabindex="-1" viewbox="0 0 20 20" width="16">
+                  <path clip-rule="evenodd" d="M3.53033 2.46967C3.23744 2.17678 2.76256 2.17678 2.46967 2.46967C2.17678 2.76256 2.17678 3.23744 2.46967 3.53033L8.97639 10.037L2.47093 16.5425C2.17804 16.8354 2.17804 17.3103 2.47093 17.6032C2.76382 17.8961 3.2387 17.8961 3.53159 17.6032L10.037 11.0977L16.5425 17.6032C16.8354 17.8961 17.3103 17.8961 17.6032 17.6032C17.8961 17.3103 17.8961 16.8354 17.6032 16.5425L11.0977 10.037L17.6044 3.53033C17.8973 3.23744 17.8973 2.76256 17.6044 2.46967C17.3115 2.17678 16.8367 2.17678 16.5438 2.46967L10.037 8.97639L3.53033 2.46967Z" fill="currentColor" fill-rule="evenodd"></path></svg></button>
+                </div>
+              </div>
+              <div class="files-preview-main-component">
+                <div class="files-preview-file-rendering-component-with-keyboard-navigation" tabindex="-1">
+										<span class=""><button aria-busy="false" aria-haspopup="false" class="navigation-button left-button disabled monday-style-button monday-style-button--size-small monday-style-button--kind-tertiary monday-style-button--color-primary" disabled id="" name="" style="--element-width:52px; --element-height:44px;" type="button"><span class=""><svg aria-hidden="false" class="icon_component icon_component--no-focus-style" height="36" role="" tabindex="-1" viewbox="0 0 20 20" width="36">
+										<path clip-rule="evenodd" d="M5.46967 10.5303L6 10L5.46967 9.46967C5.17678 9.76256 5.17678 10.2374 5.46967 10.5303ZM7.06066 10L13.5303 3.53033C13.8232 3.23744 13.8232 2.76256 13.5303 2.46967C13.2374 2.17678 12.7626 2.17678 12.4697 2.46967L5.46967 9.46967L6 10L5.46967 10.5303L12.4697 17.5303C12.7626 17.8232 13.2374 17.8232 13.5303 17.5303C13.8232 17.2374 13.8232 16.7626 13.5303 16.4697L7.06066 10Z" fill="currentColor" fill-rule="evenodd"></path></svg></span></button></span>
+                  <div class="preview-wrapper">
+                    <div class="file-preview-component">
+                      <div class="image-preview-component">
+                        <div class="image-annotation" style="display: block;">
+                          <div style="width: 100%; height: 100%; margin: auto;">
+                            <img id="markup-image" src="https://storage.googleapis.com/markuphero-mail/api_test_image3.jpg" style="display: block; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100%; max-width: 600px;">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div style="display: flex; align-items: center; justify-content: center; position: absolute; top: 32px; left: 0; width: 100%; z-index: 2;">
+                      <button id="btnCreateMarkup" onclick="createMarkup()" class="with-left-icon ds-btn ds-btn-primary ds-btn-sm" style="margin: 0 5px;">Annotate Image</button>
+                      <button id="btnOpenMarkup" onclick="openMarkup()" class="with-left-icon ds-btn ds-btn-primary ds-btn-sm" style="margin: 0 5px;">Edit Annotations</button>
+                      <a href="/try/monday-annotation-api-demo.html" id="btnResetMarkup" role="button" class="with-left-icon ds-btn ds-btn-primary ds-btn-sm" style="margin: 0 5px;">Reset</a>
+                    </div>
+                  </div><span class=""><button aria-busy="false" aria-haspopup="false" class="navigation-button right-button disabled monday-style-button monday-style-button--size-small monday-style-button--kind-tertiary monday-style-button--color-primary" disabled id="" name="" style="--element-width:52px; --element-height:44px;" type="button"><span class=""><svg aria-hidden="false" class="icon_component icon_component--no-focus-style" height="36" role="" tabindex="-1" viewbox="0 0 20 20" width="36">
+										<path clip-rule="evenodd" d="M13.5303 9.46967L13 10L13.5303 10.5303C13.8232 10.2374 13.8232 9.76256 13.5303 9.46967ZM11.9393 10L5.46967 16.4697C5.17678 16.7626 5.17678 17.2374 5.46967 17.5303C5.76256 17.8232 6.23744 17.8232 6.53033 17.5303L13.5303 10.5303L13 10L13.5303 9.46967L6.53033 2.46967C6.23744 2.17678 5.76256 2.17678 5.46967 2.46967C5.17678 2.76256 5.17678 3.23744 5.46967 3.53033L11.9393 10Z" fill="currentColor" fill-rule="evenodd"></path></svg></span></button></span>
+                </div>
+                <div class="files-preview-right-pane-component">
+                  <div class="current-pane">
+                    <div class="right-pane-title">
+                      <div class="title-icon">
+                        <svg aria-hidden="false" class="icon_component" height="24" role="" tabindex="-1" viewbox="0 0 20 20" width="24">
+                          <path clip-rule="evenodd" d="M4.5559 4.55593C5.99976 3.11206 7.95806 2.3009 10 2.3009C12.0419 2.3009 14.0002 3.11206 15.4441 4.55593C16.888 5.99979 17.6991 7.9581 17.6991 10C17.6991 12.042 16.888 14.0003 15.4441 15.4441C14.0002 16.888 12.0419 17.6992 10 17.6992C7.95806 17.6992 5.99976 16.888 4.5559 15.4441C3.11203 14.0003 2.30087 12.042 2.30087 10C2.30087 7.9581 3.11203 5.99979 4.5559 4.55593ZM10 3.8009C8.35589 3.8009 6.77912 4.45402 5.61656 5.61659C4.45399 6.77915 3.80087 8.35592 3.80087 10C3.80087 11.6441 4.45399 13.2209 5.61656 14.3835C6.77912 15.546 8.35589 16.1992 10 16.1992C11.6441 16.1992 13.2209 15.546 14.3834 14.3835C15.546 13.2209 16.1991 11.6441 16.1991 10C16.1991 8.35592 15.546 6.77915 14.3834 5.61659C13.2209 4.45402 11.6441 3.8009 10 3.8009ZM10 9.25006C10.4142 9.25006 10.75 9.58585 10.75 10.0001V13.4746C10.75 13.8888 10.4142 14.2246 10 14.2246C9.58579 14.2246 9.25 13.8888 9.25 13.4746V10.0001C9.25 9.58585 9.58579 9.25006 10 9.25006ZM9.54135 6.21669C9.7058 6.10681 9.89914 6.04816 10.0969 6.04816C10.3621 6.04816 10.6165 6.15351 10.804 6.34105C10.9916 6.52859 11.0969 6.78294 11.0969 7.04816C11.0969 7.24593 11.0383 7.43927 10.9284 7.60373C10.8185 7.76818 10.6623 7.89635 10.4796 7.97204C10.2969 8.04772 10.0958 8.06753 9.90183 8.02894C9.70786 7.99036 9.52967 7.89512 9.38982 7.75526C9.24996 7.61541 9.15472 7.43722 9.11614 7.24325C9.07755 7.04927 9.09736 6.8482 9.17304 6.66547C9.24873 6.48275 9.3769 6.32657 9.54135 6.21669Z" fill="currentColor" fill-rule="evenodd"></path></svg>
+                      </div>
+                      <div class="title-text">
+                        File info
+                      </div>
+                    </div>
+                    <div class="right-pane-component">
+                      <div class="files-preview-details-component">
+                        <div class="files-description">
+                          <div class="ds-editable-component" style="width: auto; height: auto;">
+                            <div class="ds-text-component line-clamp" dir="auto" style="white-space: normal; word-break: normal;">
+                              <span class="text-content">Annotate this mockup by clicking the 'Annotate Image' button. Note this is not monday.com but rather a demo using Markup Hero's <a href="/integrations/annotation-api.html" target="_blank">Annotation API</a>.</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="fields">
+                          <div class="field-name">
+                            File name
+                          </div>
+                          <div class="field-value">
+                            <div class="file-name" title="api_test_image3.jpg" style="white-space: normal;">
+                              api_test_image3.jpg
+                            </div>
+                          </div>
+                          <div class="field-name">
+                            File type
+                          </div>
+                          <div class="field-value">
+                            <div class="file-type-icon-component smaller"><img class="file-type-icon" draggable="false" src="https://cdn7.monday.com/images/file-types/image.svg"></div>
+                            <div class="file-type">
+                              image
+                            </div>
+                          </div>
+                          <div class="field-name">
+                            Upload date
+                          </div>
+                          <div class="field-value">
+                            Mar 30, 2021
+                          </div>
+                          <div class="field-name">
+                            Size
+                          </div>
+                          <div class="field-value">
+                            115KB
+                          </div>
+                          <div class="field-name">
+                            Resolution
+                          </div>
+                          <div class="field-value">
+                            1115 x 900 px
+                          </div>
+                          <div class="field-name">
+                            Uploaded by
+                          </div>
+                          <div class="field-value">
+                            <img alt="Nicolas Russo-Larsson" aria-hidden="true" class="person-bullet-image person-bullet-component" src="https://cdn1.monday.com/dapulse_default_photo.png" title="Nicolas Russo-Larsson">
+                            <div class="user-name">
+                              Nicolas Russo-Larsson
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="right-pane-feedback">
+                      <div class="files-preview-feedback-component">
+                        <button aria-busy="false" aria-haspopup="false" class="monday-style-button monday-style-button--size-small monday-style-button--kind-tertiary monday-style-button--color-primary" id="" name="" style="--element-width:108.219px; --element-height:32px;" type="button"><svg aria-hidden="false" class="icon_component feedback-icon icon_component--no-focus-style" height="24" role="" tabindex="-1" viewbox="0 0 20 20" width="24">
+                          <path clip-rule="evenodd" d="M2.18727 17.8022C2.303 17.9285 2.46081 17.9916 2.62914 17.9916C2.72383 17.9916 2.81852 17.9705 2.90268 17.939L6.83745 16.0663C7.74224 16.5818 8.76276 16.8974 9.79379 16.9921C10.9511 17.0973 12.1189 16.9395 13.2025 16.5187C14.2756 16.0978 15.2646 15.4245 16.0431 14.5723C16.8217 13.7096 17.4003 12.6786 17.7159 11.5634C18.0316 10.4482 18.0842 9.25934 17.8738 8.12309C17.6633 6.98685 17.1794 5.90321 16.485 4.97738C15.7906 4.05155 14.8753 3.29406 13.8338 2.77854C12.8027 2.27354 11.6455 2 10.4987 2H10.4776C9.14151 2 7.82641 2.35771 6.67964 3.03104C5.52236 3.70437 4.57549 4.6828 3.9232 5.85061C3.27091 7.01841 2.94477 8.34403 2.98685 9.68017C3.00789 10.9006 3.34456 12.0894 3.93372 13.152L2.06102 17.0868C1.94529 17.3288 1.9979 17.6234 2.18727 17.8022ZM7.32141 4.11468C8.2788 3.55708 9.37296 3.26249 10.4776 3.26249H10.4987C11.4561 3.26249 12.4135 3.48343 13.2551 3.90426C14.1073 4.32509 14.8753 4.95634 15.454 5.72436C16.0326 6.49237 16.4324 7.39716 16.6113 8.34403C16.7901 9.2909 16.748 10.2799 16.485 11.2057C16.222 12.1315 15.7486 13.0047 15.0963 13.7096C14.444 14.425 13.6234 14.9826 12.7291 15.3298C11.8348 15.677 10.8564 15.8138 9.899 15.7191C8.94161 15.6244 8.00526 15.3088 7.18464 14.8038C7.00579 14.6881 6.77433 14.6775 6.58496 14.7722L3.95476 16.0242L5.20673 13.394C5.30142 13.1941 5.2909 12.9627 5.17517 12.7838C4.58601 11.8474 4.27038 10.7638 4.23882 9.64861C4.21778 8.5334 4.49132 7.43924 5.02788 6.46081C5.57496 5.48238 6.36402 4.67228 7.32141 4.11468ZM10.0358 13.2572C10.1515 13.3729 10.3199 13.4466 10.4882 13.4466C10.6565 13.4466 10.8249 13.3835 10.9406 13.2572L13.8548 10.2272C14.2125 9.86952 14.4335 9.42765 14.5176 8.93318C14.5913 8.4387 14.5176 7.94422 14.2967 7.49183C14.1284 7.15516 13.8864 6.86058 13.5813 6.63965C13.2762 6.41871 12.929 6.27142 12.5608 6.20829C12.1926 6.14517 11.8138 6.17673 11.4666 6.29246C11.1089 6.40819 10.7828 6.60808 10.5198 6.8711L10.4777 6.90267L10.4461 6.8711C10.1831 6.60808 9.85694 6.40819 9.49924 6.29246C9.15205 6.17673 8.76278 6.14517 8.40508 6.20829C8.03685 6.2609 7.67914 6.40819 7.38456 6.62913C7.07946 6.85006 6.83748 7.14464 6.66915 7.48131C6.44821 7.9337 6.36405 8.42818 6.44821 8.92265C6.52186 9.40661 6.75331 9.859 7.11102 10.2062L10.0358 13.2572ZM8.59445 7.44975C8.65757 7.43922 8.71018 7.43922 8.7733 7.43922C8.88903 7.43922 9.00476 7.44975 9.12049 7.49183C9.2783 7.54443 9.43611 7.63912 9.56236 7.75485L10.0358 8.2388C10.2883 8.48078 10.6881 8.48078 10.9301 8.2388L11.4035 7.76537C11.5297 7.63912 11.677 7.54443 11.8454 7.49183C12.0137 7.43922 12.1926 7.41818 12.3609 7.43922C12.5292 7.47079 12.6976 7.53391 12.8343 7.63912C12.9816 7.74433 13.0973 7.8811 13.171 8.03891C13.2762 8.24932 13.3183 8.48078 13.2762 8.71224C13.2446 8.9437 13.1394 9.14359 12.9606 9.32244L10.4882 11.9L8.00529 9.31192C7.83695 9.15411 7.73175 8.9437 7.68966 8.72276C7.6581 8.4913 7.68966 8.25985 7.79487 8.04943C7.86852 7.89162 7.97372 7.75485 8.12102 7.64964C8.26831 7.54443 8.42612 7.48131 8.59445 7.44975Z" fill="currentColor" fill-rule="evenodd"></path></svg>
+                          <div class="feedback-text">
+                            Feedback
+                          </div></button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>)
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="ReactModalPortal pulse-card-react-portal">
+  <div class="ReactModal__Overlay ReactModal__Overlay--after-open" style="position: fixed; inset: 0px;">
+    <div class="ReactModal__Content ReactModal__Content--after-open" role="dialog" style="position: absolute; inset: 50% auto auto 50%; border: 1px solid rgb(204, 204, 204); background: none; overflow: visible; outline: none; padding: 0px; transform: translate(-50%, -50%); transition: all 0.3s ease 0s; max-height: 80%; width: 575px; box-shadow: rgb(0, 0, 0) 0px 6px 20px 0px; display: flex;" tabindex="-1">
+    </div>
+  </div>
+</div>
+</body>
+</html>

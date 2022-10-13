@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+  <meta name="robots" content="noindex, follow">
+  <link href="cid:css-a1f80c29-b8ea-43bd-9443-4d307962a47e@mhtml.blink" rel="stylesheet" type="text/css">
+  <link href="cid:css-c799a8dc-39b1-4d33-a9ae-e4ece526a00b@mhtml.blink" rel="stylesheet" type="text/css">
+  <title>Asana Demo - Markup Hero Annotation API</title>
+  <link href="https://d3ki9tyy5l5ruj.cloudfront.net/obj/8897db9ac54fb68c74f76b4d3e2e753b524fca42/Favicon@3x.png" rel="shortcut icon">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://static.markuphero.com/v0.2.0/annotation-api.js"></script>
+</head>
+<body class="A11y-focusInvisible" data-luna1-event-id="0">
+<script type="text/javascript">
+
+  window.MARKUP_HERO_PUBLIC_API_TOKEN = 'ImzFZu56yHjIiP8KVI2Jpabr41zpAfqw';
+
+  function createMarkup() {
+
+    const onCompletedCallbackFunction = (result) => {
+      const {secret, imageDataUrl, imageBlob, markupId} = result;
+      // console.log(imageDataUrl);
+      $("#markup-image").attr("src",imageDataUrl);
+      $("#markup-image-thumb").attr("src",imageDataUrl);
+      $("#markup-image").attr("data-secret",secret);
+      $("#markup-image").attr("data-markupid",markupId);
+      $('#btnOpenMarkup').show();
+      $('#btnCreateMarkup').hide();
+      $('#btnResetMarkup').show();
+    };
+
+    var markupImage = $("#markup-image").attr("src");
+
+    MarkupHeroApi.createMarkup({
+      imageUrl: markupImage,
+      exportFormat: 'IMAGE_DATA_URL',
+      onCompleted: onCompletedCallbackFunction
+    }).then((res) => {
+      let markupId = res.markupId; // This is the markup id that you will use to later open the same markup
+      let secret = res.secret; // Use this markup secret to be able to re-edit the same markup at a later time
+    });
+
+    MarkupHeroApi.configureStyle({
+      activeButtonColor: '#fcbd01',
+      darkButtonColor: '#151b26',
+      backgroundColor: '#f6f8f9'
+    });
+  }
+
+  function openMarkup() {
+    var dataSecret = $('#markup-image').attr('data-secret'); //getter
+    var dataMarkupId = $('#markup-image').attr('data-markupid'); //getter
+
+    const onCompletedCallbackFunction = (result) => {
+      const {secret, imageDataUrl, imageBlob, markupId} = result;
+      // console.log(imageDataUrl);
+      $("#markup-image").attr("src",imageDataUrl);
+      $("#markup-image-thumb").attr("src",imageDataUrl);
+      $("#markup-image").attr("data-secret",secret);
+      $("#markup-image").attr("data-markupid",markupId);
+      $('#btnOpenMarkup').show();
+      $('#btnCreateMarkup').hide();
+      $('#btnResetMarkup').show();
+    };
+
+    MarkupHeroApi.openMarkup({
+      markupId: dataMarkupId,
+      secret: dataSecret,
+      exportFormat: 'IMAGE_DATA_URL',
+      onCompleted: onCompletedCallbackFunction
+    }).then((res) => {
+      let markupId = res.markupId; // This is the markup id that you will use to later open the same markup
+      let secret = res.secret; // Use this markup secret to be able to re-edit the same markup at a later time
+    });
+
+    MarkupHeroApi.configureStyle({
+      activeButtonColor: '#fcbd01',
+      darkButtonColor: '#151b26',
+      backgroundColor: '#f6f8f9'
+    });
+  }
+
+</script>
+<link href="https://d3ki9tyy5l5ruj.cloudfront.net/compressed/build/bundles/37e5fc8d357691a455466f9fdc5444967c0b6c6d/apps/asana/css/themes/root.css" rel="stylesheet" type="text/css">
+<div class="react-app-node">
+  <div class="notranslate">
+    <div class="react-mount-node">
+      <div class="AppRoot" tabindex="-1">
+        <div class="ThemeSetter-themeBackground ThemeSetter--classic"></div>
+        <div class="AppRoot-fullPage" id="asana_full_page">
+          <div>
+            <div class="react-mount-node">
+              <div class="ToastManager"></div>
+            </div>
+          </div>
+          <div class="AsanaMain">
+            <div class="AsanaMain-mainLayer" id="asana_main">
+              <div class="LearningHubTransitionManager"></div>
+              <div class="AsanaMain-sidebar" id="asana_sidebar">
+                <div class="Sidebar AsanaMain-sidebarRoot">
+                  <div class="SidebarHeader">
+                    <a aria-label="Go to the Asana homepage" class="SidebarHeader-asanaLogo BaseLink" href="#"></a><button aria-label="Hide sidebar" class="SideBurgerIcon SidebarHeader-sideBurgerIcon"><svg class="SideBurgerIcon-image" viewbox="0 0 50 32">
+                    <path d="M49,4H19c-0.6,0-1-0.4-1-1s0.4-1,1-1h30c0.6,0,1,0.4,1,1S49.6,4,49,4z"></path>
+                    <path d="M49,16H19c-0.6,0-1-0.4-1-1s0.4-1,1-1h30c0.6,0,1,0.4,1,1S49.6,16,49,16z"></path>
+                    <path d="M49,28H19c-0.6,0-1-0.4-1-1s0.4-1,1-1h30c0.6,0,1,0.4,1,1S49.6,28,49,28z"></path>
+                    <path d="M8.1,22.8c-0.3,0-0.5-0.1-0.7-0.3L0.7,15l6.7-7.8c0.4-0.4,1-0.5,1.4-0.1c0.4,0.4,0.5,1,0.1,1.4L3.3,15l5.5,6.2 c0.4,0.4,0.3,1-0.1,1.4C8.6,22.7,8.4,22.8,8.1,22.8z"></path></svg></button>
+                  </div>
+                  <div class="SidebarCollapsibleSection--isFirstSection SidebarCollapsibleSection--isExpanded SidebarCollapsibleSection SidebarTopNavLinks">
+                    <a class="SidebarItemRow--heightLarge SidebarItemRow--leftAlign SidebarItemRow SidebarTopNavLinks-homeButton BaseLink" href="#"><svg class="NavIcon SidebarTopNavLinks-typeIcon HomeNavIcon" viewbox="0 0 40 40">
+                      <path d="M37.9,15L22.2,3.8c-1.3-1-3.1-1-4.4-0.1L2.2,14.4c-0.7,0.5-0.9,1.4-0.4,2.1c0.5,0.7,1.4,0.9,2.1,0.4L6,15.4v12.3c0,4.6,3.7,8.3,8.3,8.3h11.4c4.6,0,8.3-3.7,8.3-8.3V15.9l2.1,1.5c0.3,0.2,0.6,0.3,0.9,0.3c0.5,0,0.9-0.2,1.2-0.6C38.7,16.4,38.5,15.5,37.9,15z M31,27.7c0,2.9-2.4,5.3-5.3,5.3H14.3C11.4,33,9,30.6,9,27.7V13.3l10.6-7.2c0.2-0.2,0.5-0.2,0.8,0L31,13.7V27.7z"></path></svg>
+                      <div class="SidebarItemRow-name" title="Home">
+                        Home
+                      </div></a><a class="SidebarItemRow--heightLarge SidebarItemRow--leftAlign SidebarItemRow SidebarTopNavLinks-myTasksButton BaseLink" href="#"><svg class="NavIcon SidebarTopNavLinks-typeIcon CheckNavIcon" viewbox="0 0 40 40">
+                    <path d="M20,2.5C10.4,2.5,2.5,10.4,2.5,20S10.4,37.5,20,37.5S37.5,29.6,37.5,20S29.6,2.5,20,2.5z M20,34.5C12,34.5,5.5,28,5.5,20S12,5.5,20,5.5S34.5,12,34.5,20S28,34.5,20,34.5z M27.7,15c0.6,0.6,0.6,1.5,0,2.1l-10,10c-0.2,0.2-0.6,0.3-1,0.3c-0.4,0-0.8-0.1-1.1-0.4l-4.1-4.1c-0.6-0.6-0.6-1.5,0-2.1c0.6-0.6,1.5-0.6,2.1,0l3.1,3.1l8.9-8.9C26.2,14.4,27.1,14.4,27.7,15z"></path></svg>
+                    <div class="SidebarItemRow-name" title="My Tasks">
+                      My Tasks
+                    </div></a><a class="SidebarItemRow--heightLarge SidebarItemRow--leftAlign SidebarItemRow SidebarTopNavLinks-notificationsButton BaseLink" href="#"><svg class="NavIcon SidebarTopNavLinks-typeIcon BellNavIcon" viewbox="0 0 40 40">
+                    <path d="M7.5,32L7.5,32h-1c-1.5,0-2.8-0.8-3.4-2c-0.8-1.5-0.4-3.4,0.9-4.5c1.2-1,1.9-2.4,2-3.9v-6.1C6,8.1,12.3,2,20,2s14,6.1,14,13.5V22c0.2,1.4,0.9,2.6,2,3.5c1.3,1.1,1.7,2.9,0.9,4.5c-0.6,1.2-2,2-3.4,2h-0.9H7.5z M7.6,29h25.8c0.3,0,0.7-0.2,0.8-0.4c0.2-0.4,0-0.7-0.2-0.8l0,0c-1.6-1.4-2.7-3.3-3-5.5c0-0.1,0-0.1,0-0.2v-6.6C31,9.7,26.1,5,20,5S9,9.7,9,15.5v6.1v0.1c-0.2,2.4-1.3,4.5-3.1,6c-0.2,0.2-0.3,0.5-0.2,0.8C5.9,28.8,6.2,29,6.5,29H7.6L7.6,29z M24.7,34c-0.7,1.9-2.5,3.2-4.7,3.2s-4-1.3-4.7-3.2H24.7z"></path></svg>
+                    <div class="SidebarItemRow-name" title="Inbox">
+                      Inbox<span class="NotificationsIndicator SidebarTopNavLinks-notificationsButton--indicator"></span>
+                    </div></a><a class="SidebarItemRow--heightLarge SidebarItemRow--leftAlign SidebarItemRow SidebarTopNavLinks-myPortfoliosbutton BaseLink" href="#"><svg class="NavIcon SidebarTopNavLinks-typeIcon PortfolioNavIcon" viewbox="0 0 40 40">
+                    <path d="M22 19V33C22 34.1 21.1 35 20 35C18.9 35 18 34.1 18 33V19C18 17.9 18.9 17 20 17C21.1 17 22 17.9 22 19ZM10 5C8.9 5 8 5.9 8 7V33C8 34.1 8.9 35 10 35C11.1 35 12 34.1 12 33V7C12 5.9 11.1 5 10 5ZM30 11C28.9 11 28 11.9 28 13V33C28 34.1 28.9 35 30 35C31.1 35 32 34.1 32 33V13C32 11.9 31.1 11 30 11Z"></path></svg>
+                    <div class="SidebarItemRow-name" title="Portfolios">
+                      Portfolios
+                    </div></a><a class="SidebarItemRow--heightLarge SidebarItemRow--leftAlign SidebarItemRow SidebarTopNavLinks-goalsButton BaseLink" href="#"><svg class="NavIcon SidebarTopNavLinks-typeIcon GoalNavIcon" viewbox="0 0 40 40">
+                    <path d="M35.6,30.1l-6.2-9.6C31,18.5,32,15.9,32,13c0-6.6-5.4-12-12-12C13.4,1,8,6.4,8,13c0,2.9,1,5.5,2.7,7.6l-6.2,9.6 c-1.2,1.8-1.3,4-0.2,5.9c1,1.9,2.9,3,5.1,3h21.5c2.1,0,4-1.1,5.1-3S36.7,31.9,35.6,30.1z M11,13c0-5,4-9,9-9c5,0,9,4,9,9 c0,1.8-0.5,3.5-1.4,4.9l-2.7-4.2c-1.1-1.6-2.9-2.6-4.8-2.6c-1.9,0-3.7,1-4.8,2.6l-2.7,4.2C11.5,16.5,11,14.8,11,13z M25.5,20.2 C23.9,21.3,22.1,22,20,22s-3.9-0.7-5.5-1.9l3.2-4.8c0.5-0.8,1.4-1.2,2.3-1.2c0.9,0,1.8,0.5,2.3,1.2L25.5,20.2z M33.2,34.6 c-0.5,0.9-1.4,1.4-2.4,1.4H9.2c-1,0-1.9-0.5-2.4-1.4c-0.5-0.9-0.4-1.9,0.1-2.8l6-9.1c2,1.5,4.4,2.3,7.1,2.3c2.7,0,5.1-0.9,7.1-2.3 l6,9.1C33.6,32.6,33.7,33.7,33.2,34.6z"></path></svg>
+                    <div class="SidebarItemRow-name" title="Goals">
+                      Goals
+                    </div></a>
+                  </div>
+                  <div class="CustomScrollbarScrollable Sidebar-customScrollbarScrollable">
+                    <div class="Scrollable--withCompositingLayer Scrollable Scrollable--vertical CustomScrollbarScrollable-scrollable Sidebar-scrollable" tabindex="-1">
+                      <div class="ResizeListener">
+                        <div class="ResizeListener-expand">
+                          <div class="ResizeListener-expandChild"></div>
+                        </div>
+                        <div class="ResizeListener-shrink">
+                          <div class="ResizeListener-shrinkChild"></div>
+                        </div>
+                      </div>
+                      <div class="CustomScrollbarScrollable-content">
+                        <div class="SidebarCollapsibleSection SidebarFavoritesAndMore">
+                          <button aria-expanded="false" class="SidebarCollapsibleHeader--collapsed SidebarCollapsibleHeader"><span class="SidebarCollapsibleHeader-name">Favorites</span><svg class="MiniIcon SidebarCollapsibleHeader-toggle ArrowDownMiniIcon" viewbox="0 0 24 24">
+                            <path d="M3.5,8.9c0-0.4,0.1-0.7,0.4-1C4.5,7.3,5.4,7.2,6,7.8l5.8,5.2l6.1-5.2C18.5,7.3,19.5,7.3,20,8c0.6,0.6,0.5,1.5-0.1,2.1 l-7.1,6.1c-0.6,0.5-1.4,0.5-2,0L4,10.1C3.6,9.8,3.5,9.4,3.5,8.9z"></path></svg></button>
+                        </div>
+                        <div class="SidebarCollapsibleSection--isExpanded SidebarCollapsibleSection SidebarReports">
+                          <button aria-expanded="true" class="SidebarCollapsibleHeader"><span class="SidebarCollapsibleHeader-name">Reports</span><svg class="MiniIcon SidebarCollapsibleHeader-toggle ArrowDownMiniIcon" viewbox="0 0 24 24">
+                            <path d="M3.5,8.9c0-0.4,0.1-0.7,0.4-1C4.5,7.3,5.4,7.2,6,7.8l5.8,5.2l6.1-5.2C18.5,7.3,19.5,7.3,20,8c0.6,0.6,0.5,1.5-0.1,2.1 l-7.1,6.1c-0.6,0.5-1.4,0.5-2,0L4,10.1C3.6,9.8,3.5,9.4,3.5,8.9z"></path></svg></button>
+                          <div class="SidebarReportsItemRow is-selected">
+                            <span class="SidebarReportsItemRow-name" title="Tasks I've Created">Tasks I've Created</span>
+                          </div>
+                          <div class="SidebarReportsItemRow">
+                            <span class="SidebarReportsItemRow-name" title="Tasks I've Assigned to Others">Tasks I've Assigned to Others</span><svg class="Icon SidebarReportsItemRow-upgradeIcon PremiumSmallIcon" viewbox="0 0 32 32">
+                            <path d="M27,11c0-6.1-4.9-11-11-11S5,4.9,5,11c0,2.9,1.1,5.6,3,7.5V31c0,0.4,0.2,0.7,0.5,0.9s0.7,0.2,1,0l6.5-3.7l6.5,3.7C22.7,32,22.8,32,23,32s0.3,0,0.5-0.1c0.3-0.2,0.5-0.5,0.5-0.9V18.5C25.9,16.6,27,13.9,27,11z M16,2c5,0,9,4,9,9s-4,9-9,9s-9-4-9-9S11,2,16,2z M16.5,26.1c-0.3-0.2-0.7-0.2-1,0L10,29.3v-9.1c1.7,1.1,3.8,1.8,6,1.8s4.3-0.7,6-1.8v9.1L16.5,26.1z"></path></svg>
+                          </div>
+                          <div class="SidebarReportsItemRow">
+                            <span class="SidebarReportsItemRow-name" title="Recently Completed Tasks">Recently Completed Tasks</span><svg class="Icon SidebarReportsItemRow-upgradeIcon PremiumSmallIcon" viewbox="0 0 32 32">
+                            <path d="M27,11c0-6.1-4.9-11-11-11S5,4.9,5,11c0,2.9,1.1,5.6,3,7.5V31c0,0.4,0.2,0.7,0.5,0.9s0.7,0.2,1,0l6.5-3.7l6.5,3.7C22.7,32,22.8,32,23,32s0.3,0,0.5-0.1c0.3-0.2,0.5-0.5,0.5-0.9V18.5C25.9,16.6,27,13.9,27,11z M16,2c5,0,9,4,9,9s-4,9-9,9s-9-4-9-9S11,2,16,2z M16.5,26.1c-0.3-0.2-0.7-0.2-1,0L10,29.3v-9.1c1.7,1.1,3.8,1.8,6,1.8s4.3-0.7,6-1.8v9.1L16.5,26.1z"></path></svg>
+                          </div>
+                          <div class="SidebarReportsItemRow">
+                            <span class="SidebarReportsItemRow-name" title="Messages I've Sent">Messages I've Sent</span>
+                          </div>
+                          <div class="SidebarReportsItemRow">
+                            <span class="SidebarReportsItemRow-name" title="Messages I've Received">Messages I've Received</span>
+                          </div><span aria-disabled="false" class="SidebarReports-upgradeLink SidebarHiddenLinkButton" role="button" tabindex="0">Upgrade for more reporting</span>
+                        </div>
+                        <div class="SidebarCollapsibleSection SidebarTeamsList--collapsed SidebarTeamsList">
+                          <button aria-expanded="false" class="SidebarCollapsibleHeader--collapsed SidebarCollapsibleHeader"><span class="SidebarCollapsibleHeader-name">Teams</span><svg class="MiniIcon SidebarCollapsibleHeader-toggle ArrowDownMiniIcon" viewbox="0 0 24 24">
+                            <path d="M3.5,8.9c0-0.4,0.1-0.7,0.4-1C4.5,7.3,5.4,7.2,6,7.8l5.8,5.2l6.1-5.2C18.5,7.3,19.5,7.3,20,8c0.6,0.6,0.5,1.5-0.1,2.1 l-7.1,6.1c-0.6,0.5-1.4,0.5-2,0L4,10.1C3.6,9.8,3.5,9.4,3.5,8.9z"></path></svg></button>
+                          <div class="SidebarTeamsList-teams">
+                            <div class="DropTargetRow--isSpreadsheetGridDisabled DropTargetRow SidebarTeamMembership SidebarTeamMembership-dropTargetRow is-expanded">
+                              <div class="DropTargetRow--isSpreadsheetGridDisabled DropTargetRow SidebarTeamMembership-droppableTeamHeader">
+                                <div class="DragContainer SidebarTeamMembership-draggableTeamHeader" draggable="true">
+                                  <a class="SidebarTeamMembershipHeader SidebarTeamMembership-header BaseLink" href="#">
+                                    <div aria-label="Collapse" class="SidebarTeamMembershipHeader-zip" role="button" tabindex="0">
+                                      <svg class="MiniIcon SidebarTeamMembershipHeader-zipIcon DownCaretMiniIcon" viewbox="0 0 24 24">
+                                        <path d="M20.9,9c-0.2-0.6-0.8-1-1.4-1h-15C3.9,8,3.4,8.4,3.1,9C2.9,9.5,3,10.2,3.5,10.6l7.1,7.1c0.4,0.4,0.9,0.6,1.5,0.6c0.5,0,1.1-0.2,1.5-0.6l7.1-7.1C21,10.2,21.1,9.5,20.9,9z"></path></svg>
+                                    </div>
+                                    <div class="SidebarTeamMembershipHeader-teamName">
+                                      Morty
+                                    </div>
+                                    <div aria-expanded="false" aria-label="More actions" class="SidebarTeamSettingsMenu-menuButton" role="button" tabindex="0">
+                                      <svg class="MiniIcon MoreMiniIcon" viewbox="0 0 24 24">
+                                        <path d="M5,12c0,1.4-1.1,2.5-2.5,2.5S0,13.4,0,12s1.1-2.5,2.5-2.5S5,10.6,5,12z M12,9.5c-1.4,0-2.5,1.1-2.5,2.5s1.1,2.5,2.5,2.5s2.5-1.1,2.5-2.5S13.4,9.5,12,9.5z M21.5,9.5c-1.4,0-2.5,1.1-2.5,2.5s1.1,2.5,2.5,2.5S24,13.4,24,12S22.9,9.5,21.5,9.5z"></path></svg>
+                                    </div>
+                                    <div aria-expanded="false" aria-label="Add to this team" class="SidebarTeamDetailsAddMenuButton-addButton SidebarTeamMembershipHeader-addMenuButton" role="button" tabindex="0">
+                                      <svg class="MiniIcon SidebarTeamDetailsAddMenuButton-addButtonIcon PlusMiniIcon" viewbox="0 0 24 24">
+                                        <path d="M10,10V4c0-1.1,0.9-2,2-2s2,0.9,2,2v6h6c1.1,0,2,0.9,2,2s-0.9,2-2,2h-6v6c0,1.1-0.9,2-2,2s-2-0.9-2-2v-6H4c-1.1,0-2-0.9-2-2s0.9-2,2-2H10z"></path></svg>
+                                    </div></a>
+                                </div>
+                              </div>
+                              <div class="SidebarTeamMembership-contents">
+                                <div class="SidebarTeamMembersList">
+                                  <div class="SidebarTeamMembersList-facepileRow">
+                                    <div class="Facepile Facepile--default SidebarTeamMembersList-facepile">
+                                      <div class="Facepile-avatar--clickable Facepile-item Avatar-baseButton Avatar" role="button" tabindex="0">
+                                        <div class="Avatar AvatarPhoto AvatarPhoto--small AvatarPhoto--color0" role="img" style="background-image: url(&quot;https://s3.amazonaws.com/profile_photos/1198192670736752.erkAhZqFXTCKdCvN36ec_60x60.png&quot;);"></div>
+                                      </div>
+                                      <div class="Facepile-avatar--clickable Facepile-item Avatar-baseButton Avatar" role="button" tabindex="0">
+                                        <div class="Avatar AvatarPhoto AvatarPhoto--small AvatarPhoto--color6" role="img" style="background-image: url(&quot;https://s3.amazonaws.com/profile_photos/1199345492580009.2yAvMqiVVCNFXiQOMurp_60x60.png&quot;);"></div>
+                                      </div>
+                                      <div class="Facepile-avatar--clickable Facepile-item Avatar-baseButton Avatar" role="button" tabindex="0">
+                                        <div class="Avatar AvatarPhoto AvatarPhoto--small AvatarPhoto--color0" role="img">
+                                          JL
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="SidebarTeamDetailsProjectsList">
+                                  <div class="DropTargetRow--isSpreadsheetGridDisabled DropTargetRow SidebarDraggableItemRowStructure-dropTarget--sidebarItem">
+                                    <div class="DropTargetRow--isSpreadsheetGridDisabled DropTargetRow SidebarDraggableItemRowStructure-dropTarget--gridItem">
+                                      <div class="DragContainer" draggable="true">
+                                        <a class="SidebarItemRow--colorHotPink SidebarItemRow BaseLink" href="#"><svg class="MiniIcon ColorFillIcon--none ColorFillIcon ColorFillIcon--colorHotPink SidebarItemRow-typeIcon SidebarItemRow-favoriteIcon SquircleMiniIcon" viewbox="0 0 24 24">
+                                          <path d="M10.4,4h3.2c2.2,0,3,0.2,3.9,0.7c0.8,0.4,1.5,1.1,1.9,1.9s0.7,1.6,0.7,3.9v3.2c0,2.2-0.2,3-0.7,3.9c-0.4,0.8-1.1,1.5-1.9,1.9s-1.6,0.7-3.9,0.7h-3.2c-2.2,0-3-0.2-3.9-0.7c-0.8-0.4-1.5-1.1-1.9-1.9c-0.4-1-0.6-1.8-0.6-4v-3.2c0-2.2,0.2-3,0.7-3.9C5.1,5.7,5.8,5,6.6,4.6C7.4,4.2,8.2,4,10.4,4z"></path></svg>
+                                          <div class="SidebarItemRow-name" title="Product">
+                                            Product
+                                          </div>
+                                          <div aria-expanded="false" aria-label="Expand" class="SidebarItemRow-menuButton" role="button" tabindex="0">
+                                            <svg class="MiniIcon MoreMiniIcon" viewbox="0 0 24 24">
+                                              <path d="M5,12c0,1.4-1.1,2.5-2.5,2.5S0,13.4,0,12s1.1-2.5,2.5-2.5S5,10.6,5,12z M12,9.5c-1.4,0-2.5,1.1-2.5,2.5s1.1,2.5,2.5,2.5s2.5-1.1,2.5-2.5S13.4,9.5,12,9.5z M21.5,9.5c-1.4,0-2.5,1.1-2.5,2.5s1.1,2.5,2.5,2.5S24,13.4,24,12S22.9,9.5,21.5,9.5z"></path></svg>
+                                          </div></a>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="CustomScrollbarScrollable-track" style="display: none;">
+                      <div class="CustomScrollbarScrollable-thumb"></div>
+                    </div>
+                  </div>
+                  <div class="Sidebar-learningHubButtonContainer">
+                    <div class="AbstractThemeableRectangularButton--isEnabled AbstractThemeableRectangularButton AbstractThemeableRectangularButton--large SidebarLearningHubButton SidebarLearningHubButton--maxHeight" role="button" tabindex="0">
+                      <svg class="MiniIcon--large MiniIcon AbstractThemeableRectangularButton-leftIcon SidebarLearningHubButton-icon QuestionMarkCircleMiniIcon" viewbox="0 0 24 24">
+                        <path d="M11.7,14.9c0.3,0,0.6,0.1,0.8,0.3c0.2,0.2,0.3,0.4,0.3,0.8c0,0.3-0.1,0.6-0.3,0.8c-0.2,0.2-0.5,0.3-0.8,0.3s-0.6-0.1-0.8-0.3c-0.2-0.2-0.3-0.4-0.3-0.8c0-0.3,0.1-0.6,0.3-0.8C11.1,15,11.4,14.9,11.7,14.9z M12,7c0.9,0,1.6,0.2,2.1,0.7C14.7,8.2,15,8.8,15,9.5c0,1-0.5,1.8-1.4,2.3c-0.4,0.3-0.7,0.5-0.9,0.7c-0.2,0.2-0.2,0.5-0.2,0.8v0.4h-1.4l0-0.5c0-0.5,0.1-0.9,0.3-1.2c0.2-0.3,0.5-0.6,1-0.9c0.4-0.2,0.7-0.5,0.9-0.7c0.2-0.2,0.2-0.5,0.2-0.9c0-0.4-0.1-0.7-0.4-0.9c-0.3-0.2-0.6-0.4-1.1-0.4c-0.5,0-0.8,0.1-1.1,0.4c-0.3,0.3-0.4,0.6-0.5,1H9c0-0.8,0.3-1.5,0.8-2C10.4,7.3,11.1,7,12,7z"></path></svg>Help &amp; getting started
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="AsanaMain-asanaPage" id="asana_main_page" role="main" tabindex="-1">
+                <div class="AsanaPageTopbar AsanaPageTopbar--withoutShadow">
+                  <div class="">
+                    <div class="ExpandSidebarButton--shouldHide ExpandSidebarButton">
+                      <div aria-label="Expand sidebar" class="AbstractThemeableIconButton--isEnabled AbstractThemeableIconButton AbstractThemeableIconButton--large SubtleIconButton" role="button" tabindex="0">
+                        <svg class="Icon ThinBurgerIcon" viewbox="0 0 32 32">
+                          <path d="M31,4H1C0.4,4,0,3.6,0,3s0.4-1,1-1h30c0.6,0,1,0.4,1,1S31.6,4,31,4z M31,16H1c-0.6,0-1-0.4-1-1s0.4-1,1-1h30c0.6,0,1,0.4,1,1S31.6,16,31,16z M31,28H1c-0.6,0-1-0.4-1-1s0.4-1,1-1h30c0.6,0,1,0.4,1,1S31.6,28,31,28z"></path></svg>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="AsanaPageTopbar-pageHeader">
+                    <div class="TopbarPageHeaderStructure">
+                      <div class="TopbarPageHeaderStructure-titleAndNav">
+                        <div class="TopbarPageHeaderStructure-titleRow--withNav TopbarPageHeaderStructure-titleRow">
+                          <h1 class="Typography--truncate TopbarPageHeaderStructure-title Typography Typography--colorDarkGray2 Typography--h4 Typography--fontWeightMedium">Tasks I've&nbsp;created</h1>
+                          <div aria-expanded="false" aria-label="Show options" class="AbstractThemeableIconButton--isEnabled AbstractThemeableIconButton AbstractThemeableIconButton--medium SubtleIconButton TopbarPageHeaderStructure-dropdownMenu PageHeaderDropdownMenuButton" role="button" tabindex="0">
+                            <svg class="Icon DownIcon" viewbox="0 0 32 32">
+                              <path d="M16,22.5c-0.3,0-0.7-0.1-0.9-0.3l-11-9c-0.6-0.5-0.7-1.5-0.2-2.1s1.5-0.7,2.1-0.2l10,8.2l10-8.2c0.6-0.5,1.6-0.4,2.1,0.2c0.5,0.6,0.4,1.6-0.2,2.1l-11,9C16.7,22.4,16.3,22.5,16,22.5z"></path></svg>
+                          </div>
+                        </div>
+                        <div class="TopbarPageHeaderStructure-navMenuRow">
+                          <nav class="TabNavigationBar SearchPageHeader-tabNavigationBar">
+                            <ul class="TabNavigationBar-list TabNavigationBar-list--defaultTabWidth">
+                              <li aria-selected="true" class="Tab TabNavigationBar-tab"><span class="Tab-link" role="button" tabindex="0"><span class="Tab-selectableTab--isSelected Tab-selectableTab--isClickable Tab-selectableTab">List</span></span></li>
+                              <li aria-selected="false" class="Tab TabNavigationBar-tab"><span class="Tab-link" role="button" tabindex="0"><span class="Tab-selectableTab--isClickable Tab-selectableTab">Calendar</span></span></li>
+                            </ul>
+                          </nav>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="TopbarPageHeaderGlobalActions AsanaPageTopbar-globalActions">
+                    <div class="TopbarSearchTypeahead">
+                      <div class="TopbarSearchTypeahead-background">
+                        <input aria-autocomplete="list" aria-expanded="false" aria-owns="lui_4" autocomplete="off" class="TextInputBase SearchTextInput TopbarSearchTypeahead-searchInput" id="topbar_search_input" placeholder="Search" role="combobox" type="text" value=""><svg class="Icon TopbarSearchTypeahead-icon MagnifyerIcon" viewbox="0 0 32 32">
+                        <path d="M29.707,28.293l-8.256-8.256C23.042,18.13,24,15.677,24,13c0-6.075-4.925-11-11-11S2,6.925,2,13s4.925,11,11,11c2.677,0,5.13-0.958,7.037-2.549l8.256,8.256L29.707,28.293z M4,13c0-4.963,4.037-9,9-9c4.963,0,9,4.037,9,9s-4.037,9-9,9C8.037,22,4,17.963,4,13z"></path></svg>
+                      </div>
+                    </div>
+                    <div aria-expanded="false" aria-label="Create new" class="AbstractThemeableIconButton--isEnabled AbstractThemeableIconButton AbstractThemeableIconButton--medium OmnibuttonCorangeIconButton Omnibutton TopbarPageHeaderGlobalActions-omnibuttonWithoutQuestionMenu" role="button" tabindex="0">
+                      <svg class="Icon PlusIcon" viewbox="0 0 32 32">
+                        <path d="M26,14h-8V6c0-1.1-0.9-2-2-2l0,0c-1.1,0-2,0.9-2,2v8H6c-1.1,0-2,0.9-2,2l0,0c0,1.1,0.9,2,2,2h8v8c0,1.1,0.9,2,2,2l0,0c1.1,0,2-0.9,2-2v-8h8c1.1,0,2-0.9,2-2l0,0C28,14.9,27.1,14,26,14z"></path></svg>
+                    </div>
+                    <div class="AbstractThemeableRectangularButton--isEnabled AbstractThemeableRectangularButton AbstractThemeableRectangularButton--large UpgradeButton TopbarContingentUpgradeButton-button TopbarPageHeaderGlobalActions-upgradeButton" role="button" tabindex="0">
+                      Upgrade
+                    </div><a aria-controls="lui_6" aria-expanded="false" class="TopbarPageHeaderGlobalActions-settingsMenuButton DeprecatedAnchor" id="lui_5">
+                    <div class="TopbarPageHeaderGlobalActions-settingsMenuAvatar Avatar AvatarPhoto AvatarPhoto--small AvatarPhoto--color7" role="img">
+                      NR
+                    </div></a>
+                  </div>
+                </div>
+                <div class="FullWidthPageStructureWithDetailsOverlay FullWidthPageStructureWithDetailsOverlay--withDetailsOverlayOpen FullWidthPageStructureWithDetailsOverlay--shrinkMainContentForOverlay SearchListPage">
+                  <div class="FullWidthPageStructureWithDetailsOverlay-fullWidth">
+                    <div class="FullWidthPageStructureWithDetailsOverlay-mainContent">
+                      <div class="PageToolbarStructure--withSeparatorDots PageToolbarStructure--withShadow PageToolbarStructure SearchGridPageToolbar">
+                        <div class="PageToolbarStructure-leftChildren">
+                          <div class="PageToolbarInfoDisplay">
+                            5 search results
+                          </div>
+                        </div>
+                        <div class="PageToolbarStructure-rightChildren"></div>
+                      </div>
+                      <div class="SpreadsheetGridScroller-container" role="grid">
+                        <div class="SpreadsheetGridHeaderStructure" role="row" style="padding-right: 0px;">
+                          <div class="SpreadsheetGridHeaderStructure-left" style="width: 569px;">
+                            <div class="SpreadsheetHeaderLeftStructure--withDragToResize SpreadsheetHeaderLeftStructure">
+                              <div class="SpreadsheetHeaderLeftStructure-taskNameHeadingBorder" role="columnheader">
+                                <div class="SpreadsheetHeaderLeftStructure-taskNameHeading">
+                                  Task name
+                                </div>
+                                <div class="SpreadsheetResizeDragHandle-anchor"></div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="SpreadsheetGridHeaderStructure-right" style="left: 569px; right: 0px;">
+                            <div class="Scrollable--withCompositingLayer Scrollable Scrollable--horizontal SpreadsheetGridHeaderStructure-scrollable" tabindex="-1">
+                              <div class="SpreadsheetGridHeaderStructure-scrollContent">
+                                <div class="SpreadsheetHeaderRightStructure--withRightGutter SpreadsheetHeaderRightStructure">
+                                  <div class="SpreadsheetFieldHeading SpreadsheetSearchGridHeader-fieldHeading SpreadsheetSearchGridHeader-fieldHeading--assignee" role="columnheader" style="width: 120px;" tabindex="0">
+                                    <div class="SpreadsheetFieldHeading-fieldNameContainer">
+                                      <div class="SpreadsheetFieldHeading-fieldName">
+                                        Assignee
+                                      </div>
+                                    </div>
+                                    <div class="SpreadsheetResizeDragHandle-anchor"></div>
+                                  </div>
+                                  <div class="SpreadsheetFieldHeading SpreadsheetSearchGridHeader-fieldHeading SpreadsheetSearchGridHeader-fieldHeading--dueDate" role="columnheader" style="width: 120px;" tabindex="0">
+                                    <div class="SpreadsheetFieldHeading-fieldNameContainer">
+                                      <div class="SpreadsheetFieldHeading-fieldName">
+                                        Due date
+                                      </div>
+                                    </div>
+                                    <div class="SpreadsheetResizeDragHandle-anchor"></div>
+                                  </div>
+                                  <div class="SpreadsheetFieldHeading SpreadsheetSearchGridHeader-fieldHeading SpreadsheetSearchGridHeader-fieldHeading--projects" role="columnheader" style="width: 240px;" tabindex="0">
+                                    <div class="SpreadsheetFieldHeading-fieldNameContainer">
+                                      <div class="SpreadsheetFieldHeading-fieldName">
+                                        Projects
+                                      </div>
+                                    </div>
+                                    <div class="SpreadsheetResizeDragHandle-anchor"></div>
+                                  </div>
+                                  <div class="SpreadsheetFieldHeading SpreadsheetSearchGridHeader-fieldHeading SpreadsheetSearchGridHeader-fieldHeading--tags" role="columnheader" style="width: 180px;" tabindex="0">
+                                    <div class="SpreadsheetFieldHeading-fieldNameContainer">
+                                      <div class="SpreadsheetFieldHeading-fieldName">
+                                        Tags
+                                      </div>
+                                    </div>
+                                    <div class="SpreadsheetResizeDragHandle-anchor"></div>
+                                  </div>
+                                  <div class="SpreadsheetPlaceholderCell--withoutRightBorder SpreadsheetPlaceholderCell--withoutBottomBorder SpreadsheetPlaceholderCell SpreadsheetSearchGridHeader-addFieldPlaceholder" style="width: 50px;"></div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="Scrollable--withCompositingLayer Scrollable Scrollable--vertical SpreadsheetGridScroller-verticalScroller" tabindex="-1">
+                          <div class="Scrollable Scrollable--horizontal SpreadsheetGridScroller-horizontalScroller" tabindex="-1">
+                            <div class="SpreadsheetGridDropTarget-wrapper">
+                              <div class="SpreadsheetRow SpreadsheetRow--enabled SpreadsheetGridDropTarget">
+                                <div class="SpreadsheetRow-stickyCell" style="width: 569px; background: transparent;">
+                                  <div class="SpreadsheetGridDropTarget-stickyCell"></div>
+                                </div>
+                                <div class="SpreadsheetRow-stickyCellPlaceholder" style="min-width: 569px; width: 569px;"></div>
+                                <div class="SpreadsheetGridDropTarget-rightChild" style=""></div>
+                              </div>
+                            </div>
+                            <div class="SpreadsheetGridContents--hasComplete SpreadsheetGridContents--shouldHideOtherCells SpreadsheetGridContents SpreadsheetSearchGrid-spreadsheetGridContents SpreadsheetSearchGrid-spreadsheetGridContents--detailsOverlayVisible">
+                              <div tabindex="-1">
+                                <div class="TaskGroup--withSpreadsheetGridEnabled TaskGroup">
+                                  <div class="SpreadsheetItemList SpreadsheetSearchGrid-taskList">
+                                    <div class="ContextMenuTarget-contextMenuEventListener SpreadsheetTaskRow-RootTaskContextMenuTarget">
+                                      <div>
+                                        <div class="SpreadsheetRow SpreadsheetRow--withShadedBackground SpreadsheetRow--enabled SpreadsheetRow--withRightGutter SpreadsheetTaskRow" role="row">
+                                          <div class="SpreadsheetRow-stickyCell" style="width: 569px; background: transparent;">
+                                            <div aria-label="task name for Give feedback on mockup" class="SpreadsheetCell--isHighlighted SpreadsheetCell--withShadedBackground SpreadsheetCell--withoutLeftBorder SpreadsheetCell SpreadsheetGridTaskNameCell SpreadsheetTaskRow-nameCell" id="highlightedCell" role="gridcell" tabindex="0">
+                                              <div class="SpreadsheetGridTaskNameCell-dragHandlePlaceholder"></div>
+                                              <div class="TaskRowCompletionStatus-checkbox--enabled TaskRowCompletionStatus-checkbox TaskRowCompletionStatus SpreadsheetGridTaskNameCell-completionStatus">
+                                                <svg class="CompoundIcon--small CompoundIcon TaskCompletionCompoundIcon TaskCompletionStatusIndicator--incomplete TaskCompletionStatusIndicator TaskRowCompletionStatus-taskCompletionIcon--incomplete TaskRowCompletionStatus-taskCompletionIcon" viewbox="0 0 32 32">
+                                                  <path class="CompoundIcon-outer" d="M31,16c0,8.3-6.7,15-15,15S1,24.3,1,16S7.7,1,16,1S31,7.7,31,16z"></path>
+                                                  <path class="CompoundIcon-inner" d="M13.4,22.1c-0.3,0-0.5-0.1-0.7-0.3l-3.9-3.9c-0.4-0.4-0.4-1,0-1.4s1-0.4,1.4,0l3.1,3.1l8.1-8.1c0.4-0.4,1-0.4,1.4,0 s0.4,1,0,1.4l-8.9,8.9C13.9,22,13.7,22.1,13.4,22.1z"></path></svg>
+                                              </div>
+                                              <div class="DomainUserAvatar DomainUserAvatar--isDisabled is-alwaysVisible SpreadsheetGridTaskNameCell-miniAssignee">
+                                                <div class="DomainUserAvatar-avatar Avatar AvatarPhoto AvatarPhoto--small AvatarPhoto--color7" role="img">
+                                                  NR
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="SpreadsheetGridScroller-horizontalScrollbarPlaceholder" style="height: 1px;"></div>
+                        <div class="ScrollbarSizeReference"></div>
+                        <div class="ResizeListener">
+                          <div class="ResizeListener-expand">
+                            <div class="ResizeListener-expandChild"></div>
+                          </div>
+                          <div class="ResizeListener-shrink">
+                            <div class="ResizeListener-shrinkChild"></div>
+                          </div>
+                        </div>
+                        <div class="SpreadsheetGridScroller-horizontalScrollbarWrapper" style="height: 16px; right: 0px;">
+                          <div class="Scrollable--withCompositingLayer Scrollable Scrollable--horizontal SpreadsheetGridScroller-horizontalScrollbarScrollable" tabindex="-1">
+                            <div class="SpreadsheetGridScroller-horizontalScrollbarContent" style="min-width: 569px;"></div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="MultiSelectToolbarInnerRoot-transitionGroup"></div>
+                    </div>
+                    <div class="FullWidthPageStructureWithDetailsOverlay-detailsOverlay" style="max-width: calc(100% - 1px); width: calc(100% - 1px);">
+                      <div class="SingleTaskPaneSpreadsheet" data-task-id="1200110398331267" tabindex="-1">
+                        <div class="SingleTaskPaneToolbar SingleTaskPaneToolbar SingleTaskPaneSpreadsheet-header">
+                          <div class="SingleTaskPaneToolbarAnimation">
+                            <div class="SingleTaskPaneToolbarAnimation-container">
+                              <div class="SingleTaskPaneToolbarAnimation-row">
+                                <div aria-pressed="false" class="AbstractThemeableRectangularButton--isEnabled AbstractThemeableRectangularButton AbstractThemeableRectangularButton--medium TaskCompletionToggleButton--isNotPressed TaskCompletionToggleButton" role="button" tabindex="0">
+                                  <svg class="MiniIcon AbstractThemeableRectangularButton-leftIcon CheckLargeMiniIcon" viewbox="0 0 24 24">
+                                    <path d="M9.2,20c-0.5,0.5-1.3,0.5-1.9,0l-5.1-5.1c-0.4-0.5-0.4-1.3,0-1.9c0.4-0.5,1.3-0.5,1.9,0l4.1,4.1L19.7,5.7 c0.5-0.5,1.3-0.5,1.9,0s0.5,1.3,0,1.9L9.2,20z"></path></svg>Mark complete
+                                </div>
+                              </div>
+                              <div class="SingleTaskPaneToolbarAnimation-row--hidden SingleTaskPaneToolbarAnimation-row">
+                                <div class="TaskRowCompletionStatus-checkbox--enabled TaskRowCompletionStatus-checkbox TaskRowCompletionStatus SingleTaskPaneToolbarAnimation-completion TaskPaneToolbarStatusIcon">
+                                  <svg class="CompoundIcon--small CompoundIcon TaskCompletionCompoundIcon TaskCompletionStatusIndicator--incomplete TaskCompletionStatusIndicator TaskRowCompletionStatus-taskCompletionIcon--incomplete TaskRowCompletionStatus-taskCompletionIcon" viewbox="0 0 32 32">
+                                    <path class="CompoundIcon-outer" d="M31,16c0,8.3-6.7,15-15,15S1,24.3,1,16S7.7,1,16,1S31,7.7,31,16z"></path>
+                                    <path class="CompoundIcon-inner" d="M13.4,22.1c-0.3,0-0.5-0.1-0.7-0.3l-3.9-3.9c-0.4-0.4-0.4-1,0-1.4s1-0.4,1.4,0l3.1,3.1l8.1-8.1c0.4-0.4,1-0.4,1.4,0 s0.4,1,0,1.4l-8.9,8.9C13.9,22,13.7,22.1,13.4,22.1z"></path></svg>
+                                </div>
+                                <div class="SingleTaskPaneToolbarAnimation-title">
+                                  Give feedback on mockup using Markup Hero's Annotation API built into this Asana demo
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="SubtleHeartButton--isNotHearted SubtleHeartButton SingleTaskPaneToolbar-button">
+                            <div class="SubtleHeartButton-pulse"></div>
+                            <div aria-label="Click to like this task" class="AbstractThemeableRectangularButton--isEnabled AbstractThemeableRectangularButton--withNoLabel AbstractThemeableRectangularButton AbstractThemeableRectangularButton--medium AbstractCountWithIconButton--withRegularIcon AbstractCountWithIconButton SubtleCountWithIconButton SubtleHeartButton-button--isNotHearted SubtleHeartButton-button" role="button" tabindex="0">
+                              <svg class="Icon AbstractThemeableRectangularButton-rightIcon ThumbsUpLineIcon" viewbox="0 0 32 32">
+                                <path d="M29.6,13.3c-0.8-0.9-1.9-1.4-3.1-1.4h-6.4V7.5c0-1.9-0.9-3.8-2.5-4.9C16.9,2,15.9,1.8,15,2.1c-0.9,0.2-1.7,0.8-2,1.7L8.3,13.9H5c-1.7,0-3.1,1.4-3.1,3.1v10c0,1.7,1.4,3.1,3.1,3.1h2.9H9h15.9c2,0,3.7-1.5,4-3.5l1.6-10C30.7,15.4,30.4,14.2,29.6,13.3z M5,27.9c-0.5,0-0.9-0.4-0.9-0.9V17c0-0.5,0.4-0.9,0.9-0.9h2.9v11.8C7.9,27.9,5,27.9,5,27.9z M28.4,16.3l-1.6,10c-0.1,0.9-0.9,1.6-1.9,1.6H10.1V15.2L15,4.7c0.2-0.3,0.4-0.5,0.6-0.5c0.2,0,0.5-0.1,0.8,0.2c1,0.7,1.6,1.9,1.6,3.2v6.6h8.6c0.6,0,1.1,0.2,1.5,0.7C28.3,15.2,28.5,15.7,28.4,16.3z"></path></svg>
+                            </div>
+                          </div><span class="AddAttachmentsButton SingleTaskPaneToolbar-button"><input class="AddAttachmentsButton-hiddenFileInput" id="add_attachments_button_file_input_3" multiple tabindex="-1" type="file"></span>
+                          <div aria-disabled="false" aria-expanded="false" aria-label="Attachments: Add a file to this task, Give feedback on mockup" class="AbstractThemeableIconButton--isEnabled AbstractThemeableIconButton AbstractThemeableIconButton--medium SubtleIconButton" role="button" tabindex="0">
+															<span class="AddAttachmentsButton SingleTaskPaneToolbar-button"><svg class="Icon AttachVerticalIcon" viewbox="0 0 32 32">
+															<path d="M19,32c-3.9,0-7-3.1-7-7V10c0-2.2,1.8-4,4-4s4,1.8,4,4v9c0,0.6-0.4,1-1,1s-1-0.4-1-1v-9c0-1.1-0.9-2-2-2s-2,0.9-2,2v15c0,2.8,2.2,5,5,5s5-2.2,5-5V10c0-4.4-3.6-8-8-8s-8,3.6-8,8v5c0,0.6-0.4,1-1,1s-1-0.4-1-1v-5C6,4.5,10.5,0,16,0s10,4.5,10,10v15C26,28.9,22.9,32,19,32z"></path></svg></span>
+                          </div>
+                          <div aria-disabled="false" aria-label="Subtasks: Add a task within, Give feedback on mockup. Subtasks can have different assignees and due dates" class="AbstractThemeableIconButton--isEnabled AbstractThemeableIconButton AbstractThemeableIconButton--medium SubtleIconButton SingleTaskPaneToolbar-button SingleTaskPaneToolbar-subtaskButton" role="button" tabindex="0">
+                            <svg class="Icon SubtaskIcon" viewbox="0 0 32 32">
+                              <path d="M25,20c-2.4,0-4.4,1.7-4.9,4H11c-3.9,0-7-3.1-7-7v-5h16.1c0.5,2.3,2.5,4,4.9,4c2.8,0,5-2.2,5-5s-2.2-5-5-5c-2.4,0-4.4,1.7-4.9,4H4V3c0-0.6-0.4-1-1-1S2,2.4,2,3v14c0,5,4,9,9,9h9.1c0.5,2.3,2.5,4,4.9,4c2.8,0,5-2.2,5-5S27.8,20,25,20z M25,8c1.7,0,3,1.3,3,3s-1.3,3-3,3s-3-1.3-3-3S23.3,8,25,8z M25,28c-1.7,0-3-1.3-3-3s1.3-3,3-3s3,1.3,3,3S26.7,28,25,28z"></path></svg>
+                          </div>
+                          <div aria-label="Copy task link" class="AbstractThemeableIconButton--isEnabled AbstractThemeableIconButton AbstractThemeableIconButton--medium SubtleIconButton SingleTaskPaneToolbar-button SingleTaskPaneToolbar-copyLinkButton" role="button" tabindex="0">
+                            <svg class="Icon LinkIcon" viewbox="0 0 32 32">
+                              <path d="M9,32c-2.3,0-4.6-0.9-6.4-2.6c-3.5-3.5-3.5-9.2,0-12.7l4-4c0.4-0.4,1-0.4,1.4,0c0.4,0.4,0.4,1,0,1.4l-4,4c-2.7,2.7-2.7,7.2,0,9.9s7.2,2.7,9.9,0l4-4c2.7-2.7,2.7-7.2,0-9.9c-0.8-0.8-1.8-1.4-2.9-1.7c-0.5-0.2-0.8-0.7-0.7-1.3c0.2-0.5,0.7-0.8,1.3-0.7c1.4,0.4,2.7,1.2,3.7,2.2c3.5,3.5,3.5,9.2,0,12.7l-4,4C13.6,31.1,11.3,32,9,32z M16.6,21.6c-0.1,0-0.2,0-0.3,0c-1.4-0.4-2.7-1.2-3.7-2.2c-1.7-1.7-2.6-4-2.6-6.4s0.9-4.7,2.6-6.4l4-4c3.5-3.5,9.2-3.5,12.7,0s3.5,9.2,0,12.7l-4,4c-0.4,0.4-1,0.4-1.4,0s-0.4-1,0-1.4l4-4c2.7-2.7,2.7-7.2,0-9.9S20.7,1.3,18,4l-4,4c-1.3,1.4-2,3.1-2,5s0.7,3.6,2.1,5c0.8,0.8,1.8,1.4,2.9,1.7c0.5,0.2,0.8,0.7,0.7,1.3C17.5,21.4,17.1,21.6,16.6,21.6z"></path></svg>
+                          </div>
+                          <div aria-disabled="false" aria-expanded="false" aria-label="More actions for this task" class="AbstractThemeableIconButton--isEnabled AbstractThemeableIconButton AbstractThemeableIconButton--medium SubtleIconButton SingleTaskPaneExtraActionsButton SingleTaskPaneToolbar-button" role="button" tabindex="0">
+                            <svg class="Icon MoreIcon" viewbox="0 0 32 32">
+                              <path d="M16,13c1.7,0,3,1.3,3,3s-1.3,3-3,3s-3-1.3-3-3S14.3,13,16,13z M3,13c1.7,0,3,1.3,3,3s-1.3,3-3,3s-3-1.3-3-3S1.3,13,3,13z M29,13c1.7,0,3,1.3,3,3s-1.3,3-3,3s-3-1.3-3-3S27.3,13,29,13z"></path></svg>
+                          </div>
+                          <div aria-label="Close details" class="AbstractThemeableIconButton--isEnabled AbstractThemeableIconButton AbstractThemeableIconButton--medium SubtleIconButton SingleTaskPaneToolbar-closeButton SingleTaskPaneToolbar-closeButton--withSpreadsheetGrid SingleTaskPaneToolbar-button" role="button" tabindex="0">
+                            <svg class="Icon CloseIcon" viewbox="0 0 32 32">
+                              <path d="M2,14.5h18.4l-7.4-7.4c-0.6-0.6-0.6-1.5,0-2.1c0.6-0.6,1.5-0.6,2.1,0l10,10c0.6,0.6,0.6,1.5,0,2.1l-10,10c-0.3,0.3-0.7,0.4-1.1,0.4c-0.4,0-0.8-0.1-1.1-0.4c-0.6-0.6-0.6-1.5,0-2.1l7.4-7.4H2c-0.8,0-1.5-0.7-1.5-1.5C0.5,15.3,1.2,14.5,2,14.5z M28,3.5C28,2.7,28.7,2,29.5,2S31,2.7,31,3.5v25c0,0.8-0.7,1.5-1.5,1.5S28,29.3,28,28.5V3.5z"></path></svg>
+                          </div>
+                        </div>
+                        <div class="DropTargetAttachment SingleTaskPaneSpreadsheet-attachmentDropTarget">
+                          <div class="DynamicBorderScrollable DynamicBorderScrollable--canScrollDown SingleTaskPaneSpreadsheet-scrollable">
+                            <div class="Scrollable--withCompositingLayer Scrollable Scrollable--vertical DynamicBorderScrollable-scrollable" tabindex="-1">
+                              <div class="DynamicBorderScrollable-content SingleTaskPaneSpreadsheet-body SingleTaskPaneSpreadsheet-body--notIE">
+                                <div class="ResizeListener">
+                                  <div class="ResizeListener-expand">
+                                    <div class="ResizeListener-expandChild"></div>
+                                  </div>
+                                  <div class="ResizeListener-shrink">
+                                    <div class="ResizeListener-shrinkChild"></div>
+                                  </div>
+                                </div>
+                                <div class="SingleTaskPaneSpreadsheet-resizeListenerContainer">
+                                  <div class="ResizeListener">
+                                    <div class="ResizeListener-expand">
+                                      <div class="ResizeListener-expandChild"></div>
+                                    </div>
+                                    <div class="ResizeListener-shrink">
+                                      <div class="ResizeListener-shrinkChild"></div>
+                                    </div>
+                                  </div>
+                                  <div class="SingleTaskPaneBanners SingleTaskPaneSpreadsheet-banners"></div>
+                                  <div class="SingleObjectTitleInput SingleTaskPaneSpreadsheet-titleRow SingleTaskPaneSpreadsheet-titleRowInput">
+                                    <div class="AutogrowTextarea-container SingleObjectTitleInput-objectName">
+                                      <div aria-hidden="true" class="AutogrowTextarea-shadow">
+                                        Give feedback on mockup using Markup Hero's Annotation API built into this Asana demo
+                                      </div>
+                                      <textarea aria-label="Task Name" class="simpleTextarea--dynamic simpleTextarea AutogrowTextarea-input" placeholder="Write a task name" tabindex="0">Give feedback on mockup using Markup Hero's Annotation API built into this Asana demo</textarea>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="SingleTaskPaneSpreadsheet-premiumFeaturesSection">
+                                  <div class="SingleTaskPaneFields">
+                                    <div class="LabeledRowStructure SingleTaskPaneFields-assigneeRow">
+                                      <div class="LabeledRowStructure-left" style="width: 100px;">
+                                        <div class="LabeledRowStructure-labelContainer">
+                                          <label class="LabeledRowStructure-label">Assignee</label>
+                                        </div>
+                                      </div>
+                                      <div class="LabeledRowStructure-right">
+                                        <div class="LabeledRowStructure-content">
+                                          <div class="SingleTaskPaneFields-assigneeContainer">
+                                            <div class="TaskPaneAssigneeToken">
+                                              <div aria-disabled="false" aria-expanded="false" class="BaseCard--isValid BaseCard BaseSelectableCard--isNotSelected BaseSelectableCard--isEnabled BaseSelectableCard SubtleButtonCard SubtleTokenButton--editable SubtleTokenButton--subtle SubtleTokenButton AssigneeTokenButton--assigned AssigneeTokenButton AssigneeToken" role="button" tabindex="0">
+                                                <div class="SubtleTokenButton-leftIcon">
+                                                  <div class="AssigneeTokenButton-avatar Avatar AvatarPhoto AvatarPhoto--small AvatarPhoto--color7" role="img">
+                                                    NR
+                                                  </div>
+                                                </div>
+                                                <div class="AssigneeTokenButton-label">
+                                                  <span class="AssigneeToken-label"><span class="AssigneeToken-userNameLabel">Nicolas Russo-Larsson</span></span>
+                                                </div>
+                                                <div aria-label="Remove" class="RemoveButton--isEnabled RemoveButton SubtleTokenButton-removeButton RemoveButton--small" role="button" tabindex="0">
+                                                  <svg class="CompoundIcon--small CompoundIcon XCircleCompoundIcon" viewbox="0 0 32 32">
+                                                    <path class="CompoundIcon-outer" d="M31,16c0,8.3-6.7,15-15,15S1,24.3,1,16S7.7,1,16,1S31,7.7,31,16z"></path>
+                                                    <path class="CompoundIcon-inner" d="M22.5,20.7c0.5,0.5,0.5,1.3,0,1.8c-0.2,0.2-0.5,0.4-0.9,0.4s-0.6-0.1-0.9-0.4L16,17.8l-4.7,4.7c-0.2,0.2-0.5,0.4-0.9,0.4s-0.6-0.1-0.9-0.4C9,22,9,21.2,9.5,20.7l4.7-4.7l-4.7-4.7C9,10.8,9,10,9.5,9.5c0.2-0.2,0.5-0.4,0.9-0.4s0.6,0.1,0.9,0.4l4.7,4.7l4.7-4.7c0.2-0.2,0.5-0.4,0.9-0.4s0.6,0.1,0.9,0.4c0.5,0.5,0.5,1.3,0,1.8L17.8,16L22.5,20.7z"></path></svg>
+                                                </div>
+                                              </div>
+                                              <div class="TaskAssigneeShortcuts"></div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="LabeledRowStructure SingleTaskPaneFields-dueDateRow">
+                                      <div class="LabeledRowStructure-left" style="width: 100px;">
+                                        <div class="LabeledRowStructure-labelContainer">
+                                          <label class="LabeledRowStructure-label">Due date</label>
+                                        </div>
+                                      </div>
+                                      <div class="LabeledRowStructure-right">
+                                        <div class="LabeledRowStructure-content">
+                                          <div class="TaskDueDateToken">
+                                            <div aria-disabled="false" aria-expanded="false" class="BaseCard--isValid BaseCard BaseSelectableCard--isNotSelected BaseSelectableCard--isEnabled BaseSelectableCard SubtleButtonCard SubtleTokenButton--empty SubtleTokenButton--editable SubtleTokenButton--subtle SubtleTokenButton DueDateTokenButton--empty DueDateTokenButton--editable DueDateTokenButton--future DueDateTokenButton TaskDueDateToken-tokenButton TaskDueDateToken--future" role="button" tabindex="0">
+                                              <div class="SubtleTokenButton-leftIcon">
+                                                <div class="DueDateTokenButton-icon">
+                                                  <svg class="Icon CalendarIcon" viewbox="0 0 32 32">
+                                                    <path d="M24,2V1c0-0.6-0.4-1-1-1s-1,0.4-1,1v1H10V1c0-0.6-0.4-1-1-1S8,0.4,8,1v1C4.7,2,2,4.7,2,8v16c0,3.3,2.7,6,6,6h16c3.3,0,6-2.7,6-6V8C30,4.7,27.3,2,24,2z M8,4v1c0,0.6,0.4,1,1,1s1-0.4,1-1V4h12v1c0,0.6,0.4,1,1,1s1-0.4,1-1V4c2.2,0,4,1.8,4,4v2H4V8C4,5.8,5.8,4,8,4z M24,28H8c-2.2,0-4-1.8-4-4V12h24v12C28,26.2,26.2,28,24,28z"></path></svg>
+                                                </div>
+                                              </div>
+                                              <div class="DueDateTokenButton-label">
+                                                Today
+                                              </div>
+                                              <div aria-label="Remove" class="RemoveButton--isEnabled RemoveButton SubtleTokenButton-removeButton RemoveButton--small" role="button" tabindex="0">
+                                                <svg class="CompoundIcon--small CompoundIcon XCircleCompoundIcon" viewbox="0 0 32 32">
+                                                  <path class="CompoundIcon-outer" d="M31,16c0,8.3-6.7,15-15,15S1,24.3,1,16S7.7,1,16,1S31,7.7,31,16z"></path>
+                                                  <path class="CompoundIcon-inner" d="M22.5,20.7c0.5,0.5,0.5,1.3,0,1.8c-0.2,0.2-0.5,0.4-0.9,0.4s-0.6-0.1-0.9-0.4L16,17.8l-4.7,4.7c-0.2,0.2-0.5,0.4-0.9,0.4s-0.6-0.1-0.9-0.4C9,22,9,21.2,9.5,20.7l4.7-4.7l-4.7-4.7C9,10.8,9,10,9.5,9.5c0.2-0.2,0.5-0.4,0.9-0.4s0.6,0.1,0.9,0.4l4.7,4.7l4.7-4.7c0.2-0.2,0.5-0.4,0.9-0.4s0.6,0.1,0.9,0.4c0.5,0.5,0.5,1.3,0,1.8L17.8,16L22.5,20.7z"></path></svg>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="LabeledRowStructure TaskProjects-labeledRowStructure">
+                                      <div class="LabeledRowStructure-left" style="width: 100px;">
+                                        <div class="LabeledRowStructure-labelContainer">
+                                          <label class="LabeledRowStructure-label">Projects</label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="TaskPaneSubtasks">
+                                  <div class="SubtaskGrid SubtaskGrid--empty SingleTaskPaneSpreadsheet-subtaskGrid"></div>
+                                </div>
+                                <div class="DropTargetAddSubtaskButton SingleTaskPaneSpreadsheet-addSubtaskButton">
+                                  <div class="AddSubtaskButton DropTargetAddSubtaskButton-button">
+                                    <div class="AbstractThemeableRectangularButton--isEnabled AbstractThemeableRectangularButton AbstractThemeableRectangularButton--medium SubtleButton" role="button" tabindex="0">
+                                      <svg class="MiniIcon AbstractThemeableRectangularButton-leftIcon AddSubtaskButton-plusIcon PlusMiniIcon" viewbox="0 0 24 24">
+                                        <path d="M10,10V4c0-1.1,0.9-2,2-2s2,0.9,2,2v6h6c1.1,0,2,0.9,2,2s-0.9,2-2,2h-6v6c0,1.1-0.9,2-2,2s-2-0.9-2-2v-6H4c-1.1,0-2-0.9-2-2s0.9-2,2-2H10z"></path></svg>Add subtask
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="ComposerAttachmentsPile SingleTaskPaneSpreadsheet-attachments">
+                                  <div class="AssetPreview">
+                                    <div class="RichAttachment AssetPreview-attachmentImage">
+                                      <div class="PreviewableAttachment">
+                                        <a class="AttachmentImage AttachmentImage--small BaseLink" href="#">
+                                          <div class="AttachmentImage-preview" tabindex="0">
+                                            <img class="Thumbnail-richAttachments Thumbnail-image" id="markup-image-thumb" src="https://storage.googleapis.com/markuphero-mail/api_test_image3.jpg">
+                                            <div class="AttachmentImage-previewOverlay"></div>
+                                          </div></a>
+                                      </div>
+                                    </div>
+                                    <div aria-expanded="false" aria-label="Show options" class="AbstractThemeableIconButton--isEnabled AbstractThemeableIconButton AbstractThemeableIconButton--medium InverseSubtleIconButton AssetPreview-dropdownMenuButton" role="button" tabindex="0">
+                                      <svg class="Icon DownIcon" viewbox="0 0 32 32">
+                                        <path d="M16,22.5c-0.3,0-0.7-0.1-0.9-0.3l-11-9c-0.6-0.5-0.7-1.5-0.2-2.1s1.5-0.7,2.1-0.2l10,8.2l10-8.2c0.6-0.5,1.6-0.4,2.1,0.2c0.5,0.6,0.4,1.6-0.2,2.1l-11,9C16.7,22.4,16.3,22.5,16,22.5z"></path></svg>
+                                    </div>
+                                  </div><span class="AddAttachmentsButton ComposerAttachmentsPile-addButton"><input class="AddAttachmentsButton-hiddenFileInput" id="add_attachments_button_file_input_4" multiple tabindex="-1" type="file"></span>
+                                </div>
+                                <div class="SingleTaskPaneSpreadsheet-feed SingleTaskPaneSpreadsheet-feed--notIE SingleTaskPaneSpreadsheet-feed--everyoneTab">
+                                  <div class="TaskStoryFeed">
+                                    <div class="BlockStoryStructure BlockStory--isOneLine BlockStory TaskCreationBlockStory TaskStoryFeed-blockStory TaskStoryFeed-taskCreationStory">
+                                      <div class="BlockStoryStructure-icon">
+                                        <div class="Avatar AvatarPhoto AvatarPhoto--medium AvatarPhoto--color7" role="img">
+                                          NR
+                                        </div>
+                                      </div>
+                                      <div class="BlockStoryStructure-block">
+                                        <div class="BlockStoryStructure-header">
+                                          <div class="BlockStory-headerContent">
+                                            <span class="BlockStory-storyContent"><a class="StoryActorName-actorLink StoryActorName-actorName BaseLink" href="#">Nicolas Russo-Larsson</a> created this task.</span><span class="BlockStory-metadata"><span class="BlockStory-timestamp"><span>4 minutes ago</span></span></span>
+                                          </div>
+                                          <div class="BlockStoryStructure-heartButton"></div>
+                                        </div>
+                                        <div class="BlockStoryStructure-body"></div>
+                                      </div>
+                                    </div>
+                                    <div class="FeedBlockStory TaskStoryFeed-blockStory">
+                                      <div class="FeedBlockStory-content">
+                                        <div class="BlockStoryStructure BlockStory">
+                                          <div class="BlockStoryStructure-icon">
+                                            <div class="Avatar AvatarPhoto AvatarPhoto--medium AvatarPhoto--color7" role="img">
+                                              NR
+                                            </div>
+                                          </div>
+                                          <div class="BlockStoryStructure-block">
+                                            <div class="BlockStoryStructure-header">
+                                              <div class="BlockStory-headerContent">
+																									<span class="BlockStory-storyContent"><a class="StoryActorName-actorLink StoryActorName-actorName BaseLink" href="#">Nicolas Russo-Larsson</a> <span class="AddedAttachmentStory-content"><svg class="Icon AddedAttachmentStory-attachIcon AttachIcon" viewbox="0 0 32 32">
+																									<path d="M25.811,4.064c-3.905-3.904-10.235-3.904-14.14,0l-4.24,4.24l1.41,1.41l4.25-4.24c3.043-3.203,8.107-3.333,11.31-0.29s3.333,8.107,0.29,11.31c-0.094,0.099-0.191,0.196-0.29,0.29l-10.61,10.59c-1.986,1.918-5.152,1.863-7.07-0.123c-1.871-1.938-1.871-5.01,0-6.947l10.61-10.59c0.781-0.781,2.049-0.781,2.83,0s0.781,2.049,0,2.83l-7.07,7.07l1.41,1.42l7.07-7.07c1.563-1.563,1.563-4.097,0-5.66s-4.097-1.563-5.66,0l-10.6,10.61c-2.734,2.734-2.734,7.166,0,9.9s7.166,2.734,9.9,0l0,0l10.6-10.61C29.715,14.299,29.715,7.969,25.811,4.064z"></path></svg> attached</span></span><span class="BlockStory-metadata"><span class="BlockStory-timestamp"><span>3 minutes ago</span></span></span>
+                                              </div>
+                                              <div class="BlockStoryStructure-heartButton">
+                                                <div class="SubtleHeartButton--isNotHearted SubtleHeartButton">
+                                                  <div aria-label="Click to like this task" class="AbstractThemeableRectangularButton--isEnabled AbstractThemeableRectangularButton--withNoLabel AbstractThemeableRectangularButton AbstractThemeableRectangularButton--medium AbstractCountWithIconButton--withRegularIcon AbstractCountWithIconButton SubtleCountWithIconButton SubtleHeartButton-button--isNotHearted SubtleHeartButton-button" role="button" tabindex="0">
+                                                    <svg class="Icon AbstractThemeableRectangularButton-rightIcon ThumbsUpLineIcon" viewbox="0 0 32 32">
+                                                      <path d="M29.6,13.3c-0.8-0.9-1.9-1.4-3.1-1.4h-6.4V7.5c0-1.9-0.9-3.8-2.5-4.9C16.9,2,15.9,1.8,15,2.1c-0.9,0.2-1.7,0.8-2,1.7L8.3,13.9H5c-1.7,0-3.1,1.4-3.1,3.1v10c0,1.7,1.4,3.1,3.1,3.1h2.9H9h15.9c2,0,3.7-1.5,4-3.5l1.6-10C30.7,15.4,30.4,14.2,29.6,13.3z M5,27.9c-0.5,0-0.9-0.4-0.9-0.9V17c0-0.5,0.4-0.9,0.9-0.9h2.9v11.8C7.9,27.9,5,27.9,5,27.9z M28.4,16.3l-1.6,10c-0.1,0.9-0.9,1.6-1.9,1.6H10.1V15.2L15,4.7c0.2-0.3,0.4-0.5,0.6-0.5c0.2,0,0.5-0.1,0.8,0.2c1,0.7,1.6,1.9,1.6,3.2v6.6h8.6c0.6,0,1.1,0.2,1.5,0.7C28.3,15.2,28.5,15.7,28.4,16.3z"></path></svg>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div class="BlockStoryStructure-body">
+                                              <div class="AddedAttachmentStory-richAttachments AddedAttachmentStory-body">
+                                                <div class="RichAttachment">
+                                                  <div class="PreviewableAttachment">
+                                                    <div class="AttachmentImage AttachmentImage--large">
+                                                      <a class="AttachmentImage-preview BaseLink" href="#"><img class="Thumbnail-richAttachments Thumbnail-image" id="markup-image" src="https://storage.googleapis.com/markuphero-mail/api_test_image3.jpg"></a>
+                                                      <div class="AttachmentImage-name">
+                                                        <span class="AttachmentImage-fileName">image.png</span> <span class="AttachmentImage-label"> · <a class="RichAttachment-labelLink HiddenLink HiddenLink--darkGray1 BaseLink" href="#">Download</a> · <a class="RichAttachment-labelLink HiddenLink HiddenLink--darkGray1 BaseLink" href="#" id="btnCreateMarkup" onclick="createMarkup()">Annotate Image</a><a class="RichAttachment-labelLink HiddenLink HiddenLink--darkGray1 BaseLink" href="/try/asana-annotation-api-demo.html" id="btnResetMarkup" style="display: none;">Reset Image</a> · <a class="RichAttachment-labelLink HiddenLink HiddenLink--darkGray1 BaseLink" href="#" id="btnOpenMarkup" onclick="openMarkup()" style="display: none;">Edit Annotations</a></span>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div aria-expanded="false" aria-label="Show options" class="AbstractThemeableIconButton--isEnabled AbstractThemeableIconButton AbstractThemeableIconButton--medium SubtleIconButton FeedBlockStory-actionsDropdownButton" role="button" tabindex="0">
+                                          <svg class="MiniIcon ArrowDownMiniIcon" viewbox="0 0 24 24">
+                                            <path d="M3.5,8.9c0-0.4,0.1-0.7,0.4-1C4.5,7.3,5.4,7.2,6,7.8l5.8,5.2l6.1-5.2C18.5,7.3,19.5,7.3,20,8c0.6,0.6,0.5,1.5-0.1,2.1 l-7.1,6.1c-0.6,0.5-1.4,0.5-2,0L4,10.1C3.6,9.8,3.5,9.4,3.5,8.9z"></path></svg>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="FeedMiniStory TaskStoryFeed-miniStory">
+                                      <div class="MiniStory FeedMiniStory-story">
+                                        <span class="MiniStoryActionSentence"><a class="MiniStory-actor BaseLink" href="#">Nicolas Russo-Larsson</a> <span class="MiniStoryActionSentence-content">assigned to you</span>.</span>
+                                        <div class="MiniStory-timestamp">
+                                          1 minute ago
+                                        </div>
+                                      </div>
+                                      <div aria-label="Delete story" class="AbstractThemeableIconButton--isEnabled AbstractThemeableIconButton AbstractThemeableIconButton--small SubtleMiniIconButton FeedMiniStory-deleteButton" role="button" tabindex="0">
+                                        <svg class="MiniIcon XMiniIcon" viewbox="0 0 24 24">
+                                          <path d="M13.4,12l7.5-7.5c0.4-0.4,0.4-1,0-1.4s-1-0.4-1.4,0L12,10.6L4.5,3.1c-0.4-0.4-1-0.4-1.4,0s-0.4,1,0,1.4l7.5,7.5l-7.5,7.5 c-0.4,0.4-0.4,1,0,1.4c0.2,0.2,0.5,0.3,0.7,0.3s0.5-0.1,0.7-0.3l7.5-7.5l7.5,7.5c0.2,0.2,0.5,0.3,0.7,0.3s0.5-0.1,0.7-0.3 c0.4-0.4,0.4-1,0-1.4L13.4,12z"></path></svg>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="DropTargetAttachment-target">
+                            <div class="DropTargetAttachment-border">
+                              <img class="Illustration Illustration--medium Illustration--spot DropTargetAttachment-image" role="presentation" src="https://d3ki9tyy5l5ruj.cloudfront.net/obj/1481d27df17776a253739858683cce7cdc6f4731/attachment.svg"><span class="DropTargetAttachment-imageText">Drop to attach files</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="SingleTaskPaneSpreadsheet-footer">
+                          <div class="CommentComposer SingleTaskPaneSpreadsheet-commentComposer">
+                            <div class="ResizeListener">
+                              <div class="ResizeListener-expand">
+                                <div class="ResizeListener-expandChild"></div>
+                              </div>
+                              <div class="ResizeListener-shrink">
+                                <div class="ResizeListener-shrinkChild"></div>
+                              </div>
+                            </div>
+                            <div class="CommentComposer-avatar Avatar AvatarPhoto AvatarPhoto--medium AvatarPhoto--color7" role="img">
+                              NR
+                            </div>
+                            <div class="CommentComposerEditor CommentComposer-commentComposer">
+                              <div class="Scrollable--withCompositingLayer Scrollable Scrollable--vertical CommentComposerEditor-scrollable" tabindex="-1">
+                                <div class="CommentComposerEditor-textEditor--withQuickAddButtons CommentComposerEditor-textEditor TextEditor2">
+                                  <div class="TextEditor2-placeholderWrapper">
+                                    <div class="Typography--truncate TextEditor2-placeholder Typography Typography--colorDarkGray1 Typography--m">
+                                      Ask a question or post an update…
+                                    </div>
+                                  </div>
+                                  <div aria-label="Edit comment" class="ProsemirrorEditor TextEditor2-prosemirrorEditor ProseMirror" contenteditable="true" tabindex="0">
+                                    <p><br></p>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="CommentComposerEditor-quickAddButtons">
+                                <div class="TextEditorToolbarButton CommentComposerEditor-atMentionButton">
+                                  <div aria-label="At-Mention" class="AbstractThemeableIconButton--isEnabled AbstractThemeableIconButton AbstractThemeableIconButton--medium SubtleIconButton TextEditorToolbarButton-anchor" role="button" tabindex="-1">
+                                    <svg class="Icon AtMentionIcon" viewbox="0 0 32 32">
+                                      <path d="M16,0C7.2,0,0,7.2,0,16s7.2,16,16,16c3.7,0,7.3-1.3,10.1-3.6c0.4-0.3,0.5-1,0.1-1.4c-0.3-0.4-1-0.5-1.4-0.1c-2.5,2-5.6,3.1-8.8,3.1C8.3,30,2,23.7,2,16S8.3,2,16,2s14,6.3,14,14v1.5c0,1.9-1.6,3.5-3.5,3.5S23,19.4,23,17.5V16c0-3.9-3.1-7-7-7s-7,3.1-7,7s3.1,7,7,7c2.3,0,4.4-1.1,5.7-2.9c0.9,1.7,2.8,2.9,4.8,2.9c3,0,5.5-2.5,5.5-5.5V16C32,7.2,24.8,0,16,0z M16,21c-2.8,0-5-2.2-5-5s2.2-5,5-5s5,2.2,5,5S18.8,21,16,21z"></path></svg>
+                                  </div>
+                                </div>
+                                <div class="TextEditorToolbarButton CommentComposerEditor-emojiPickerButton">
+                                  <div aria-expanded="false" aria-label="Emoji" class="AbstractThemeableIconButton--isEnabled AbstractThemeableIconButton AbstractThemeableIconButton--medium SubtleIconButton TextEditorToolbarButton-anchor" role="button" tabindex="-1">
+                                    <svg class="Icon EmojiIcon" viewbox="0 0 32 32">
+                                      <path d="M16,0 C7.17582609,0 0,7.17585739 0,16 C0,24.8241739 7.17582609,32 16,32 C24.8241739,32 32,24.8241739 32,16 C32,7.17585739 24.8241739,0 16,0 Z M16,2.08695652 C23.696313,2.08695652 29.9130435,8.30372174 29.9130435,16 C29.9130435,23.696313 23.696313,29.9130435 16,29.9130435 C8.30368696,29.9130435 2.08695652,23.696313 2.08695652,16 C2.08695652,8.30372174 8.30368696,2.08695652 16,2.08695652 Z M10.4347826,9.04347826 C9.09005217,9.04347826 8,10.1335652 8,11.4782609 C8,12.8229565 9.09005217,13.9130435 10.4347826,13.9130435 C11.7794748,13.9130435 12.8695652,12.8229565 12.8695652,11.4782609 C12.8695652,10.1335652 11.7794748,9.04347826 10.4347826,9.04347826 Z M21.5652174,9.04347826 C20.220487,9.04347826 19.1304348,10.1335652 19.1304348,11.4782609 C19.1304348,12.8229565 20.220487,13.9130435 21.5652174,13.9130435 C22.909913,13.9130435 24,12.8229565 24,11.4782609 C24,10.1335652 22.909913,9.04347826 21.5652174,9.04347826 Z M8.23913043,19.1304348 C7.90384696,19.149913 7.59775652,19.3392696 7.41304348,19.673913 C7.23693913,20.0104696 7.26069565,20.4386435 7.47826087,20.7499826 C9.34351304,23.5401739 12.4683478,25.3913043 16,25.3913043 C19.5316522,25.3913043 22.656487,23.5401739 24.5217391,20.7499826 C24.8262261,20.294713 24.6944348,19.6088348 24.2391304,19.3043478 C23.7838261,18.9998609 23.0870957,19.1316522 22.7826087,19.5869565 C21.2761043,21.840487 18.8063652,23.3043478 16,23.3043478 C13.1936348,23.3043478 10.7238957,21.840487 9.2173913,19.5869565 C8.93488696,19.2555478 8.57441391,19.1108522 8.23913043,19.1304348 Z M8.23913043,19.1304348 C7.90384696,19.149913 7.59775652,19.3392696 7.41304348,19.673913 C7.23693913,20.0104696 7.26069565,20.4386435 7.47826087,20.7499826 C9.34351304,23.5401739 12.4683478,25.3913043 16,25.3913043 C19.5316522,25.3913043 22.656487,23.5401739 24.5217391,20.7499826 C24.8262261,20.294713 24.6944348,19.6088348 24.2391304,19.3043478 C23.7838261,18.9998609 23.0870957,19.1316522 22.7826087,19.5869565 C21.2761043,21.840487 18.8063652,23.3043478 16,23.3043478 C13.1936348,23.3043478 10.7238957,21.840487 9.2173913,19.5869565 C8.93488696,19.2555478 8.57441391,19.1108522 8.23913043,19.1304348 Z"></path></svg>
+                                  </div>
+                                </div>
+                                <div class="TextEditorToolbarButton CommentComposerEditor-stickerPickerButton">
+                                  <div aria-expanded="false" aria-label="Appreciations" class="AbstractThemeableIconButton--isEnabled AbstractThemeableIconButton AbstractThemeableIconButton--medium SubtleIconButton TextEditorToolbarButton-anchor" role="button" tabindex="-1">
+                                    <svg class="Icon StickerPickerIcon" viewbox="0 0 32 32">
+                                      <path d="M16,0C7.2,0,0,7.2,0,16s7.2,16,16,16s16-7.2,16-16S24.8,0,16,0z M16,30C8.2,30,2,23.8,2,16S8.2,2,16,2s14,6.2,14,14S23.8,30,16,30z M25.2,12l-5.6-1L17,6c-0.4-1-1.6-1-2,0l-2.6,5l-5.6,0.8C5.8,12,5.4,13.2,6,14l4,4l-1,5.6c-0.2,1,0.8,1.8,1.8,1.2l5.2-2.6l5,2.6c0.8,0.4,2-0.2,1.8-1.2l-1-5.6l4-4C26.6,13.4,26.2,12,25.2,12z M20.2,16.8c-0.4,0.2-0.4,0.6-0.4,1l0.8,4.4l-4-2c-0.4-0.2-0.8-0.2-1.2,0l-4,2l0.8-4.4c0-0.4,0-0.8-0.4-1l-3.2-3.2L13,13c0.4,0,0.8-0.4,1-0.6l2-4l2,4c0.2,0.4,0.6,0.6,1,0.6l4.4,0.6L20.2,16.8z"></path></svg>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="CommentComposerEditor-toolbar">
+                                <div class="TextEditorToolbarButton CommentComposer-stickerPickerButton">
+                                  <div aria-expanded="false" aria-label="Appreciations" class="AbstractThemeableIconButton--isEnabled AbstractThemeableIconButton AbstractThemeableIconButton--medium SubtleIconButton TextEditorToolbarButton-anchor" role="button" tabindex="-1">
+                                    <svg class="Icon StickerPickerIcon" viewbox="0 0 32 32">
+                                      <path d="M16,0C7.2,0,0,7.2,0,16s7.2,16,16,16s16-7.2,16-16S24.8,0,16,0z M16,30C8.2,30,2,23.8,2,16S8.2,2,16,2s14,6.2,14,14S23.8,30,16,30z M25.2,12l-5.6-1L17,6c-0.4-1-1.6-1-2,0l-2.6,5l-5.6,0.8C5.8,12,5.4,13.2,6,14l4,4l-1,5.6c-0.2,1,0.8,1.8,1.8,1.2l5.2-2.6l5,2.6c0.8,0.4,2-0.2,1.8-1.2l-1-5.6l4-4C26.6,13.4,26.2,12,25.2,12z M20.2,16.8c-0.4,0.2-0.4,0.6-0.4,1l0.8,4.4l-4-2c-0.4-0.2-0.8-0.2-1.2,0l-4,2l0.8-4.4c0-0.4,0-0.8-0.4-1l-3.2-3.2L13,13c0.4,0,0.8-0.4,1-0.6l2-4l2,4c0.2,0.4,0.6,0.6,1,0.6l4.4,0.6L20.2,16.8z"></path></svg>
+                                  </div>
+                                </div><span class="AddAttachmentsButton CommentComposer-uploadAttachmentsButton"><input class="AddAttachmentsButton-hiddenFileInput" id="add_attachments_button_file_input_5" multiple tabindex="-1" type="file"></span>
+                                <div aria-disabled="false" aria-expanded="false" class="AbstractThemeableIconButton--isEnabled AbstractThemeableIconButton AbstractThemeableIconButton--medium SubtleIconButton" role="button" tabindex="-1">
+																		<span class="AddAttachmentsButton CommentComposer-uploadAttachmentsButton"><svg class="Icon AttachVerticalIcon" viewbox="0 0 32 32">
+																		<path d="M19,32c-3.9,0-7-3.1-7-7V10c0-2.2,1.8-4,4-4s4,1.8,4,4v9c0,0.6-0.4,1-1,1s-1-0.4-1-1v-9c0-1.1-0.9-2-2-2s-2,0.9-2,2v15c0,2.8,2.2,5,5,5s5-2.2,5-5V10c0-4.4-3.6-8-8-8s-8,3.6-8,8v5c0,0.6-0.4,1-1,1s-1-0.4-1-1v-5C6,4.5,10.5,0,16,0s10,4.5,10,10v15C26,28.9,22.9,32,19,32z"></path></svg></span>
+                                </div>
+                                <div class="CommentComposerEditor-toolbarRight">
+                                  <div class="ConversationNotificationCount CommentComposerNotificationCount-notifiedFollowersText">
+                                    0 people will be notified
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="FollowersBar TaskFollowers-followersList">
+                            <div class="EditableFollowersRow FollowersBar-editableFollowersRow">
+                              <div class="EditableFollowersRow-tabFocusCapturer"></div><label class="FollowersLabel" for="followers_input">Collaborators</label>
+                              <div class="FollowersList">
+                                <div class="RemovableAvatar FollowersList-facepileAvatar">
+                                  <div class="Avatar-baseButton Avatar" role="button" tabindex="0">
+                                    <div class="Avatar AvatarPhoto AvatarPhoto--small AvatarPhoto--color7" role="img">
+                                      NR
+                                    </div>
+                                  </div>
+                                  <div aria-label="Remove" class="RemoveButton--isEnabled RemoveButton RemovableAvatar-avatarRemoveButton RemoveButton--xsmall" role="button" tabindex="0">
+                                    <svg class="CompoundIcon--xsmall CompoundIcon XCircleCompoundIcon" viewbox="0 0 24 24">
+                                      <path class="CompoundIcon-outer" d="M23,12c0,6.1-4.9,11-11,11S1,18.1,1,12S5.9,1,12,1S23,5.9,23,12z"></path>
+                                      <path class="CompoundIcon-inner" d="M13.4,12l4.3-4.3c0.4-0.4,0.4-1,0-1.4s-1-0.4-1.4,0L12,10.6L7.7,6.3c-0.4-0.4-1-0.4-1.4,0s-0.4,1,0,1.4l4.3,4.3l-4.3,4.3c-0.4,0.4-0.4,1,0,1.4C6.5,17.9,6.7,18,7,18s0.5-0.1,0.7-0.3l4.3-4.3l4.3,4.3c0.2,0.2,0.5,0.3,0.7,0.3s0.5-0.1,0.7-0.3c0.4-0.4,0.4-1,0-1.4L13.4,12z"></path></svg>
+                                  </div>
+                                </div>
+                                <div class="DomainUserAvatar DomainUserAvatar--noValue DomainUserAvatar--small FollowersList-placeholderAvatar">
+                                  <svg class="Icon DomainUserAvatar-icon UserLineIcon" viewbox="0 0 32 32">
+                                    <path d="M16,18c-4.4,0-8-3.6-8-8s3.6-8,8-8s8,3.6,8,8S20.4,18,16,18z M16,4c-3.3,0-6,2.7-6,6s2.7,6,6,6s6-2.7,6-6S19.3,4,16,4z M29,32c-0.6,0-1-0.4-1-1v-4.2c0-2.6-2.2-4.8-4.8-4.8H8.8C6.2,22,4,24.2,4,26.8V31c0,0.6-0.4,1-1,1s-1-0.4-1-1v-4.2C2,23,5,20,8.8,20h14.4c3.7,0,6.8,3,6.8,6.8V31C30,31.6,29.6,32,29,32z"></path></svg>
+                                </div>
+                                <div class="DomainUserAvatar DomainUserAvatar--noValue DomainUserAvatar--small FollowersList-placeholderAvatar">
+                                  <svg class="Icon DomainUserAvatar-icon UserLineIcon" viewbox="0 0 32 32">
+                                    <path d="M16,18c-4.4,0-8-3.6-8-8s3.6-8,8-8s8,3.6,8,8S20.4,18,16,18z M16,4c-3.3,0-6,2.7-6,6s2.7,6,6,6s6-2.7,6-6S19.3,4,16,4z M29,32c-0.6,0-1-0.4-1-1v-4.2c0-2.6-2.2-4.8-4.8-4.8H8.8C6.2,22,4,24.2,4,26.8V31c0,0.6-0.4,1-1,1s-1-0.4-1-1v-4.2C2,23,5,20,8.8,20h14.4c3.7,0,6.8,3,6.8,6.8V31C30,31.6,29.6,32,29,32z"></path></svg>
+                                </div>
+                                <div aria-label="Add follower" class="AbstractThemeableIconButton--isEnabled AbstractThemeableIconButton AbstractThemeableIconButton--medium SubtleIconButton FollowersList-addButton" role="button" tabindex="0">
+                                  <svg class="MiniIcon--small MiniIcon PlusMiniIcon" viewbox="0 0 24 24">
+                                    <path d="M10,10V4c0-1.1,0.9-2,2-2s2,0.9,2,2v6h6c1.1,0,2,0.9,2,2s-0.9,2-2,2h-6v6c0,1.1-0.9,2-2,2s-2-0.9-2-2v-6H4c-1.1,0-2-0.9-2-2s0.9-2,2-2H10z"></path></svg>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="AbstractThemeableRectangularButton--isEnabled AbstractThemeableRectangularButton AbstractThemeableRectangularButton--large SubtleButton" role="button" tabindex="0">
+                              <svg class="Icon--small Icon AbstractThemeableRectangularButton-leftIcon BellIcon" viewbox="0 0 32 32">
+                                <path d="M30,20.6c-1.3-1.1-2-2.7-2-4.4v-3.9C28,5.7,22.7,0.1,16.2,0C13,0,9.9,1.2,7.6,3.4C5.3,5.7,4,8.8,4,12v4.2 c0,1.7-0.7,3.3-2,4.4c-1,0.9-1.3,2.4-0.7,3.7c0.5,1,1.6,1.7,2.8,1.7h23.7c1.2,0,2.3-0.7,2.8-1.7C31.3,23,31,21.6,30,20.6z M20.3,28 h-8.5c-0.4,0-0.7,0.2-0.9,0.6s-0.1,0.8,0.1,1.1c0.7,0.8,2.6,2.4,5,2.4s4.3-1.5,5-2.4c0.2-0.3,0.3-0.7,0.1-1.1 C21,28.2,20.6,28,20.3,28z"></path></svg>Leave task
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="AsanaMain-quickAddPopOut">
+                  <div class="PopOutBoundary"></div>
+                </div>
+              </div>
+              <div class="AppRoot-disconnectBar--sidebarExpanded AppRoot-disconnectBar">
+                <div class="DisconnectBarManager"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="position: fixed; bottom: 10px; right: 10px; background-color: #151b26; z-index: 10000; width: 150px; padding: 10px; border-radius: 4px;"><p style="color: #fff; margin: 0; font-size: 10px; line-height: 15px;">Note this is not asana.com but rather a demo using Markup Hero's <a href="/integrations/annotation-api.html" target="_blank" style="color: #fcbd01;">Annotation API</a></p></div>
+</body>
+</html>
